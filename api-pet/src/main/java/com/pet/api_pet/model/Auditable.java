@@ -25,4 +25,6 @@ public abstract class Auditable {
     private Instant deletedAt;
 
     private UUID deletedBy;
+
+    private Boolean active;
 }
