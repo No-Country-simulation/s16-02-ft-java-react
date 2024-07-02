@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -38,4 +39,7 @@ public class Profile extends Auditable{
     @ManyToOne
     @JoinColumn(name = "district_id",nullable = false,foreignKey = @ForeignKey(name = "FK_PROFILES_DISTRICT"))
     private District district;
+
+    @OneToMany(mappedBy = "profile",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+    private List<Adoption>adoptions;
 }

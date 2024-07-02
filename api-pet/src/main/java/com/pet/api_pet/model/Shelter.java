@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -33,4 +34,6 @@ public class Shelter extends Auditable{
     @JoinColumn(name = "district_id",nullable = false,foreignKey = @ForeignKey(name = "FK_SHELTERS_DISTRICT"))
     private District district;
 
+    @OneToMany(mappedBy = "shelter",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+    private List<Adoption>adoptions;
 }
