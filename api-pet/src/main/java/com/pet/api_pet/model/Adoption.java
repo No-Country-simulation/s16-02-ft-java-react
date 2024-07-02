@@ -22,15 +22,15 @@ public class Adoption extends Auditable{
     @Column(name = "adoption_id")
     private UUID adoptionId=UUID.randomUUID();
 
+
+
     @Column(name = "adoption_date",nullable = false)
     private Instant adoptionDate;
 
-    @ManyToOne
-    @JoinColumn(name = "profile_id",nullable = false,foreignKey = @ForeignKey(name = "FK_ADOPTIONS_PROFILE"))
-    private Profile profile;
 
-    @ManyToOne
-    @JoinColumn(name = "shelter_id",nullable = false,foreignKey = @ForeignKey(name = "FK_ADOPTIONS_SHELTER"))
-    private Shelter shelter;
+    @OneToOne
+    @JoinColumn(name = "application_id",nullable = false,foreignKey = @ForeignKey(name = "FK_ADOPTIONS_APPLICATION"))
+    private Application application;
+
 
 }

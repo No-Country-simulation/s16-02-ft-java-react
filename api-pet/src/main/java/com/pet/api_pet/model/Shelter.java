@@ -1,5 +1,6 @@
 package com.pet.api_pet.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,8 +40,10 @@ public class Shelter extends Auditable{
     private District district;
 
     @OneToMany(mappedBy = "shelter",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
-    private List<Adoption>adoptions;
+    @JsonIgnore
+    List<Pet>pets;
 
     @OneToMany(mappedBy = "shelter",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Donation>donations;
 }

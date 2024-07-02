@@ -1,5 +1,6 @@
 package com.pet.api_pet.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -52,11 +53,14 @@ public class Profile extends Auditable{
     private District district;
 
     @OneToMany(mappedBy = "profile",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
-    private List<Adoption>adoptions;
-
-    @OneToMany(mappedBy = "profile",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Points>points;
 
     @OneToMany(mappedBy = "profile",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Donation>donations;
+
+    @OneToMany(mappedBy = "profile",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+    @JsonIgnore
+    List<Visit>visits;
 }

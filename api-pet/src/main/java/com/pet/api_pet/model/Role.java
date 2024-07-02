@@ -1,5 +1,6 @@
 package com.pet.api_pet.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,5 +28,6 @@ public class Role extends Auditable{
     private String roleDescription;
 
     @OneToMany(mappedBy = "role",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<User>users;
 }

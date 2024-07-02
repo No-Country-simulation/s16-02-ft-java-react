@@ -1,5 +1,6 @@
 package com.pet.api_pet.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,8 +28,14 @@ public class District {
     private City city;
 
     @OneToMany(mappedBy = "district",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Profile>profiles;
 
     @OneToMany(mappedBy = "district",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Shelter>shelters;
+
+    @OneToMany(mappedBy = "district",cascade = {CascadeType.PERSIST},fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<Pet>pets;
 }
