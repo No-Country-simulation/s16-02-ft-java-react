@@ -1,0 +1,29 @@
+@import "./fonts.scss";
+
+:root {
+  --c-dark: "#232323"
+  --c-light: "#f0f0f0"
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Inter", sans-serif;;
+  color: var(--c-light);
+  background: var(--c-dark);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
