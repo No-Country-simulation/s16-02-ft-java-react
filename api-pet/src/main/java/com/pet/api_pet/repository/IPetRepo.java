@@ -7,6 +7,6 @@ import java.util.UUID;
 
 public interface IPetRepo extends IGenericRepo<Pet, UUID> {
 
-    List<Pet>findAllPetsByShelterId(UUID id);
-    List<Pet>findAllPetsByAdoptionId(UUID id);
+    //List<Pet>findAllPetsByShelterId(UUID id);
+    //List<Pet>findAllPetsByAdoptionId(UUID id);
 }

@@ -7,6 +7,6 @@ import java.util.UUID;
 
 public interface IDonationRepo extends IGenericRepo<Donation, UUID>{
 
-    List<Donation>findAllDonationsByPerfilId(UUID id);
-    List<Donation>findAllDonationsByShelterId(UUID id);
+    //List<Donation>findAllDonationsByPerfilId(UUID id);
+    //List<Donation>findAllDonationsByShelterId(UUID id);
 }

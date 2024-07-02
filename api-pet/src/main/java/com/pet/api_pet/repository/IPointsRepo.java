@@ -6,5 +6,5 @@ import java.util.UUID;
 
 public interface IPointsRepo extends IGenericRepo<Points, UUID> {
 
-    Points findPointsByProfileId(UUID id);
+    //Points findPointsByProfileId(UUID id);
 }

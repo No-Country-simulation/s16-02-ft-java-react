@@ -63,13 +63,9 @@ public class SpringSecurityConfig {
                 .addFilter(jwtAuthorizationFilter())
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))
                 .addFilter(new JwtValidationFilter(authenticationManager()))
-                //.oauth2ResourceServer((oauth2) -> oauth2.jwt((jwt) -> jwt.decoder(jwtDecoder())))
                 .userDetailsService(userDetailsService)
                 .httpBasic(Customizer.withDefaults())
-                /*.httpBasic(c -> c.authenticationEntryPoint(
-                        (request, response, authException) -> response.sendError(HttpStatus.SC_UNAUTHORIZED)))*/
                 .csrf(config -> config.disable())
-                //.cors(cors -> cors.disable())
                 .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();
     }
