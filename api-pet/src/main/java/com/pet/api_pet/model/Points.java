@@ -21,6 +21,7 @@ public class Points {
     @Column(name = "point_id")
     private UUID pointId=UUID.randomUUID();
 
+    @Column(name = "point_number",nullable = false,length = 10)
     private Long pointNumber;
 
     @ManyToOne

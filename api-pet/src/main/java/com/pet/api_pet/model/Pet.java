@@ -21,22 +21,31 @@ public class Pet extends Auditable{
     @Column(name = "pet_id")
     private UUID petId=UUID.randomUUID();
 
+    @Column(name = "pet_name",nullable = false,length = 52)
     private String petName;
 
+    @Column(name = "pet_age",nullable = false,length = 2)
     private Integer petAge;
 
+    @Column(name = "pet_type",nullable = false,length = 1)
     private Integer petType;//1: Dog, 2: Cat
 
+    @Column(name = "pet_breed",nullable = false,length = 50)
     private String petBreed;
 
+    @Column(name = "pet_size",nullable = false,length = 1)
     private Integer petSize; //1: Toy,2: Pequeño,3:Mediano,4:Grande,5:Gigante
 
+    @Column(name = "pet_sex",nullable = false)
     private Boolean petSex; // True: macho, False: hembra
 
+    @Column(name = "pet_weight",nullable = false,length = 5)
     private Double petWeight;
 
+    @Column(name = "pet_status",nullable = false,length = 180)
     private String petStatus;
 
+    @Column(name = "pet_behavior",nullable = false,length = 210)
     private String petBehavior;
 
     @ManyToOne

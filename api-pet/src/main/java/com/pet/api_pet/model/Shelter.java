@@ -31,9 +31,16 @@ public class Shelter extends Auditable{
     private String shelterAddress;
 
     @ManyToOne
+    @JoinColumn(name = "user_id",nullable = false,foreignKey = @ForeignKey(name = "FK_SHELTERS_USER"))
+    private User user;
+
+    @ManyToOne
     @JoinColumn(name = "district_id",nullable = false,foreignKey = @ForeignKey(name = "FK_SHELTERS_DISTRICT"))
     private District district;
 
     @OneToMany(mappedBy = "shelter",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
     private List<Adoption>adoptions;
+
+    @OneToMany(mappedBy = "shelter",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+    private List<Donation>donations;
 }

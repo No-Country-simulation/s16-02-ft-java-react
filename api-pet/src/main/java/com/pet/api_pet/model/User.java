@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -28,4 +29,10 @@ public class User extends Auditable{
     @ManyToOne
     @JoinColumn(name = "role_id",nullable = false,foreignKey = @ForeignKey(name="FK_USERS_ROLE"))
     private Role role;
+
+    @OneToOne(mappedBy = "user",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+    private Profile profile;
+
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+    private List<Shelter> shelters;
 }

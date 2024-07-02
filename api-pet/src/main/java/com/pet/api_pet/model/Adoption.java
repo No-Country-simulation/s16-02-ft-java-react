@@ -18,10 +18,11 @@ import java.util.UUID;
 public class Adoption extends Auditable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "adoption_id")
     private UUID adoptionId=UUID.randomUUID();
 
+    @Column(name = "adoption_date",nullable = false)
     private Instant adoptionDate;
 
     @ManyToOne

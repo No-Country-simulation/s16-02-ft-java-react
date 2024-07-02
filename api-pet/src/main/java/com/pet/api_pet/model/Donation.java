@@ -22,10 +22,13 @@ public class Donation extends Auditable{
     @Column(name = "donation_id")
     private UUID donationId=UUID.randomUUID();
 
+    @Column(name = "donation_amount",nullable = false,length = 9)
     private Double donationAmount;
 
+    @Column(name = "donation_money_type",nullable = false,length = 3)
     private Integer donationMoneyType; //1:Dolares,2:Pesos Argentinos, 3:Soles, 4:Pesos Bolivianos,5:Pesos Chilenos,etc
 
+    @Column(name = "donation_date",nullable = false)
     private Instant donationDate;
 
     @ManyToOne
