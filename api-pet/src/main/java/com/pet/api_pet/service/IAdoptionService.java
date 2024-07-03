@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface IAdoptionService extends ICRUDService<Adoption,UUID>{
-    List<Adoption> findAllAdoptionByProfileId(UUID id);
-    Adoption findAdoptionByProfileId(UUID id);
+    //List<Adoption> findAllAdoptionByProfileId(UUID id);
+    //Adoption findAdoptionByProfileId(UUID id);
 
 }

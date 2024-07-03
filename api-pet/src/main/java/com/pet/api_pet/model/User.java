@@ -18,6 +18,9 @@ import java.util.UUID;
 @Table(name = "users")
 public class User extends Auditable{
 
+    // Usuario quien adopta se llame al Perfil multihilos
+    //
+    // Usuario
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "user_id")
