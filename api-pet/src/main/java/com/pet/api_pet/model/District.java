@@ -25,6 +25,7 @@ public class District {
 
     @ManyToOne
     @JoinColumn(name = "city_id",nullable = false,foreignKey = @ForeignKey(name = "FK_DISTRICTS_CITY"))
+    @JsonIgnore
     private City city;
 
     @OneToMany(mappedBy = "district",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)

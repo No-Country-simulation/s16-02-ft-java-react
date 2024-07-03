@@ -32,6 +32,7 @@ public class User extends Auditable{
     private Role role;
 
     @OneToOne(mappedBy = "user",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+    @JsonIgnore
     private Profile profile;
 
     @OneToMany(mappedBy = "user",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
