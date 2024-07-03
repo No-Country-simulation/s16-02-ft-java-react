@@ -1,11 +1,9 @@
+@import "./variables.scss";
 @import "./fonts.scss";
 
-:root {
-  --c-dark: "#232323"
-  --c-light: "#f0f0f0"
-}
-
-* {
+*,
+*::after,
+*::before {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -18,12 +16,51 @@ body {
 }
 
 body {
-  font-family: "Inter", sans-serif;;
-  color: var(--c-light);
-  background: var(--c-dark);
+  font-family: var(--ff-playfair);
+  color: var(--c-text);
+  background: var(--c-light);
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  text-wrap: balance;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+img,
+video,
+svg {
+  height: auto;
+  max-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    transition: none;
+  }
 }
