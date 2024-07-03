@@ -1,0 +1,3 @@
+------- Roles -------
+INSERT INTO public.roles(active, created_at, deleted_at, updated_at, created_by, deleted_by, role_id, updated_by, role_description, role_name) VALUES (true, null, null, null, null, null, '5fa73c03-a638-49de-ac32-cade52eb71f1', null, 'Usuarios', 'ROLE_USER');
+INSERT INTO public.roles(active, created_at, deleted_at, updated_at, created_by, deleted_by, role_id, updated_by, role_description, role_name) VALUES (true, null, null, null, null, null, 'be768fa6-b00f-4309-9b28-e6b1188506a7', null, 'Administrador', 'ROLE_ADMIN');
