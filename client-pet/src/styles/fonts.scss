@@ -1,1 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+$font-faces: (
+  "PlayfairDisplay": ("PlayfairDisplay-Regular": (path: "/fonts/PlayfairDisplay/PlayfairDisplay-Regular.ttf", weight: 400),
+    "PlayfairDisplay-Medium": (path: "/fonts/PlayfairDisplay/PlayfairDisplay-Medium.ttf", weight: 500),
+    "PlayfairDisplay-SemiBold": (path: "/fonts/PlayfairDisplay/PlayfairDisplay-SemiBold.ttf", weight: 600),
+    "PlayfairDisplay-Bold": (path: "/fonts/PlayfairDisplay/PlayfairDisplay-Bold.ttf", weight: 700),
+  ),
+  "Inter": ("Inter-Thin": (path: "/fonts/Inter/Inter-Thin.ttf", weight: 100, ),
+    "Inter-Light": (path: "/fonts/Inter/Inter-Light.ttf", weight: 300, ),
+    "Inter-Regular": (path: "/fonts/Inter/Inter-Regular.ttf", weight: 400),
+    "Inter-Medium": (path: "/fonts/Inter/Inter-Medium.ttf", weight: 500),
+    "Inter-SemiBold": (path: '/fonts/Inter/Inter-SemiBold.ttf', weight: 600),
+    "Inter-Bold": (path: '/fonts/Inter/Inter-Bold.ttf', weight: 700),
+  )
+);
+
+@each $variant, $details in map-get($font-faces, "PlayfairDisplay") {
+  @font-face {
+    font-family: "Playfair Display";
+    src: url('#{map-get($details, "path")}') format('truetype');
+    font-style: normal;
+    font-weight: map-get($details, "weight");
+  }
+}
+
+@each $variant, $details in map-get($font-faces, "Inter") {
+  @font-face {
+    font-family: "Inter";
+    src: url('#{map-get($details, "path")}') format('truetype');
+    font-style: normal;
+    font-weight: map-get($details, "weight");
+  }
+}
