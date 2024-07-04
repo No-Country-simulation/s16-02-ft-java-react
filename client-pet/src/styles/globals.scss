@@ -1,5 +1,11 @@
 @import "./variables.scss";
 @import "./fonts.scss";
+@import "./pages/auth/layout.scss";
+@import "./pages/auth/login.scss";
+@import "./components/layout/navbar.scss";
+@import "./components/layout/footer.scss";
+@import "./components/common/input.scss";
+@import "./components/common/button.scss";
 
 *,
 *::after,
@@ -23,6 +29,10 @@ body {
 
 p {
   text-wrap: pretty;
+}
+
+ul {
+  list-style: none;
 }
 
 h1,

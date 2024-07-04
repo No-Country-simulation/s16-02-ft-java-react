@@ -1,0 +1,23 @@
+.main-navbar {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+
+  &__menu {
+    display: flex;
+    gap: var(--spacing-lg);
+
+    li {
+      border-bottom: var(--b-primary);
+    }
+  }
+
+  &__auth {
+    display: flex;
+    gap: var(--spacing-lg);
+
+    a {
+      border-bottom: var(--b-primary);
+    }
+  }
+}
