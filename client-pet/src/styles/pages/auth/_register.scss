@@ -1,0 +1,88 @@
+.registerPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 800px;
+  height: 100%;
+  width: 100%;
+  min-width: 660px;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+
+  &__picture {
+    display: grid;
+    place-content: center;
+
+    img {
+      max-width: 200px;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+
+    &--form {
+      display: flex;
+      gap: var(--spacing-md);
+      flex-wrap: wrap;
+      margin-bottom: var(--spacing-lg);
+      width: 100%;
+
+      .name,
+      .lastname,
+      .email,
+      .phone,
+      .password,
+      .confirmPassword {
+        flex: 1 0 45%;
+      }
+
+
+    }
+
+
+    &--options {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-md);
+
+      button {
+        max-width: 360px;
+        width: 100%;
+      }
+
+      .options-link,
+      .options-terms {
+        display: flex;
+        gap: var(--spacing-sm);
+
+        a {
+          border-bottom: var(--b-primary);
+        }
+      }
+    }
+
+  }
+
+  @media screen and (max-width: 768px) {
+    min-width: 300px;
+    padding: 0;
+  }
+
+  @media screen and (max-width: 600px) {
+
+    &__wrapper {
+      &--form {
+        .input {
+          flex: 1 0 100%;
+        }
+      }
+    }
+  }
+
+
+}
