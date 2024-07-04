@@ -36,7 +36,6 @@ const Input = ({
           value={value}
           onChange={onChange}
           required={isRequired ? true : false}
-        // className={`input__content--element`}
         />
         {type === "password" ? (
           <button className="input__content--icon" onClick={toggleVisibility}>
