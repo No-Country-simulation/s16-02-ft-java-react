@@ -32,8 +32,9 @@ public class Profile extends Auditable{
     @Column(name = "profile_phone",nullable = false,length = 14)
     private String profilePhone;
 
-    @Column(name = "profile_document_type",nullable = false,length = 1)
-    private Integer profileDocumentType;//1: dni,2:carnet de extrangeria,3:pasaporte
+    @Column(name = "profile_document_type",nullable = false)
+    @Enumerated(EnumType.STRING)
+    private DocumentType profileDocumentType;//1: dni,2:carnet de extrangeria,3:pasaporte
 
     @Column(name = "profile_document_number",nullable = false,length = 13)
     private String profileDocumentNumber;
