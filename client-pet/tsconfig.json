@@ -25,6 +25,12 @@
     "paths": {
       "@components": [
         "components/"
+      ],
+      "@types": [
+        "types/"
+      ],
+      "@icons": [
+        "components/icons/"
       ]
     }
   },

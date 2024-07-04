@@ -1,0 +1,11 @@
+.button {
+  padding: 8px 8px;
+
+  &__primary {
+    background: var(--c-primary);
+  }
+
+  &__secondary {
+    background: var(--c-secondary);
+  }
+}
