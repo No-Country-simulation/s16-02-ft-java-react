@@ -1,5 +1,6 @@
 package com.pet.api_pet.dto;
 
+import com.pet.api_pet.model.Auditable;
 import com.pet.api_pet.model.DocumentType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -14,7 +15,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProfileDTO {
+public class ProfileDTO extends Auditable {
 
     private UUID profileId;
 
@@ -38,6 +39,7 @@ public class ProfileDTO {
     private UserDTO user;
 
     private Long districtId;
+
     private DistrictDTO district;
 
 }

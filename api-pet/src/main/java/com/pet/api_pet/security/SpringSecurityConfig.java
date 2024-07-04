@@ -52,6 +52,7 @@ public class SpringSecurityConfig {
                         .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/health").permitAll()
                         .requestMatchers(HttpMethod.POST,"/api/users").permitAll()
+                        .requestMatchers(HttpMethod.POST,"/api/profiles").permitAll()
                         .requestMatchers(HttpMethod.GET, "/v3/api-docs/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/swagger-ui/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/users").permitAll()
@@ -77,6 +78,10 @@ public class SpringSecurityConfig {
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200","https://frontend-docspot-rnzn.vercel.app"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH", "HEAD"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
+        configuration.setMaxAge(3600L); // 1 hour
+
+        // Add CSRF protection
+        configuration.setExposedHeaders(Arrays.asList("X-CSRF-TOKEN"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;

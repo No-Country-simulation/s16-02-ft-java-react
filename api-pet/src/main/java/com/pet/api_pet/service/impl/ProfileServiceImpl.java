@@ -1,5 +1,7 @@
 package com.pet.api_pet.service.impl;
 
+import com.pet.api_pet.dto.ProfileDTO;
+import com.pet.api_pet.model.District;
 import com.pet.api_pet.model.Profile;
 import com.pet.api_pet.repository.IGenericRepo;
 import com.pet.api_pet.repository.IProfileRepo;
@@ -24,4 +26,5 @@ public class ProfileServiceImpl extends CRUDServiceImpl<Profile, UUID> implement
     public Profile findByUserId(UUID id) {
         return repo.findByUserId(id);
     }
+
 }

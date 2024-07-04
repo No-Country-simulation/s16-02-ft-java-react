@@ -1,5 +1,6 @@
 package com.pet.api_pet.dto;
 
+import com.pet.api_pet.model.Auditable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDTO {
+public class UserDTO extends Auditable {
     private UUID userId;
 
     private String username;
