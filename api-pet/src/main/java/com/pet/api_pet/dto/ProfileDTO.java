@@ -37,7 +37,7 @@ public class ProfileDTO {
 
     private UserDTO user;
 
-    private UUID districtId;
+    private Long districtId;
     private DistrictDTO district;
 
 }

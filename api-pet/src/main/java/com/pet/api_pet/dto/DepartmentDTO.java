@@ -12,11 +12,11 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DepartmentDTO {
-    private UUID departmentId;
+    private Long departmentId;
 
     private String departmentName;
 
-    private UUID countryId;
+    private Long countryId;
 
     private CountryDTO country;
 }

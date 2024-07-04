@@ -13,11 +13,11 @@ import java.util.UUID;
 @NoArgsConstructor
 public class DistrictDTO {
 
-    private UUID districtId;
+    private Long districtId;
 
     private String districtName;
 
-    private UUID cityId;
+    private Long cityId;
 
     private CityDTO city;
 }

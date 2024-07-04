@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -13,11 +12,11 @@ import java.util.UUID;
 @NoArgsConstructor
 public class CityDTO {
 
-    private UUID cityId;
+    private Long cityId;
 
     private String cityName;
 
-    private UUID departmentId;
+    private Long departmentId;
 
     private DepartmentDTO department;
 }

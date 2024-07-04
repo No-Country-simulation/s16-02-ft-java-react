@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -13,7 +12,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class CountryDTO {
 
-    private UUID countryId;
+    private Long countryId;
 
     private String countryName;
 }
