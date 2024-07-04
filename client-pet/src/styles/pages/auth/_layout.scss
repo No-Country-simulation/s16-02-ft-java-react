@@ -1,10 +1,9 @@
 .authLayout {
-  border: 1px solid red;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
 
   display: grid;
-  grid-template-columns: 1fr minmax(300px, 500px);
+  grid-template-columns: 1fr auto;
 
   &__picture {
     overflow: hidden;
@@ -28,19 +27,15 @@
       display: flex;
       gap: var(--spacing-sm);
     }
+  }
 
-    &--wrapper {
-      height: 100%;
-      border: 1px solid red;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+  @media (max-width: 768px) {
+    &__picture {
+      display: none;
+    }
 
-      .form {
-        display: flex;
-        flex-direction: column;
-      }
+    &__sideform {
+      width: 100%;
     }
   }
 }
