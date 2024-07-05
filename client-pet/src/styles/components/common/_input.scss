@@ -1,5 +1,4 @@
 .input {
-  // border: 1px solid red;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
@@ -13,6 +12,7 @@
     border: 1px solid gray;
     padding: 8px 8px;
     gap: var(--spacing-xs);
+    cursor: text;
 
     input {
       width: 100%;

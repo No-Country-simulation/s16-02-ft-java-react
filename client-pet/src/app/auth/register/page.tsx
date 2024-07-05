@@ -47,7 +47,7 @@ const RegisterPage = () => {
         </div>
         <div className="registerPage__wrapper--options">
           <label className="options-terms">
-            <input type="checkbox" checked />
+            <input type="checkbox" defaultChecked={false} />
             <span className="label-text">
               Acepto los términos y condiciones
             </span>
