@@ -41,4 +41,8 @@ public class User extends Auditable{
     @OneToMany(mappedBy = "user",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Shelter> shelters;
+
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<Lost> lost;
 }

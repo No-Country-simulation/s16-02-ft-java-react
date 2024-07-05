@@ -58,11 +58,7 @@ public class Pet extends Auditable{
     private String petFoundPlace;
 
     @ManyToOne
-    @JoinColumn(name = "district_id",foreignKey = @ForeignKey(name = "FK_PETS_DISTRICT"))
-    private District district;
-
-    @ManyToOne
-    @JoinColumn(name = "shelter_id",nullable = false,foreignKey = @ForeignKey(name = "FK_PETS_SHELTER"))
+    @JoinColumn(name = "shelter_id",foreignKey = @ForeignKey(name = "FK_PETS_SHELTER"))
     private Shelter shelter;
 
     @OneToMany(mappedBy = "pet",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
@@ -73,4 +69,6 @@ public class Pet extends Auditable{
     @JsonIgnore
     private List<Multimedia>multimedia;
 
+    @OneToMany(mappedBy = "pet",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+    private List<Lost> lost;
 }

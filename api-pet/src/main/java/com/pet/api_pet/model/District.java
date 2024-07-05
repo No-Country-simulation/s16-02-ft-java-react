@@ -36,7 +36,4 @@ public class District {
     @JsonIgnore
     private List<Shelter>shelters;
 
-    @OneToMany(mappedBy = "district",cascade = {CascadeType.PERSIST},fetch = FetchType.EAGER)
-    @JsonIgnore
-    private List<Pet>pets;
 }
