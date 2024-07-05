@@ -1,0 +1,94 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+    gap: var(--spacing-lg);
+
+    h1 {
+      max-width: 1400px;
+      text-align: center;
+      font-size: var(--fs-title);
+    }
+  }
+
+  &__carousel {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+
+    &--wrapper {
+      height: 100%;
+      width: 100%;
+
+      .wrapper-row {
+        display: flex;
+        width: fit-content;
+        animation: carouselHero 35s linear infinite;
+
+        .picture-wrapper {
+          aspect-ratio: 3 / 4;
+          width: 30vw;
+          height: auto;
+          margin-left: 2rem;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes carouselHero {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    &__header {
+      min-height: 400px;
+    }
+
+    &__carousel {
+      &--wrapper {
+        .wrapper-row {
+          .picture-wrapper {
+            width: 300px;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    &__header {
+      min-height: 350px;
+    }
+
+    &__carousel {
+      &--wrapper {
+        .wrapper-row {
+          .picture-wrapper {
+            width: 250px;
+            margin-left: 1rem;
+          }
+        }
+      }
+    }
+  }
+}

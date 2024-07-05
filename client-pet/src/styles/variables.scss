@@ -11,7 +11,7 @@
   --c-danger: #dc3545;
   --c-warning: #ffc107;
   --c-info: #17a2b8;
-  --c-background: #ffffff;
+  --c-bg: #f3f0ed;
   --c-text: #343a40;
 
   --b-primary: 1px solid var(--c-dark);
@@ -20,6 +20,7 @@
   --fs-base: clmap(12px, 1.5vw, 16px);
   --fs-large: clamp(1.rem, 2vw, 1.25rem);
   --fs-small: clamp(0.8rem, 1vw, 0.875rem);
+  --fs-title: clamp(1.5rem, 4vw, 3.5rem);
   --lh-base: 1.5;
 
   --spacing-xs: 4px;
