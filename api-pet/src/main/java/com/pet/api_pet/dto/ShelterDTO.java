@@ -22,6 +22,11 @@ public class ShelterDTO {
     private String shelterImgAuthorization;
     @NotNull
     private String shelterAddress;
+
+    private UUID userId;
+
+
+
     @NotNull
     private UserDTO user;
     @NotNull

@@ -2,6 +2,7 @@ package com.pet.api_pet.controllers;
 
 import com.pet.api_pet.dto.ShelterDTO;
 import com.pet.api_pet.exception.ModelNotFoundException;
+import com.pet.api_pet.model.Profile;
 import com.pet.api_pet.model.Shelter;
 import com.pet.api_pet.service.IShelterService;
 import jakarta.validation.Valid;
@@ -21,23 +22,24 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RequestMapping("/api/shelter")
 public class ShelterController {
 
+    @Autowired
     private IShelterService service;
 
     @Autowired
     private ModelMapper mapper;
 
-    @PostMapping("/register")
+   /* @PostMapping("/register")
     public ResponseEntity registerShelter(@RequestBody @Valid ShelterDTO shelterDTO) {
         Shelter shelter = service.save(mapper.map(shelterDTO, Shelter.class));
         return ResponseEntity.status(HttpStatus.CREATED).body(shelterDTO);
-    }
+    }*/
 
-//    @PostMapping
-//    public ResponseEntity<Void> save(@RequestBody @Valid ShelterDTO shelterDTO) {
-//        Shelter shelter = service.save(mapper.map(shelterDTO, Shelter.class));
-//        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(shelter.getShelterId()).toUri();
-//        return ResponseEntity.created(location).build();
-//    }
+   @PostMapping
+   public ResponseEntity<Void> save(@RequestBody ShelterDTO shelterDTO) {
+       Shelter shelter = service.save(mapper.map(shelterDTO, Shelter.class));
+       URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(shelter.getShelterId()).toUri();
+       return ResponseEntity.created(location).build();
+  }
 
     @PreAuthorize("hasRole('ROLE_SHELTER')")
     @DeleteMapping("/delete/{id}")
