@@ -4,13 +4,13 @@ import { EyeSlashFilledIcon, EyeFilledIcon } from "@icons";
 
 interface InputProps {
   name: string;
-  label: string;
+  label?: string;
   placeholder: string;
-  value: string | number;
-  type: "text" | "password";
+  value?: string | number;
+  type: "text" | "password" | "email";
   isRequired?: boolean;
   className?: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
 }
 
 const Input = ({
@@ -26,7 +26,7 @@ const Input = ({
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);
   return (
-    <div className="input">
+    <div className={`input ${name} ${className}`}>
       <div className="input__label">{label}</div>
       <div className="input__content">
         <input
