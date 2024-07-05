@@ -1,9 +1,9 @@
 package com.pet.api_pet.controllers;
 
-import com.pet.api_pet.dto.LostDTO;
+import com.pet.api_pet.dto.VisitDTO;
 import com.pet.api_pet.exception.ModelNotFoundException;
-import com.pet.api_pet.model.Lost;
-import com.pet.api_pet.service.ILostService;
+import com.pet.api_pet.model.Visit;
+import com.pet.api_pet.service.IVisitService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,58 +17,60 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/lost")
-public class LostController {
+@RequestMapping("/api/visit")
+public class VisitController {
+
     @Autowired
-    private ILostService service;
+    private IVisitService service;
 
     @Autowired
     private ModelMapper mapper;
 
     @GetMapping
-    public ResponseEntity<List<LostDTO>> findAll(){
+    public ResponseEntity<List<VisitDTO>> findAll(){
         try {
 
-            List<LostDTO> list = service.findAll().stream().map(p -> mapper.map(p, LostDTO.class)).collect(Collectors.toList());
+            List<VisitDTO> list = service.findAll().stream().map(p -> mapper.map(p, VisitDTO.class)).collect(Collectors.toList());
             if (list.isEmpty()) {
-                throw new ModelNotFoundException("No se encontraron extraviados");
+                throw new ModelNotFoundException("No se encontraron visitas");
             }
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e) {
-            throw new RuntimeException("Error al obtener extraviados", e);
+            throw new RuntimeException("Error al obtener visita", e);
         }
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<LostDTO> findById(@PathVariable("id") UUID id){
-        Lost obj = service.findById(id);
+    public ResponseEntity<VisitDTO> findById(@PathVariable("id") UUID id){
+        Visit obj = service.findById(id);
         if(obj == null){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }else{
-            return new ResponseEntity<>(mapper.map(obj, LostDTO.class), HttpStatus.OK);
+            return new ResponseEntity<>(mapper.map(obj, VisitDTO.class), HttpStatus.OK);
         }
     }
 
     @PostMapping
-    public ResponseEntity<Void> save(@RequestBody LostDTO dto){
-        Lost obj = service.save(mapper.map(dto, Lost.class));
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getLostId()).toUri();
+    public ResponseEntity<Void> save(@RequestBody VisitDTO dto){
+        Visit obj = service.save(mapper.map(dto, Visit.class));
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getVisitId()).toUri();
         return ResponseEntity.created(location).build();
     }
 
     @PutMapping
-    public ResponseEntity<Lost> update(@RequestBody LostDTO dto){
-        Lost obj = service.update(mapper.map(dto, Lost.class));
+    public ResponseEntity<Visit> update(@RequestBody VisitDTO dto){
+        Visit obj = service.update(mapper.map(dto, Visit.class));
         return new ResponseEntity<>(obj, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") UUID id){
-        Lost obj = service.findById(id);
+        Visit obj = service.findById(id);
         if(obj == null){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }
         service.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    
 }
