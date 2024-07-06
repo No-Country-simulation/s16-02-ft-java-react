@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -35,5 +36,10 @@ public class PetServiceImpl extends CRUDServiceImpl<Pet, UUID> implements IPetSe
                 .and(PetSpecification.hasType(petType))
                 .and(PetSpecification.hasAge(minAge, maxAge));
         return repo.findAll(spec,pageable);
+    }
+
+    @Override
+    public List<Pet> findAllPetsByShelterId(UUID shelterId) {
+        return repo.findAllPetsByShelterId(shelterId);
     }
 }

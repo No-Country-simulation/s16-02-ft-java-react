@@ -93,14 +93,19 @@ public class PetController {
             @RequestParam(defaultValue = "10") int size) {
         return service.getFilteredPets(petName, petSex, petBreed,petSize, petType, minAge, maxAge, page, size);
     }
-/*
-    @GetMapping("/byUserId/{id}")
-    public ResponseEntity<PetDTO> findByUserId(@PathVariable("id") UUID id) {
-        Pet usuario = service.findByUserId(id);
-        if (usuario == null) {
-            throw new ModelNotFoundException("ID NOT FOUND: " + id);
-        } else {
-            return new ResponseEntity<>(mapper.map(usuario, PetDTO.class), HttpStatus.OK);
+
+    @GetMapping("/by-shelter/{id}")
+    public ResponseEntity<List<PetDTO>> findAllByShelterId(@PathVariable("id") UUID id) {
+        try {
+            List<PetDTO> pets = service.findAllPetsByShelterId(id).stream()
+                    .map(pet -> mapper.map(pet, PetDTO.class))
+                    .collect(Collectors.toList());
+            if (pets.isEmpty()) {
+                throw new ModelNotFoundException("No se encontraron mascotas");
+            }
+            return new ResponseEntity<>(pets, HttpStatus.OK);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener el listado de mascotas", e);
         }
-    }*/
+    }
 }

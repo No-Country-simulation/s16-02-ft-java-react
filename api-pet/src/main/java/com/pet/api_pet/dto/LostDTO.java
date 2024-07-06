@@ -1,10 +1,6 @@
 package com.pet.api_pet.dto;
 
-import com.pet.api_pet.model.Pet;
-import com.pet.api_pet.model.User;
-import jakarta.persistence.ForeignKey;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
