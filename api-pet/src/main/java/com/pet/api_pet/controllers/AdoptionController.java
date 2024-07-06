@@ -1,6 +1,7 @@
 package com.pet.api_pet.controllers;
 
 import com.pet.api_pet.dto.AdoptionDTO;
+import com.pet.api_pet.dto.AdoptionViewDTO;
 import com.pet.api_pet.exception.ModelNotFoundException;
 import com.pet.api_pet.model.Adoption;
 import com.pet.api_pet.service.IAdoptionService;
@@ -70,5 +71,19 @@ public class AdoptionController {
         }
         service.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/by-user/{id}")
+    public ResponseEntity<List<AdoptionViewDTO>> findAllByUserId(@PathVariable("id") UUID id){
+        try {
+
+            List<AdoptionViewDTO> list = service.findAllAdoptionByUserId(id).stream().map(p -> mapper.map(p, AdoptionViewDTO.class)).collect(Collectors.toList());
+            if (list.isEmpty()) {
+                throw new ModelNotFoundException("No se encontraron adopciones");
+            }
+            return new ResponseEntity<>(list, HttpStatus.OK);
+        }catch (Exception e) {
+            throw new RuntimeException("Error al obtener adopciones", e);
+        }
     }
 }
