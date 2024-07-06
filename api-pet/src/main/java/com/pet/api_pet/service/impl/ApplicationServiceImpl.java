@@ -7,6 +7,7 @@ import com.pet.api_pet.service.IApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -18,5 +19,10 @@ public class ApplicationServiceImpl extends CRUDServiceImpl<Application, UUID> i
     @Override
     protected IGenericRepo<Application, UUID> getRepo() {
         return repo;
+    }
+
+    @Override
+    public List<Application> findAllByUserid(UUID id) {
+        return repo.findAllByUserid(id);
     }
 }

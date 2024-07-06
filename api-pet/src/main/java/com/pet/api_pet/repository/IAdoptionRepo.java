@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public interface IAdoptionRepo extends IGenericRepo<Adoption, UUID> {
 
-    //List<Adoption> findAllAdoptionByProfileId(UUID id);
+    List<Adoption> findAllAdoptionByProfileId(UUID id);
     //Adoption findAdoptionByProfileId(UUID id);
 
 }
