@@ -20,14 +20,19 @@ public class Lost extends Auditable{
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID lostId=UUID.randomUUID();
 
+    @Column(name = "lat_x",nullable = false)
     private String latX;
 
+    @Column(name = "lat_y",nullable = false)
     private String latY;
 
+    @Column(name = "lost_description")
     private String lostDescription;
 
+    @Column(name = "lost_reference")
     private String lostReference;
 
+    @Column(name = "lost_address")
     private String lostAddress;
 
     @ManyToOne

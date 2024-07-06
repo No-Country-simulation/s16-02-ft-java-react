@@ -23,10 +23,6 @@ public class ShelterDTO {
     @NotNull
     private String shelterAddress;
 
-    private UUID userId;
-
-
-
     @NotNull
     private UserDTO user;
     @NotNull

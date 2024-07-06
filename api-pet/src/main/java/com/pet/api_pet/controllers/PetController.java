@@ -6,6 +6,7 @@ import com.pet.api_pet.model.Pet;
 import com.pet.api_pet.service.IPetService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -77,6 +78,20 @@ public class PetController {
         } catch (Exception e) {
             throw new RuntimeException("Error al obtener el listado de pets", e);
         }
+    }
+
+    @GetMapping("/pageable")
+    public Page<Pet> getPet(
+            @RequestParam(required = false) String petName,
+            @RequestParam(required = false) String petSex,
+            @RequestParam(required = false) String petBreed,
+            @RequestParam(required = false) String petSize,
+            @RequestParam(required = false) String petType,
+            @RequestParam(required = false) Integer minAge,
+            @RequestParam(required = false) Integer maxAge,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        return service.getFilteredPets(petName, petSex, petBreed,petSize, petType, minAge, maxAge, page, size);
     }
 /*
     @GetMapping("/byUserId/{id}")

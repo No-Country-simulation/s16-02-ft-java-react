@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class ShelterServiceImp extends CRUDServiceImpl<Shelter, UUID> implements IShelterService{
 
     @Autowired
-    IShelterRepo repo;
+    private IShelterRepo repo;
     
     @Override
     protected IGenericRepo<Shelter, UUID> getRepo() {

@@ -29,7 +29,6 @@ public class VisitController {
     @GetMapping
     public ResponseEntity<List<VisitDTO>> findAll(){
         try {
-
             List<VisitDTO> list = service.findAll().stream().map(p -> mapper.map(p, VisitDTO.class)).collect(Collectors.toList());
             if (list.isEmpty()) {
                 throw new ModelNotFoundException("No se encontraron visitas");
