@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
 
   &__header {
     display: flex;
@@ -45,6 +46,10 @@
             object-fit: cover;
           }
         }
+
+        // &:hover {
+        //   animation-play-state: paused;
+        // }
       }
     }
   }
