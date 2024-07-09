@@ -22,9 +22,10 @@
   --fs-small: clamp(0.8rem, 1vw, 0.875rem);
   --fs-title: clamp(1.5rem, 4vw, 3.5rem);
   --fs-subtitle: clamp(1.8rem, 3.5vw, 2.5rem);
-  --fs-xs: clamp(10px, 1.5vw, 12px);
-  --fs-sm: clamp(12px, 1.5vw, 14px);
-  --fs-md: clamp(14px, 1.5vw, 16px);
+  --fs-xxs: clamp(10px, 1.5vw, 12px);
+  --fs-xs: clamp(10px, 1.5vw, 14px);
+  --fs-sm: clamp(12px, 1.5vw, 16px);
+  --fs-md: clamp(14px, 1.5vw, 18px);
   --fs-lg: clamp(16px, 2vw, 20px);
   --fs-xl: clamp(16px, 2.5vw, 24px);
   --lh-base: 1.4;

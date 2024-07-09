@@ -30,6 +30,7 @@
       height: auto;
       overflow: hidden;
       position: relative;
+      border: var(--b-primary);
 
       img {
         width: 100%;
@@ -48,6 +49,10 @@
         transition: 300ms ease;
         color: var(--c-light);
 
+        label {
+          font-size: var(--fs-lg);
+        }
+
         &:hover {
           opacity: 1;
         }
@@ -59,12 +64,17 @@
     padding: 6rem 5%;
   }
 
+  @media screen and (max-width: 1200px) {
+    padding: 4rem 5%;
+  }
+
   @media screen and (max-width: 768px) {
     padding: 4rem 5%;
     gap: 2rem;
 
     &__gallery {
       grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
     }
   }
 }

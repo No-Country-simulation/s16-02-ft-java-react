@@ -35,6 +35,8 @@
         animation: carouselHero 35s linear infinite;
 
         .picture-wrapper {
+          border: var(--b-primary);
+          display: flex;
           aspect-ratio: 3 / 4;
           width: 30vw;
           height: auto;

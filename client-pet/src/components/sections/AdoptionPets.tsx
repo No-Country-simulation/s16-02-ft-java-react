@@ -1,5 +1,5 @@
 import React from "react";
-import img from "../../assets/carousel3.png";
+import img from "../../assets/adop7.jpg";
 import Image from "next/image";
 
 const AdoptionPets = () => {
