@@ -1,0 +1,44 @@
+.input {
+  // border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+
+  &__label {
+    text-align: start;
+  }
+
+  &__content {
+    display: flex;
+    border: 1px solid gray;
+    padding: 8px 8px;
+    gap: var(--spacing-xs);
+
+    input {
+      width: 100%;
+      background: none;
+      border: none;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    button {
+      background: none;
+      border: none;
+      display: grid;
+      place-content: center;
+      cursor: pointer;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    &:hover {
+      background: rgba(100, 100, 100, .1);
+    }
+  }
+}

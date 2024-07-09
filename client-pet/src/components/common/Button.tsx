@@ -1,11 +1,12 @@
 import React from "react";
 
-const Button = () => {
-  return (
-    <div>
-      <button>Button Example</button>
-    </div>
-  );
+interface ButtonProps {
+  children: React.ReactNode;
+  color: "primary" | "secondary";
+}
+
+const Button = ({ children, color }: ButtonProps) => {
+  return <button className={`button button__${color}`}>{children}</button>;
 };
 
 export default Button;
