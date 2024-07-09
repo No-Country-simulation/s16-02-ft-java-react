@@ -67,7 +67,7 @@ public class SpringSecurityConfig {
                 .userDetailsService(userDetailsService)
                 .httpBasic(Customizer.withDefaults())
                 .csrf(config -> config.disable())
-                .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
                 .build();
     }
 
