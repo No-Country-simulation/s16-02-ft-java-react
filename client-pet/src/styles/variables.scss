@@ -17,11 +17,17 @@
   --b-primary: 1px solid var(--c-dark);
   --b-secondary: 1px solid var(--c-dark);
 
-  --fs-base: clmap(12px, 1.5vw, 16px);
+  --fs-base: clamp(12px, 1.5vw, 16px);
   --fs-large: clamp(1.rem, 2vw, 1.25rem);
   --fs-small: clamp(0.8rem, 1vw, 0.875rem);
   --fs-title: clamp(1.5rem, 4vw, 3.5rem);
-  --lh-base: 1.5;
+  --fs-subtitle: clamp(1.8rem, 3.5vw, 2.5rem);
+  --fs-xs: clamp(10px, 1.5vw, 12px);
+  --fs-sm: clamp(12px, 1.5vw, 14px);
+  --fs-md: clamp(14px, 1.5vw, 16px);
+  --fs-lg: clamp(16px, 2vw, 20px);
+  --fs-xl: clamp(16px, 2.5vw, 24px);
+  --lh-base: 1.4;
 
   --spacing-xs: 4px;
   --spacing-sm: 8px;

@@ -8,6 +8,7 @@
 @import "./components/common/input.scss";
 @import "./components/common/button.scss";
 @import "./components/sections/hero.scss";
+@import "./components/sections/about";
 
 *,
 *::after,
@@ -31,6 +32,7 @@ body {
 
 p {
   text-wrap: pretty;
+  line-height: var(--lh-base);
 }
 
 ul {
