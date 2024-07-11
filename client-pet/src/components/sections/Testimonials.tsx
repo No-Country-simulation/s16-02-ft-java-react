@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import { Card } from "@components";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
+import { TestimonialCard } from "@components";
 
 import "swiper/css/bundle";
 import "swiper/css";
@@ -27,27 +27,42 @@ const Testimonials = () => {
               nextEl: ".next",
               prevEl: ".prev",
             }}
-            // loopFillGroupWithBlank={true}
-            // autoplay={{
-            //   delay: 1000,
-            //   disableOnInteraction: true,
-            // }}
-            // breakpoints={{
-            //   1024: {
-            //     slidesPerView: 3,
-            //     spaceBetween: 30,
-            //   },
-            //   1200: {
-            //     slidesPerView: 3,
-            //     spaceBetween: 30,
-            //   },
-            // }}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: true,
+            }}
+            breakpoints={{
+              300: {
+                slidesPerView: 1,
+                spaceBetween: 15,
+              },
+              580: {
+                spaceBetween: 15,
+              },
+              768: {
+                spaceBetween: 20,
+              },
+              992: {
+                spaceBetween: 20,
+              },
+              1200: {
+                spaceBetween: 30,
+              },
+            }}
             modules={[Autoplay, Navigation]}
           >
-            <SwiperSlide>Slide 1</SwiperSlide>
-            <SwiperSlide>Slide 2</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 4</SwiperSlide>
+            <SwiperSlide>
+              <TestimonialCard />
+            </SwiperSlide>
+            <SwiperSlide>
+              <TestimonialCard />
+            </SwiperSlide>
+            <SwiperSlide>
+              <TestimonialCard />
+            </SwiperSlide>
+            <SwiperSlide>
+              <TestimonialCard />
+            </SwiperSlide>
           </Swiper>
         </div>
         <div className="arrow-buttons">

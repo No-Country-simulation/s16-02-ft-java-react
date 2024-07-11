@@ -1,0 +1,61 @@
+.testimonialCard {
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--spacing-lg);
+  padding: 1rem;
+
+  &__picture {
+    border: 1px solid black;
+    // aspect-ratio: 3 / 4;
+    width: 100%;
+    height: auto;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    overflow-y: hidden;
+
+    &--header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--spacing-xs);
+
+      label {
+        font-size: var(--fs-lg);
+        font-weight: bold;
+      }
+
+      span {
+        font-size: var(--fs-sm);
+        font-family: var(--ff-inter);
+      }
+    }
+
+    p {
+      text-align: start;
+      font-family: var(--ff-inter);
+      font-size: var(--fs-md);
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+
+    &__picture {
+      aspect-ratio: 4 / 3;
+    }
+  }
+}
