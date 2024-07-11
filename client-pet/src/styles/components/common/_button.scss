@@ -2,6 +2,10 @@
   border: var(--b-primary);
   padding: 8px 8px;
 
+  label {
+    cursor: pointer;
+  }
+
   &__primary {
     background: var(--c-primary);
     transition: 200ms ease;
@@ -18,7 +22,16 @@
   }
 
   &__secondary {
-    background: var(--c-secondary);
+    border: none;
+    transition: 200ms ease;
+
+    label {
+      border-bottom: var(--b-primary);
+    }
+
+    &:hover {
+      opacity: .7;
+    }
   }
 }
 

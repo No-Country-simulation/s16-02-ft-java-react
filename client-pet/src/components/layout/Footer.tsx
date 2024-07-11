@@ -20,7 +20,9 @@ const Footer = () => {
                 placeholder="Ingresa tu correo"
                 type="email"
               />
-              <Button color="primary">{">"}</Button>
+              <Button color="primary" isBordered={false}>
+                {">"}
+              </Button>
             </div>
           </div>
         </div>

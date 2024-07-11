@@ -5,7 +5,7 @@ interface ButtonProps {
   color: "primary" | "secondary";
   type?: "primary" | "secondary";
   className?: string;
-  border?: boolean;
+  isBordered?: boolean;
 }
 
 const Button = ({
@@ -13,13 +13,14 @@ const Button = ({
   color,
   type,
   className,
-  border = true,
+  isBordered = true,
 }: ButtonProps) => {
   return (
     <button
-      className={`button button__${color} ${type} ${border ? "border" : ""} ${className}`}
+      className={`button button__${color} ${type} ${isBordered ? "border" : ""} ${className}`}
     >
-      {children}
+      <label>{children}</label>
+      {/* {children} */}
     </button>
   );
 };

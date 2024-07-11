@@ -25,7 +25,7 @@ const LoginPage = () => {
         <Image src={logo} alt="logo" />
       </div>
       <div className="loginPage__form">
-        <h3>Es bueno verde de nuevo!</h3>
+        <h3>Es bueno verte de nuevo!</h3>
         <Input
           isRequired
           name="email"

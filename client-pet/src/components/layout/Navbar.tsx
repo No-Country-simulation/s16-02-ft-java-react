@@ -30,8 +30,12 @@ const Navbar = () => {
         </li>
       </ul>
       <div className="main-navbar__auth">
-        <Link href={"/auth/login"}>Iniciar Sesión</Link>
-        <Link href={"/auth/register"}>Crear Cuenta</Link>
+        <Link href={"/auth/login"} className="button button__primary border">
+          Iniciar Sesión
+        </Link>
+        <Link href={"/auth/register"} className="button button__primary border">
+          Crear Cuenta
+        </Link>
       </div>
     </nav>
   );

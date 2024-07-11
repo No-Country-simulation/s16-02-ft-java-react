@@ -1,12 +1,14 @@
 .testimonialCard {
-  border: 1px solid black;
+  border: var(--b-primary);
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: var(--spacing-lg);
   padding: 1rem;
+  border-radius: var(--br-md);
 
   &__picture {
-    border: 1px solid black;
+    border: var(--b-primary);
+    border-radius: var(--br-sm);
     // aspect-ratio: 3 / 4;
     width: 100%;
     height: auto;

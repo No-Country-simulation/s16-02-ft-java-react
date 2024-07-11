@@ -36,6 +36,8 @@
 
         .picture-wrapper {
           border: var(--b-primary);
+          border-radius: var(--br-md);
+          overflow: hidden;
           display: flex;
           aspect-ratio: 3 / 4;
           width: 30vw;
