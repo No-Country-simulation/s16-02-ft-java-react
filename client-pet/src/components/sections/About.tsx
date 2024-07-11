@@ -32,7 +32,11 @@ const About = () => {
           posibles adoptantes puedan encontrar su compañero ideal y donde las
           mascotas puedan encontrar un hogar donde sean amadas y cuidadas.
         </p>
-        <Button color="primary" className="about__content--button">
+        <Button
+          color="primary"
+          type="primary"
+          className="about__content--button"
+        >
           CONTACTANOS
         </Button>
       </div>

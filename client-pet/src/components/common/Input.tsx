@@ -44,7 +44,7 @@ const Input = ({
 
   return (
     <div className={`input ${name} ${className}`}>
-      <div className="input__label">{label}</div>
+      {label ? <div className="input__label">{label}</div> : null}
       <div className="input__content" onClick={handleInputClick}>
         <input
           ref={inputRef}

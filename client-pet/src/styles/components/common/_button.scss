@@ -4,9 +4,29 @@
 
   &__primary {
     background: var(--c-primary);
+    transition: 200ms ease;
+    box-shadow: var(--shadow-md);
+
+    &:hover {
+      opacity: 0.7;
+      box-shadow: var(--shadow-hover);
+    }
+
+    &:active {
+      background: pink;
+    }
   }
 
   &__secondary {
     background: var(--c-secondary);
   }
+}
+
+.border {
+  border-radius: var(--br-sm);
+}
+
+.primary {
+  padding: 10px 32px;
+  font-size: var(--fs-md);
 }
