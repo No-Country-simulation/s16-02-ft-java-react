@@ -16,6 +16,7 @@ interface InputProps {
   value?: string | number;
   type: "text" | "password" | "email";
   isRequired?: boolean;
+  isBordered?: boolean;
   className?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
 }
@@ -27,6 +28,7 @@ const Input = ({
   placeholder,
   value,
   isRequired,
+  isBordered = true,
   className,
   onChange,
 }: InputProps) => {
@@ -44,8 +46,11 @@ const Input = ({
 
   return (
     <div className={`input ${name} ${className}`}>
-      <div className="input__label">{label}</div>
-      <div className="input__content" onClick={handleInputClick}>
+      {label ? <div className="input__label">{label}</div> : null}
+      <div
+        className={`input__content ${isBordered ? "border" : null}`}
+        onClick={handleInputClick}
+      >
         <input
           ref={inputRef}
           name={name}

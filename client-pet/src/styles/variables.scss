@@ -6,21 +6,30 @@
   --c-light: #f0f0f0;
   // --c-primary: #007bff;
   --c-primary: linear-gradient(to left, #f6d5f7, #fbe9d7);
+  --c-primary-hover: linear-gradient(to left, #f6d5f7, #fbe9d7);
   --c-secondary: #6c757d;
   --c-success: #28a745;
   --c-danger: #dc3545;
   --c-warning: #ffc107;
   --c-info: #17a2b8;
-  --c-background: #ffffff;
+  --c-bg: #f3f0ed;
   --c-text: #343a40;
 
   --b-primary: 1px solid var(--c-dark);
   --b-secondary: 1px solid var(--c-dark);
 
-  --fs-base: clmap(12px, 1.5vw, 16px);
+  --fs-base: clamp(12px, 1.5vw, 16px);
   --fs-large: clamp(1.rem, 2vw, 1.25rem);
   --fs-small: clamp(0.8rem, 1vw, 0.875rem);
-  --lh-base: 1.5;
+  --fs-title: clamp(1.5rem, 4vw, 3.5rem);
+  --fs-subtitle: clamp(1.8rem, 3.5vw, 2.5rem);
+  --fs-xxs: clamp(10px, 1.5vw, 12px);
+  --fs-xs: clamp(10px, 1.5vw, 14px);
+  --fs-sm: clamp(12px, 1.5vw, 16px);
+  --fs-md: clamp(14px, 1.5vw, 18px);
+  --fs-lg: clamp(16px, 2vw, 20px);
+  --fs-xl: clamp(16px, 2.5vw, 24px);
+  --lh-base: 1.4;
 
   --spacing-xs: 4px;
   --spacing-sm: 8px;
@@ -31,7 +40,9 @@
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.1);
-  --border-radius-sm: 4px;
-  --border-radius-md: 8px;
-  --border-radius-lg: 16px;
+  --shadow-md: 5px 5px 0px 0px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 0 0 0 rgba(0, 0, 0, .3);
+  --br-sm: 4px;
+  --br-md: 8px;
+  --br-lg: 16px;
 }

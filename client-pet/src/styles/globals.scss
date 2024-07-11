@@ -7,6 +7,12 @@
 @import "./components/layout/footer.scss";
 @import "./components/common/input.scss";
 @import "./components/common/button.scss";
+@import "./components/sections/hero.scss";
+@import "./components/sections/about.scss";
+@import "./components/sections/adoptionPets.scss";
+@import "./components/sections/blog.scss";
+@import "./components/sections/testimonials.scss";
+@import "./components/common/testimonialCard";
 
 *,
 *::after,
@@ -25,11 +31,12 @@ body {
 body {
   font-family: var(--ff-playfair);
   color: var(--c-text);
-  background: var(--c-light);
+  background: var(--c-bg);
 }
 
 p {
   text-wrap: pretty;
+  line-height: var(--lh-base);
 }
 
 ul {
@@ -52,6 +59,8 @@ select {
 }
 
 button {
+  background: none;
+  border: none;
   cursor: pointer;
 }
 

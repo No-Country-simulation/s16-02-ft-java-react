@@ -2,11 +2,44 @@
   border: var(--b-primary);
   padding: 8px 8px;
 
+  label {
+    cursor: pointer;
+  }
+
   &__primary {
     background: var(--c-primary);
+    transition: 200ms ease;
+    box-shadow: var(--shadow-md);
+
+    &:hover {
+      opacity: 0.7;
+      box-shadow: var(--shadow-hover);
+    }
+
+    &:active {
+      background: pink;
+    }
   }
 
   &__secondary {
-    background: var(--c-secondary);
+    border: none;
+    transition: 200ms ease;
+
+    label {
+      border-bottom: var(--b-primary);
+    }
+
+    &:hover {
+      opacity: .7;
+    }
   }
+}
+
+.border {
+  border-radius: var(--br-sm);
+}
+
+.primary {
+  padding: 10px 32px;
+  font-size: var(--fs-md);
 }
