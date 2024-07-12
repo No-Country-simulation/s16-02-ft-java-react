@@ -28,6 +28,6 @@ public class Article {
 
     @ManyToOne
     @JoinColumn(name = "user_Id",nullable = false,foreignKey = @ForeignKey(name = "FK_USER_ID"))
-    @JsonIgnore
+
     private User user;
 }
