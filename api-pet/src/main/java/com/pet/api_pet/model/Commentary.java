@@ -29,7 +29,6 @@ public class Commentary {
 
     @ManyToOne
     @JoinColumn(name = "article_id",nullable = false,foreignKey = @ForeignKey(name = "FK_ARTICLE_ID"))
-    @JsonIgnore
     private Article article;
 
 }

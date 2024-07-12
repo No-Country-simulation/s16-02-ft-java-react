@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -28,6 +29,11 @@ public class Article {
 
     @ManyToOne
     @JoinColumn(name = "user_Id",nullable = false,foreignKey = @ForeignKey(name = "FK_USER_ID"))
-
     private User user;
+
+    @OneToMany (mappedBy = "article", cascade = {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Commentary>commentaries;
+
+    @OneToMany (mappedBy = "article", cascade = {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<MultimediaBlog>multimediaBlogs;
 }
