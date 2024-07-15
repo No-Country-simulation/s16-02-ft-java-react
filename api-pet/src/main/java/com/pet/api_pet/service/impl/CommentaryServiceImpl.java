@@ -7,6 +7,8 @@ import com.pet.api_pet.service.ICommentaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CommentaryServiceImpl extends CRUDServiceImpl<Commentary,Long> implements ICommentaryService {
     @Autowired
@@ -14,4 +16,9 @@ public class CommentaryServiceImpl extends CRUDServiceImpl<Commentary,Long> impl
 
     @Override
     protected IGenericRepo<Commentary,Long> getRepo() { return repo;}
+
+    @Override
+    public List<Commentary> findAllByArticleId(Long id) {
+        return repo.findAllByArticleId(id);
+    }
 }

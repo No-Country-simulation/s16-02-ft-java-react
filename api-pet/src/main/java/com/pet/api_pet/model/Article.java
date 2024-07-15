@@ -1,6 +1,5 @@
 package com.pet.api_pet.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -21,7 +21,7 @@ public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long articleId;
-    private Instant articleDate;
+    private LocalDate articleDate;
     private String articleContent;
     private String articleTitle;
     private String articleAuthor;
