@@ -17,7 +17,7 @@ import java.util.UUID;
 @MappedSuperclass
 public abstract class Auditable {
 
-    private Instant createdAt;
+    private Instant createdAt = Instant.now();
 
     private UUID createdBy;
 

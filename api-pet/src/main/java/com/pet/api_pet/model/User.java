@@ -45,4 +45,8 @@ public class User extends Auditable{
     @OneToMany(mappedBy = "user",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Lost> lost;
+
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Order> orders;
 }
