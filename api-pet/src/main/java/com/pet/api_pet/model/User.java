@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -47,6 +46,7 @@ public class User extends Auditable{
     @JsonIgnore
     private List<Lost> lost;
 
-    @OneToMany(mappedBy = "user",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.LAZY)
-    private Set<Order>orders;
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Order> orders;
 }
