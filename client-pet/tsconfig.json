@@ -31,6 +31,9 @@
       ],
       "@icons": [
         "components/icons/"
+      ],
+      "@utils": [
+        "utils/"
       ]
     }
   },

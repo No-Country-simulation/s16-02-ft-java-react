@@ -1,25 +1,7 @@
 "use client";
-import React, {
-  ChangeEvent,
-  ChangeEventHandler,
-  useEffect,
-  useRef,
-  useState,
-  MouseEvent,
-} from "react";
+import React, { useRef, useState, MouseEvent } from "react";
 import { EyeSlashFilledIcon, EyeFilledIcon } from "@icons";
-
-interface InputProps {
-  name: string;
-  label?: string;
-  placeholder: string;
-  value?: string | number;
-  type: "text" | "password" | "email";
-  isRequired?: boolean;
-  isBordered?: boolean;
-  className?: string;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
-}
+import { InputProps } from "@types";
 
 const Input = ({
   name,
@@ -31,6 +13,7 @@ const Input = ({
   isBordered = true,
   className,
   onChange,
+  isInvalid,
 }: InputProps) => {
   const inputRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -48,7 +31,7 @@ const Input = ({
     <div className={`input ${name} ${className}`}>
       {label ? <div className="input__label">{label}</div> : null}
       <div
-        className={`input__content ${isBordered ? "border" : null}`}
+        className={`input__content ${isBordered ? "border" : ""} ${isInvalid ? "error" : ""}`}
         onClick={handleInputClick}
       >
         <input
