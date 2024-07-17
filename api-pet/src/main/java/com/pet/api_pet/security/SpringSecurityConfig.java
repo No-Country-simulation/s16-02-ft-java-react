@@ -65,7 +65,7 @@ public class SpringSecurityConfig {
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))
                 .addFilter(new JwtValidationFilter(authenticationManager()))
                 .userDetailsService(userDetailsService)
-                .httpBasic(Customizer.withDefaults())
+                //.httpBasic(Customizer.withDefaults())
                 .csrf(config -> config.disable())
                 .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
                 .build();
