@@ -3,17 +3,30 @@
   flex-direction: column;
   gap: var(--spacing-sm);
 
+  .border {
+    border-radius: var(--br-sm);
+    border: 1px solid gray;
+  }
+
+  .error {
+    border: 1px solid red;
+
+    input {
+      &::placeholder {
+        color: red;
+      }
+    }
+  }
+
   &__label {
     text-align: start;
   }
 
   &__content {
     display: flex;
-    border: 1px solid gray;
     padding: 8px 8px;
     gap: var(--spacing-xs);
     cursor: text;
-    border-radius: var(--br-sm);
 
     input {
       width: 100%;

@@ -19,13 +19,26 @@
     &:active {
       background: pink;
     }
+
+    &:disabled {
+      cursor: not-allowed;
+      box-shadow: inherit;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &:active {
+        background: var(--c-primary);
+      }
+    }
   }
 
   &__secondary {
     border: none;
     transition: 200ms ease;
 
-    label {
+    span {
       border-bottom: var(--b-primary);
     }
 
@@ -33,6 +46,8 @@
       opacity: .7;
     }
   }
+
+
 }
 
 .border {

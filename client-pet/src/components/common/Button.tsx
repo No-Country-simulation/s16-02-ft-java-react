@@ -1,26 +1,24 @@
-import React from "react";
-
-interface ButtonProps {
-  children: React.ReactNode;
-  color: "primary" | "secondary";
-  type?: "primary" | "secondary";
-  className?: string;
-  isBordered?: boolean;
-}
+import React, { MouseEventHandler } from "react";
+import { ButtonProps } from "@types";
 
 const Button = ({
   children,
   color,
-  type,
+  mode,
   className,
   isBordered = true,
+  onClick,
+  type,
+  isDisabled = false,
 }: ButtonProps) => {
   return (
     <button
-      className={`button button__${color} ${type} ${isBordered ? "border" : ""} ${className}`}
+      className={`button button__${color} ${mode} ${isBordered ? "border" : ""} ${className}`}
+      onClick={onClick}
+      type={type}
+      disabled={isDisabled}
     >
-      <label>{children}</label>
-      {/* {children} */}
+      <span>{children}</span>
     </button>
   );
 };
