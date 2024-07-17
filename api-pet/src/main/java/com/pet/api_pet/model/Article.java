@@ -28,8 +28,10 @@ public class Article {
     private String articleAbstract;
 
     @ManyToOne
-    @JoinColumn(name = "user_Id",nullable = false,foreignKey = @ForeignKey(name = "FK_USER_ID"))
+    @JoinColumn(name = "user_id",nullable = false,foreignKey = @ForeignKey(name = "FK_USER_ID"))
     private User user;
+
+    // IMPORTANTE user_id va entero con minusculas
 
     @OneToMany (mappedBy = "article", cascade = {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Commentary>commentaries;

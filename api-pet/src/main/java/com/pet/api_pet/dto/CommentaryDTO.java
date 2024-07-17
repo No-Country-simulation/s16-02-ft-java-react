@@ -15,12 +15,13 @@ import java.time.LocalDate;
 public class CommentaryDTO {
 
     private Long commentId;
+    private LocalDate commentDate;
+
 
     private String commentContent;
-
-    private LocalDate commentDate;
 
     // agrego una linea extra porque el comentario pertenece a un articulo
 
     private ArticleDTO articleDTO;
+    private UserDTO user;
 }

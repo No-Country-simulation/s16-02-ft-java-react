@@ -25,8 +25,7 @@ public class Commentary {
     private LocalDate commentDate;
 
     @ManyToOne
-    @JoinColumn(name = "user_Id",nullable = false,foreignKey = @ForeignKey(name = "FK_USER_ID"))
-    @JsonIgnore
+    @JoinColumn(name = "user_id",nullable = false,foreignKey = @ForeignKey(name = "FK_USER_ID"))
     private User user;
 
     @ManyToOne
