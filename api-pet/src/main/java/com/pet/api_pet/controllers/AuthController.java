@@ -1,6 +1,7 @@
 package com.pet.api_pet.controllers;
 
 
+import com.pet.api_pet.dto.GoogleDTO;
 import com.pet.api_pet.dto.RegisterDTO;
 import com.pet.api_pet.dto.RoleDTO;
 import com.pet.api_pet.dto.UserDTO;
@@ -11,6 +12,8 @@ import com.pet.api_pet.service.impl.JpaUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +27,8 @@ public class AuthController {
     @Autowired
     private IRoleRepo repo;
 
+    @Autowired
+    private OAuth2AuthorizedClientService authorizedClientService;
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody RegisterDTO user) {
         try {
@@ -37,17 +42,36 @@ public class AuthController {
     public String loginWithGoogle() {
         return "redirect:/oauth2/authorization/google";
     }
+    @GetMapping("/oauth2/success")
+    public ResponseEntity<GoogleDTO> loginSuccess(OAuth2AuthenticationToken authentication) {
+        try {
+            OAuth2AuthorizedClient client = authorizedClientService.loadAuthorizedClient(
+                    authentication.getAuthorizedClientRegistrationId(),
+                    authentication.getName());
 
-    @GetMapping("/login/oauth2/success")
-    public User loginSuccess(OAuth2AuthenticationToken authentication) {
-        // Aquí puedes manejar la lógica después del login exitoso
-        User user = new User();
-        user.setUsername(authentication.getPrincipal().getAttribute("email"));
-        user.setActive(true);
-        Role role = new Role();
-        role = repo.findRoleByName("ROLE_USER");
-        user.setRole(role);
-        return user;
+            String accessToken = client.getAccessToken().getTokenValue();
+            String refreshToken = client.getRefreshToken().getTokenValue();
+
+            UserDTO user = new UserDTO();
+            user.setUsername(authentication.getPrincipal().getAttribute("email"));
+            user.setActive(true);
+
+            Role role = repo.findRoleByName("ROLE_USER");
+            RoleDTO roleDTO = new RoleDTO();
+            roleDTO.setRoleName(role.getRoleName());
+            roleDTO.setRoleId(role.getRoleId());
+            user.setRole(roleDTO);
+
+            GoogleDTO google = new GoogleDTO();
+            google.setUser(user);
+            google.setToken(accessToken);
+            google.setRefreshToken(refreshToken);
+
+            return ResponseEntity.ok(google);
+        } catch (Exception e) {
+            // Manejo de excepciones detallado
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @GetMapping("/failure")

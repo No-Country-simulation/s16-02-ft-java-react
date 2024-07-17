@@ -22,7 +22,7 @@ public class OpenAPI3Configuration {
     License mitLicense = new License().name("MIT License").url("https://choosealicense.com/licenses/mit/");
 
     Server devServer = new Server().
-            url("http://localhost:8090").
+            url("http://localhost:8080").
             description("Server URL in Development environment");
 
     Server prodServer = new Server().

@@ -14,6 +14,7 @@ public class GoogleOAuth2UserService extends OidcUserService {
     public OidcUser loadUser(OidcUserRequest userRequest) throws OAuth2AuthenticationException {
         OidcUser oidcUser = super.loadUser(userRequest);
         // Aquí puedes agregar lógica adicional, como guardar el usuario en la base de datos si es necesario
+        System.out.println("oidecUser: "+oidcUser);
         return oidcUser;
     }
 }
