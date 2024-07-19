@@ -10,15 +10,17 @@ const Button = ({
   onClick,
   type,
   isDisabled = false,
+  isLoading = false,
 }: ButtonProps) => {
   return (
     <button
       className={`button button__${color} ${mode} ${isBordered ? "border" : ""} ${className}`}
       onClick={onClick}
       type={type}
-      disabled={isDisabled}
+      disabled={isLoading ? true : isDisabled}
     >
-      <span>{children}</span>
+      {isLoading ? <div className="loader"></div> : null}{" "}
+      {isLoading ? <span>Ingresando...</span> : <span> {children}</span>}
     </button>
   );
 };

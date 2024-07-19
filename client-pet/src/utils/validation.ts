@@ -1,13 +1,8 @@
 import { Dispatch, SetStateAction } from "react";
 import { LoginProps, RegisterProps } from "@types";
 
-export const validateLoginForm = (data: LoginProps): boolean => {
-  return !data.email || !data.password ? true : false;
-};
-
-export const validateRegisterForm = (data: RegisterProps): boolean => {
-  if (!data.email || !data.password || !data.confirmPassword) return true;
-  return false;
+export const validateForm = (formData: any) => {
+  return !Object.values(formData).every((value) => value !== "");
 };
 
 export const validateEmailFormat = (
@@ -28,7 +23,7 @@ export const validateEmailFormat = (
   }
 };
 
-export const validatePassword = (
+export const validatePasswordFormat = (
   password: string,
   confirmPassword: string,
   callback: Dispatch<SetStateAction<LoginProps | RegisterProps>>

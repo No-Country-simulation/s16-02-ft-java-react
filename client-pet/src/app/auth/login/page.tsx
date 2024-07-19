@@ -5,7 +5,7 @@ import Link from "next/link";
 import logo from "../../../assets/logosphere.png";
 import { Button, Input } from "@components";
 import { LoginProps } from "@types";
-import { validateEmailFormat, validateLoginForm } from "@utils";
+import { validateEmailFormat, validateForm } from "@utils";
 
 const initialState: LoginProps = {
   email: "",
@@ -15,6 +15,7 @@ const initialState: LoginProps = {
 const LoginPage = () => {
   const [loginForm, setLoginForm] = useState(initialState);
   const [errors, setErrors] = useState(initialState);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -24,9 +25,35 @@ const LoginPage = () => {
     }));
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     validateEmailFormat(loginForm.email, setErrors);
+
+    try {
+      setIsLoading(true);
+      const response = await fetch(`http://localhost:8090/api/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: loginForm.email,
+          password: loginForm.password,
+        }),
+      });
+
+      if (!response.ok) {
+        setIsLoading(false);
+        throw new Error("Login failed");
+      }
+
+      const data = await response.json();
+      sessionStorage.setItem("token", data.token);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -64,7 +91,8 @@ const LoginPage = () => {
           color="primary"
           type="submit"
           onClick={handleSubmit}
-          isDisabled={validateLoginForm(loginForm)}
+          isDisabled={validateForm(loginForm)}
+          isLoading={isLoading}
         >
           Iniciar Sesión
         </Button>
