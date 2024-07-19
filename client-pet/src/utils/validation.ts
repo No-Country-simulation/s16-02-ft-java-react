@@ -1,11 +1,11 @@
 import { Dispatch, SetStateAction } from "react";
 import { LoginProps, RegisterProps } from "@types";
 
-export const validateForm = (formData: any) => {
+export const isValidForm = (formData: any) => {
   return !Object.values(formData).every((value) => value !== "");
 };
 
-export const validateEmailFormat = (
+export const isValidEmailFormat = (
   email: string,
   callback: Dispatch<SetStateAction<LoginProps | RegisterProps>>
 ) => {
@@ -15,15 +15,17 @@ export const validateEmailFormat = (
       ...prev,
       email: "Ingrese un email válido",
     }));
+    return false;
   } else {
     callback((prev) => ({
       ...prev,
       email: "",
     }));
+    return true;
   }
 };
 
-export const validatePasswordFormat = (
+export const isValidPasswordFormat = (
   password: string,
   confirmPassword: string,
   callback: Dispatch<SetStateAction<LoginProps | RegisterProps>>
@@ -33,17 +35,20 @@ export const validatePasswordFormat = (
       ...prev,
       password: "La contraseña demasiado corta",
     }));
+    return false;
   } else if (password !== confirmPassword) {
     callback((prev) => ({
       ...prev,
       password: "Las contraseñas no coinciden",
       confirmPassword: "Las contraseñas no coinciden",
     }));
+    return false;
   } else {
     callback((prev) => ({
       ...prev,
       password: "",
       confirmPassword: "",
     }));
+    return true;
   }
 };

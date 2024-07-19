@@ -6,11 +6,7 @@ import Image from "next/image";
 import { Button, Input } from "@components";
 import Link from "next/link";
 import { RegisterProps, RegisterProfileProps } from "@types";
-import {
-  validateEmailFormat,
-  validatePasswordFormat,
-  validateForm,
-} from "@utils";
+import { isValidEmailFormat, isValidPasswordFormat, isValidForm } from "@utils";
 import { useRouter } from "next/navigation";
 
 const initalProps: RegisterProps = {
@@ -56,15 +52,19 @@ const RegisterPage = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    validateEmailFormat(registerForm.email, setErrors);
-    validatePasswordFormat(
-      registerForm.password,
-      registerForm.confirmPassword,
-      setErrors
-    );
+    if (
+      !isValidEmailFormat(registerForm.email, setErrors) ||
+      !isValidPasswordFormat(
+        registerForm.password,
+        registerForm.confirmPassword,
+        setErrors
+      )
+    ) {
+      return;
+    }
+
     try {
       setIsLoading(true);
-      if (!validateForm) return;
       if (nav !== 3) {
         const response = await fetch(
           `http://localhost:8090/api/auth/register`,
@@ -221,7 +221,7 @@ const RegisterPage = () => {
               color="primary"
               type="submit"
               onClick={handleSubmit}
-              isDisabled={validateForm(registerForm)}
+              isDisabled={isValidForm(registerForm)}
               isLoading={isLoading}
             >
               Crear Cuena
@@ -270,7 +270,7 @@ const RegisterPage = () => {
               color="primary"
               type="submit"
               onClick={handleSubmit}
-              isDisabled={validateForm(registerForm)}
+              isDisabled={isValidForm(registerForm)}
               isLoading={isLoading}
             >
               Siguiente
@@ -355,7 +355,7 @@ const RegisterPage = () => {
               color="primary"
               type="submit"
               onClick={handleSubmit}
-              isDisabled={validateForm(registerProfile)}
+              isDisabled={isValidForm(registerProfile)}
               isLoading={isLoading}
             >
               Crear Cuena

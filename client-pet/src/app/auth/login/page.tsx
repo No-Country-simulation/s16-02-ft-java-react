@@ -5,7 +5,7 @@ import Link from "next/link";
 import logo from "../../../assets/logosphere.png";
 import { Button, Input } from "@components";
 import { LoginProps } from "@types";
-import { validateEmailFormat, validateForm } from "@utils";
+import { isValidEmailFormat, isValidForm } from "@utils";
 import { fetchAPI } from "@helpers";
 
 const initialState: LoginProps = {
@@ -28,7 +28,7 @@ const LoginPage = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    validateEmailFormat(loginForm.email, setErrors);
+    if (!isValidEmailFormat(loginForm.email, setErrors)) return;
 
     try {
       setIsLoading(true);
@@ -38,6 +38,7 @@ const LoginPage = () => {
       });
 
       sessionStorage.setItem("token", response.token);
+      console.log("Login Success.");
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -80,7 +81,7 @@ const LoginPage = () => {
           color="primary"
           type="submit"
           onClick={handleSubmit}
-          isDisabled={validateForm(loginForm)}
+          isDisabled={isValidForm(loginForm)}
           isLoading={isLoading}
         >
           Iniciar Sesión
