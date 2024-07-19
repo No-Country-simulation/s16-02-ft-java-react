@@ -54,3 +54,12 @@ export interface RegisterProfileProps {
   address: string;
   district: string;
 }
+
+export interface FetchOptionsProps {
+  method: string;
+  headers: {
+    "Content-Type": string;
+    Authorization?: string;
+  };
+  body?: string;
+}

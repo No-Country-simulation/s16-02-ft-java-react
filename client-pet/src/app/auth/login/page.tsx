@@ -6,6 +6,7 @@ import logo from "../../../assets/logosphere.png";
 import { Button, Input } from "@components";
 import { LoginProps } from "@types";
 import { validateEmailFormat, validateForm } from "@utils";
+import { fetchAPI } from "@helpers";
 
 const initialState: LoginProps = {
   email: "",
@@ -31,24 +32,12 @@ const LoginPage = () => {
 
     try {
       setIsLoading(true);
-      const response = await fetch(`http://localhost:8090/api/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: loginForm.email,
-          password: loginForm.password,
-        }),
+      const response = await fetchAPI("api/login", "POST", {
+        username: loginForm.email,
+        password: loginForm.password,
       });
 
-      if (!response.ok) {
-        setIsLoading(false);
-        throw new Error("Login failed");
-      }
-
-      const data = await response.json();
-      sessionStorage.setItem("token", data.token);
+      sessionStorage.setItem("token", response.token);
       setIsLoading(false);
     } catch (error) {
       console.log(error);
