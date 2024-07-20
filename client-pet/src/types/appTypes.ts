@@ -31,6 +31,7 @@ export interface ButtonProps {
   onClick?: MouseEventHandler<HTMLButtonElement>;
   type?: "submit" | "button" | "reset";
   isDisabled?: boolean;
+  isLoading?: boolean;
 }
 
 export interface LoginProps {
@@ -42,4 +43,23 @@ export interface RegisterProps {
   email: string;
   password: string;
   confirmPassword: string;
+}
+
+export interface RegisterProfileProps {
+  name: string;
+  lastname: string;
+  phone: string;
+  documentType: string;
+  documentNumber: string;
+  address: string;
+  district: string;
+}
+
+export interface FetchOptionsProps {
+  method: string;
+  headers: {
+    "Content-Type": string;
+    Authorization?: string;
+  };
+  body?: string;
 }

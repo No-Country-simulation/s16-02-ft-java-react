@@ -2,10 +2,13 @@
 import React, { ChangeEvent, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import logo from "../../../assets/logosphere.png";
 import { Button, Input } from "@components";
 import { LoginProps } from "@types";
-import { validateEmailFormat, validateLoginForm } from "@utils";
+import { isValidEmailFormat, isValidForm } from "@utils";
+import { AppDispatch, login, RootState } from "@store";
+import { useDispatch, useSelector } from "react-redux";
 
 const initialState: LoginProps = {
   email: "",
@@ -13,6 +16,10 @@ const initialState: LoginProps = {
 };
 
 const LoginPage = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { isLoading } = useSelector((state: RootState) => state.auth);
+
+  const router = useRouter();
   const [loginForm, setLoginForm] = useState(initialState);
   const [errors, setErrors] = useState(initialState);
 
@@ -24,9 +31,10 @@ const LoginPage = () => {
     }));
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    validateEmailFormat(loginForm.email, setErrors);
+    if (!isValidEmailFormat(loginForm.email, setErrors)) return;
+    dispatch(login(loginForm, router));
   };
 
   return (
@@ -64,7 +72,8 @@ const LoginPage = () => {
           color="primary"
           type="submit"
           onClick={handleSubmit}
-          isDisabled={validateLoginForm(loginForm)}
+          isDisabled={isValidForm(loginForm)}
+          isLoading={isLoading}
         >
           Iniciar Sesión
         </Button>
