@@ -37,6 +37,9 @@
       ],
       "@helpers": [
         "helpers/"
+      ],
+      "@store": [
+        "store/"
       ]
     }
   },

@@ -2,11 +2,13 @@
 import React, { ChangeEvent, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import logo from "../../../assets/logosphere.png";
 import { Button, Input } from "@components";
 import { LoginProps } from "@types";
 import { isValidEmailFormat, isValidForm } from "@utils";
-import { fetchAPI } from "@helpers";
+import { AppDispatch, login, RootState } from "@store";
+import { useDispatch, useSelector } from "react-redux";
 
 const initialState: LoginProps = {
   email: "",
@@ -14,9 +16,12 @@ const initialState: LoginProps = {
 };
 
 const LoginPage = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { isLoading } = useSelector((state: RootState) => state.auth);
+
+  const router = useRouter();
   const [loginForm, setLoginForm] = useState(initialState);
   const [errors, setErrors] = useState(initialState);
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -29,21 +34,7 @@ const LoginPage = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (!isValidEmailFormat(loginForm.email, setErrors)) return;
-
-    try {
-      setIsLoading(true);
-      const response = await fetchAPI("api/login", "POST", {
-        username: loginForm.email,
-        password: loginForm.password,
-      });
-
-      sessionStorage.setItem("token", response.token);
-      console.log("Login Success.");
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-      setIsLoading(false);
-    }
+    dispatch(login(loginForm, router));
   };
 
   return (

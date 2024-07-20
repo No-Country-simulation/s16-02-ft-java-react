@@ -1,3 +1,4 @@
+import { getCookie } from "cookies-next";
 import { FetchOptionsProps } from "@types";
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -48,7 +49,8 @@ export const fetchAPI = async (
     }
   }
   if (token === "YES") {
-    const token = sessionStorage.getItem("token") || "";
+    // const token = sessionStorage.getItem("token") || "";
+    const token = getCookie("token");
     const options = createOptions(method, data, token);
 
     try {

@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import logo from "../../assets/logo-horizontal.png";
 import Image from "next/image";
+import { getCookie } from "cookies-next";
 
 const Navbar = () => {
   return (
