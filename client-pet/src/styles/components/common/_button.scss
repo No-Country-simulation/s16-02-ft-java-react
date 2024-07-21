@@ -36,15 +36,26 @@
   }
 
   &__secondary {
-    border: none;
+    // border: none;
     transition: 200ms ease;
+    box-shadow: var(--shadow-sm);
 
     span {
       border-bottom: var(--b-primary);
     }
 
     &:hover {
-      opacity: .7;
+      opacity: 1;
+      box-shadow: var(--shadow-hover);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      box-shadow: inherit;
+
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 

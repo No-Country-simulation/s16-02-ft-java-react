@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
+  position: relative;
 
   .border {
     border-radius: var(--br-sm);
@@ -53,6 +54,24 @@
 
     &:hover {
       background: rgba(100, 100, 100, .1);
+    }
+  }
+
+  &__isInvalidMessage {
+    position: absolute;
+    right: 0;
+    top: 1px;
+    color: red;
+    font-family: var(--ff-inter);
+    font-size: var(--fs-xs);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--c-bg);
+
+    svg {
+      width: 20px;
+      height: 20px;
     }
   }
 }

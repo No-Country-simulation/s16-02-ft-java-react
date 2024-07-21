@@ -8,11 +8,22 @@ import Link from "next/link";
 import { RegisterProps, RegisterProfileProps } from "@types";
 import { isValidEmailFormat, isValidPasswordFormat, isValidForm } from "@utils";
 import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  AppDispatch,
+  RootState,
+  navDefault,
+  navUser,
+  navUserShelter,
+  registerUser,
+  registerProfileUser,
+} from "@store";
 
 const initalProps: RegisterProps = {
   email: "",
   password: "",
   confirmPassword: "",
+  role: "ROLE_USER",
 };
 
 const initalProfileProps: RegisterProfileProps = {
@@ -27,12 +38,14 @@ const initalProfileProps: RegisterProfileProps = {
 
 const RegisterPage = () => {
   const router = useRouter();
+  const dispatch = useDispatch<AppDispatch>();
+  const { nav, status, isLoading } = useSelector(
+    (state: RootState) => state.user
+  );
   const [registerForm, setRegisterForm] = useState<RegisterProps>(initalProps);
   const [registerProfile, setRegisterProfile] =
     useState<RegisterProfileProps>(initalProfileProps);
   const [errors, setErrors] = useState<RegisterProps>(initalProps);
-  const [nav, setNav] = useState(0);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -63,72 +76,24 @@ const RegisterPage = () => {
       return;
     }
 
-    try {
-      setIsLoading(true);
-      if (nav !== 3) {
-        const response = await fetch(
-          `http://localhost:8090/api/auth/register`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              username: registerForm.email,
-              password: registerForm.password,
-              roleName: nav === 2 ? "ROLE_SHELTER" : "ROLE_USER",
-              active: true,
-            }),
-          }
-        );
-
-        if (!response.ok) {
-          setIsLoading(false);
-          throw new Error("Register failed");
-        }
-
-        const data = await response.json();
-        localStorage.setItem("id", data.userId);
-        setIsLoading(false);
-        console.log(data);
-        if (nav === 2) setNav(3);
-      } else {
-        const response = await fetch(`http://localhost:8090/api/profiles`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            profileName: registerProfile.name,
-            profileLastName: registerProfile.lastname,
-            profilePhone: registerProfile.phone,
-            profileDocumentType: registerProfile.documentType,
-            profileDocumentNumber: registerProfile.documentNumber,
-            profileAddress: registerProfile.address,
-            user: {
-              userId: localStorage.getItem("id"),
-            },
-            profileImgDocument:
-              "https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png",
-            district: {
-              districtId: Number(registerProfile.district),
-            },
-            active: true,
-          }),
-        });
-
-        if (!response.ok) {
-          setIsLoading(false);
-          throw new Error("Register failed");
-        }
-
-        setIsLoading(false);
-        router.push("/auth/login");
-      }
-    } catch (error) {
-      console.log("error", error);
-      setIsLoading(false);
-    }
+    // switch (nav) {
+    //   case "user":
+    //     dispatch(registerUser(registerForm, router));
+    //     break;
+    //   case "user_shelter":
+    //     dispatch(registerUser(registerForm, "next"));
+    //     break;
+    //   case "user_profile":
+    //     dispatch(registerProfileUser(registerProfile, router));
+    //     break;
+    //   default:
+    //     dispatch(navDefault());
+    //     break;
+    // }
+    if (nav === "user") dispatch(registerUser(registerForm, router));
+    if (nav === "user_shelter") dispatch(registerUser(registerForm, "next"));
+    if (nav === "user_profile")
+      dispatch(registerProfileUser(registerProfile, router));
   };
 
   return (
@@ -136,7 +101,7 @@ const RegisterPage = () => {
       <div className="registerPage__picture">
         <Image src={logo} alt="header logo" />
       </div>
-      {nav === 0 && (
+      {nav === "select" && (
         <div className="registerPage__wrapper">
           <h3>Selección de perfil</h3>
           <div className="registerPage__wrapper--form">
@@ -144,26 +109,45 @@ const RegisterPage = () => {
               <div className="card">
                 <Image src={img} alt="picture from user type" />
                 <div className="card-content">
+                  <span className="title">Soy adoptante/usuario</span>
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Maxime deleniti repellat veritatis recusandae voluptatibus
-                    possimus modi? Deserunt ad repellendus necessitatibus atque
+                    Publica anuncios de mascotas perdidas y encuentra a tu
+                    compañero. También puedes adoptar y darles un hogar amoroso
+                    a quienes lo necesitan.
                   </p>
-                  <Button color="primary" onClick={() => setNav(1)}>
-                    tipo 1
+                  <Button
+                    color="secondary"
+                    onClick={() => {
+                      dispatch(navUser());
+                      setRegisterForm((prev) => ({
+                        ...prev,
+                        role: "ROLE_USER",
+                      }));
+                    }}
+                  >
+                    Seleccionar
                   </Button>
                 </div>
               </div>
               <div className="card">
                 <Image src={img} alt="picture from user type" />
                 <div className="card-content">
+                  <span className="title">Soy parte de un refugio</span>
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Maxime deleniti repellat veritatis recusandae voluptatibus
-                    possimus modi? Deserunt ad repellendus necessitatibus atque
+                    Publica mascotas para adopción y lleva un seguimiento. Ayuda
+                    a encontrar hogares amorosos para cada animal en tu refugio.
                   </p>
-                  <Button color="primary" onClick={() => setNav(2)}>
-                    tipo 2
+                  <Button
+                    color="secondary"
+                    onClick={() => {
+                      dispatch(navUserShelter());
+                      setRegisterForm((prev) => ({
+                        ...prev,
+                        role: "ROLE_SHELTER",
+                      }));
+                    }}
+                  >
+                    Seleccionar
                   </Button>
                 </div>
               </div>
@@ -172,13 +156,15 @@ const RegisterPage = () => {
           <div className="registerPage__wrapper--options">
             <div className="options-link">
               <span>Ya tienes cuenta?</span>
-              <Link href={"/auth/login"}>Iniciar Sesión</Link>
+              <Link href={"/auth/login"} onClick={() => dispatch(navDefault())}>
+                Iniciar Sesión
+              </Link>
             </div>
           </div>
         </div>
       )}
 
-      {nav === 1 && (
+      {nav === "user" && (
         <div className="registerPage__wrapper">
           <h3>Registro de Usuario 1</h3>
           <div className="registerPage__wrapper--form">
@@ -228,12 +214,14 @@ const RegisterPage = () => {
             </Button>
             <div className="options-link">
               <span>Ya tienes cuenta?</span>
-              <Link href={"/auth/login"}>Iniciar Sesión</Link>
+              <Link href={"/auth/login"} onClick={() => dispatch(navDefault())}>
+                Iniciar Sesión
+              </Link>
             </div>
           </div>
         </div>
       )}
-      {nav === 2 && (
+      {nav === "user_shelter" && (
         <div className="registerPage__wrapper">
           <h3>Registro de Usuario 1</h3>
           <div className="registerPage__wrapper--form">
@@ -267,11 +255,12 @@ const RegisterPage = () => {
           </div>
           <div className="registerPage__wrapper--options">
             <Button
-              color="primary"
+              color="secondary"
               type="submit"
               onClick={handleSubmit}
               isDisabled={isValidForm(registerForm)}
               isLoading={isLoading}
+              loadingMessage="Creando perfil..."
             >
               Siguiente
             </Button>
@@ -282,7 +271,7 @@ const RegisterPage = () => {
           </div>
         </div>
       )}
-      {nav === 3 && (
+      {nav === "user_profile" && (
         <div className="registerPage__wrapper">
           <h3>Registro de Usuario 2</h3>
           <div className="registerPage__wrapper--form">
@@ -357,6 +346,7 @@ const RegisterPage = () => {
               onClick={handleSubmit}
               isDisabled={isValidForm(registerProfile)}
               isLoading={isLoading}
+              loadingMessage="Creando cuenta..."
             >
               Crear Cuena
             </Button>

@@ -1,4 +1,4 @@
-import { setCookie } from "cookies-next";
+import { deleteCookie, setCookie } from "cookies-next";
 import { fetchAPI } from "@helpers";
 import { loginFailure, loginStart, loginSuccess } from "../slices/authSlice";
 import { LoginProps } from "@types";
@@ -20,3 +20,9 @@ export const login =
       dispatch(loginFailure(error.message));
     }
   };
+
+export const logout = () => async (dispatch: any) => {
+  dispatch(logout());
+  localStorage.clear();
+  deleteCookie("token");
+};

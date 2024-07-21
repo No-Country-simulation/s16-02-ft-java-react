@@ -37,6 +37,10 @@ const authSlice = createSlice({
       state.status = "idle";
       state.error = null;
     },
+    logoutFailure: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
     // checkAuth: (state) => {
     //   state.isAuthenticated = localStorage.getItem("access_token") !== null;
     //   state.user = JSON.parse(localStorage.getItem("user")) || null;
@@ -62,10 +66,6 @@ const authSlice = createSlice({
     // logout: (state) => {
     //   state.user = null;
     //   state.error = null;
-    // },
-    // logoutFailure: (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = action.payload;
     // },
   },
 });

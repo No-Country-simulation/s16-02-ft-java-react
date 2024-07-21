@@ -11,6 +11,7 @@ const Button = ({
   type,
   isDisabled = false,
   isLoading = false,
+  loadingMessage,
 }: ButtonProps) => {
   return (
     <button
@@ -20,7 +21,11 @@ const Button = ({
       disabled={isLoading ? true : isDisabled}
     >
       {isLoading ? <div className="loader"></div> : null}{" "}
-      {isLoading ? <span>Ingresando...</span> : <span> {children}</span>}
+      {isLoading ? (
+        <span>{loadingMessage ? loadingMessage : "Espere por favor..."}</span>
+      ) : (
+        <span> {children}</span>
+      )}
     </button>
   );
 };

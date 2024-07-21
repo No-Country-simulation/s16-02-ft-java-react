@@ -14,7 +14,7 @@ const Hero = () => {
           Adoptar una mascota es abrir tu corazón a un nuevo miembro de la
           familia, trayendo amor y un hogar lleno de felicidad.
         </h1>
-        <Button color="primary" type="primary">
+        <Button color="primary" mode="primary">
           Adopta una mascota
         </Button>
       </div>
