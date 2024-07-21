@@ -3,7 +3,7 @@ import React, { ChangeEvent, useState } from "react";
 import logo from "../../../assets/logo-horizontal.png";
 import img from "../../../assets/carousel1.png";
 import Image from "next/image";
-import { Button, Input } from "@components";
+import { Button, Dropdown, Input } from "@components";
 import Link from "next/link";
 import { RegisterProps, RegisterProfileProps } from "@types";
 import { isValidEmailFormat, isValidPasswordFormat, isValidForm } from "@utils";
@@ -63,6 +63,14 @@ const RegisterPage = () => {
     }));
   };
 
+  const handleDocumentTypeChange = (e: any) => {
+    const value = e.target.textContent;
+    setRegisterProfile((prev) => ({
+      ...prev,
+      documentType: value,
+    }));
+  };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (
@@ -90,6 +98,7 @@ const RegisterPage = () => {
     //     dispatch(navDefault());
     //     break;
     // }
+
     if (nav === "user") dispatch(registerUser(registerForm, router));
     if (nav === "user_shelter") dispatch(registerUser(registerForm, "next"));
     if (nav === "user_profile")
@@ -300,14 +309,19 @@ const RegisterPage = () => {
               onChange={handleChangeProfile}
             />
             <br />
-            <Input
-              name="documentType"
-              label="Tipo de documento"
-              placeholder="Ingrese su documento"
-              type="text"
+            <Dropdown
+              options={["DNI", "CarnetExtranjeria", "Pasaporte"]}
               value={registerProfile.documentType}
-              onChange={handleChangeProfile}
+              onSelect={handleDocumentTypeChange}
             />
+            {/* <Input */}
+            {/*   name="documentType" */}
+            {/*   label="Tipo de documento" */}
+            {/*   placeholder="Ingrese su documento" */}
+            {/*   type="text" */}
+            {/*   value={registerProfile.documentType} */}
+            {/*   onChange={handleChangeProfile} */}
+            {/* /> */}
             <Input
               name="documentNumber"
               label="Número de documento"
