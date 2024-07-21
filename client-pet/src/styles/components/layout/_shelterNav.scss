@@ -1,0 +1,40 @@
+.shelterNav {
+  max-width: 1600px;
+  width: 100%;
+  margin-inline: auto;
+  padding: 2rem 5%;
+  gap: 4rem;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+
+    img {
+      max-width: 200px;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    ul {
+      display: flex;
+      gap: var(--spacing-md);
+      font-family: var(--ff-inter);
+      font-size: var(--fs-md);
+      font-weight: medium;
+
+      li {
+
+        a,
+        button {
+          border-bottom: var(--b-primary);
+        }
+      }
+    }
+  }
+}
