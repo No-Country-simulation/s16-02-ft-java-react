@@ -5,6 +5,7 @@ interface AuthStateProps {
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
   isLoading: boolean;
+  user: any;
 }
 
 const initialState: AuthStateProps = {
@@ -12,6 +13,10 @@ const initialState: AuthStateProps = {
   status: "idle",
   error: null,
   isLoading: false,
+  user: {
+    // role: "",
+    // username: "",
+  },
 };
 
 const authSlice = createSlice({
@@ -23,28 +28,36 @@ const authSlice = createSlice({
       state.isLoading = true;
       state.error = null;
     },
-    loginSuccess: (state) => {
+    loginSuccess: (state, action) => {
       state.status = "succeeded";
       state.isLoading = false;
-      // state.user = action.payload
+      state.isAuth = true;
+      state.user = action.payload;
     },
     loginFailure: (state, action) => {
       state.status = "failed";
       state.isLoading = false;
       state.error = action.payload;
     },
-    logout: (state) => {
-      state.status = "idle";
+    logoutStart: (state) => {
+      state.status = "loading";
       state.error = null;
     },
+    logoutSuccess: (state) => {
+      state.status = "succeeded";
+      state.isLoading = false;
+      state.isAuth = false;
+    },
     logoutFailure: (state, action) => {
+      state.status = "failed";
       state.isLoading = false;
       state.error = action.payload;
     },
-    // checkAuth: (state) => {
-    //   state.isAuthenticated = localStorage.getItem("access_token") !== null;
-    //   state.user = JSON.parse(localStorage.getItem("user")) || null;
-    // },
+    checkAuth: (state, action) => {
+      state.user = action.payload;
+      // state.isAuth = localStorage.getItem("access_token") !== null;
+      // state.user = JSON.parse(localStorage.getItem("user")) || null;
+    },
     // openLogin: (state) => {
     //   state.isOpen = true;
     // },
@@ -70,7 +83,12 @@ const authSlice = createSlice({
   },
 });
 
-export const { loginStart, loginSuccess, loginFailure, logout } =
-  authSlice.actions;
+export const {
+  loginStart,
+  loginSuccess,
+  loginFailure,
+  logoutStart,
+  checkAuth,
+} = authSlice.actions;
 
 export default authSlice.reducer;

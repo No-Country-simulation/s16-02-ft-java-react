@@ -175,7 +175,7 @@ const RegisterPage = () => {
 
       {nav === "user" && (
         <div className="registerPage__wrapper">
-          <h3>Registro de Usuario 1</h3>
+          <h3>Registro de Usuario</h3>
           <div className="registerPage__wrapper--form">
             <Input
               name="email"
@@ -232,7 +232,7 @@ const RegisterPage = () => {
       )}
       {nav === "user_shelter" && (
         <div className="registerPage__wrapper">
-          <h3>Registro de Usuario 1</h3>
+          <h3>Registro de Usuario/Refugio</h3>
           <div className="registerPage__wrapper--form">
             <Input
               name="email"

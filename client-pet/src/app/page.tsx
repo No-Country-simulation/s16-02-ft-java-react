@@ -1,3 +1,4 @@
+"use client";
 import { Navbar, Footer, Hero, About } from "@components";
 import AdoptionPets from "components/sections/AdoptionPets";
 import Blog from "components/sections/Blog";

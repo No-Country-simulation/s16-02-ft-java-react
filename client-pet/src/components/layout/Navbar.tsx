@@ -1,10 +1,12 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import logo from "../../assets/logo-horizontal.png";
 import Image from "next/image";
-import { useDispatch } from "react-redux";
-import { AppDispatch, navDefault } from "@store";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState, AppDispatch, logout, navDefault } from "@store";
+import { Button } from "@components";
+import { useRouter } from "next/navigation";
 
 const menu = [
   {
@@ -14,13 +16,13 @@ const menu = [
   },
   {
     id: 2,
-    name: "Blog",
-    href: "/blog",
+    name: "Donar",
+    href: "/donate",
   },
   {
     id: 3,
-    name: "Donar",
-    href: "/donate",
+    name: "Blog",
+    href: "/blog",
   },
   {
     id: 4,
@@ -31,6 +33,9 @@ const menu = [
 
 const Navbar = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const router = useRouter();
+  const role = localStorage.getItem("role");
+  const { isLoading } = useSelector((state: RootState) => state.auth);
 
   return (
     <nav className="main-navbar">
@@ -44,20 +49,63 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
-      <div className="main-navbar__auth">
-        <Link href={"/auth/login"} className="button button__primary border">
-          Iniciar Sesión
-        </Link>
-        <Link
-          href={"/auth/register"}
-          onClick={() => {
-            dispatch(navDefault());
-          }}
-          className="button button__primary border"
-        >
-          Crear Cuenta
-        </Link>
-      </div>
+      {role === "ROLE_USER" && (
+        <div className="main-navbar__auth">
+          <Link href={"/profile"} className="button button__secondary border">
+            Perfil de Usuario
+          </Link>
+          <Button
+            color="secondary"
+            onClick={() => {
+              dispatch(navDefault());
+              dispatch(logout());
+              router.push("/");
+            }}
+            isLoading={isLoading}
+          >
+            Cerrar Sesión
+          </Button>
+        </div>
+      )}
+
+      {role === "ROLE_SHELTER" && (
+        <div className="main-navbar__auth">
+          <Link
+            href={"/shelter/profile"}
+            className="button button__secondary border"
+          >
+            Perfil de Refugio
+          </Link>
+          <Button
+            color="secondary"
+            onClick={() => {
+              dispatch(navDefault());
+              dispatch(logout());
+              router.push("/");
+            }}
+            isLoading={isLoading}
+          >
+            Cerrar Sesión
+          </Button>
+        </div>
+      )}
+
+      {!role && (
+        <div className="main-navbar__auth">
+          <Link href={"/auth/login"} className="button button__primary border">
+            Iniciar Sesión
+          </Link>
+          <Link
+            href={"/auth/register"}
+            onClick={() => {
+              dispatch(navDefault());
+            }}
+            className="button button__primary border"
+          >
+            Crear Cuenta
+          </Link>
+        </div>
+      )}
     </nav>
   );
 };

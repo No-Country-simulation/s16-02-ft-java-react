@@ -74,6 +74,7 @@ const LoginPage = () => {
           onClick={handleSubmit}
           isDisabled={isValidForm(loginForm)}
           isLoading={isLoading}
+          loadingMessage="Iniciando Sesión..."
         >
           Iniciar Sesión
         </Button>
