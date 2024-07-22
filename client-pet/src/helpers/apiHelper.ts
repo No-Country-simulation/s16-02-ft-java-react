@@ -35,14 +35,19 @@ export const fetchAPI = async (
 
   if (token === "NO") {
     const options = createOptions(method, data);
-    console.log(url);
     try {
       console.log(url);
       const response = await fetch(url, options);
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-      return await response.json();
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        return null;
+      }
+      const data = await response.json();
+      if (!data) return null;
+      return data;
     } catch (error) {
       console.error("Fetch error:", error);
       throw error;

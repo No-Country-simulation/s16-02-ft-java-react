@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState, MouseEvent } from "react";
-import { EyeSlashFilledIcon, EyeFilledIcon } from "@icons";
+import { EyeSlashFilledIcon, EyeFilledIcon, ExclamationCircle } from "@icons";
 import { InputProps } from "@types";
 
 const Input = ({
@@ -54,6 +54,12 @@ const Input = ({
           </button>
         ) : null}
       </div>
+      {isInvalid ? (
+        <span className="input__isInvalidMessage">
+          <ExclamationCircle />
+          {isInvalid}
+        </span>
+      ) : null}
     </div>
   );
 };

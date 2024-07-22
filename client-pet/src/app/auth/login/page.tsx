@@ -7,7 +7,7 @@ import logo from "../../../assets/logosphere.png";
 import { Button, Input } from "@components";
 import { LoginProps } from "@types";
 import { isValidEmailFormat, isValidForm } from "@utils";
-import { AppDispatch, login, RootState } from "@store";
+import { AppDispatch, login, navDefault, RootState } from "@store";
 import { useDispatch, useSelector } from "react-redux";
 
 const initialState: LoginProps = {
@@ -74,13 +74,16 @@ const LoginPage = () => {
           onClick={handleSubmit}
           isDisabled={isValidForm(loginForm)}
           isLoading={isLoading}
+          loadingMessage="Iniciando Sesión..."
         >
           Iniciar Sesión
         </Button>
       </div>
       <div className="loginPage__register">
         <span>Aun no tienes cuenta?</span>
-        <Link href={"/auth/register"}>Crear cuenta</Link>
+        <Link href={"/auth/register"} onClick={() => dispatch(navDefault())}>
+          Crear cuenta
+        </Link>
       </div>
     </div>
   );

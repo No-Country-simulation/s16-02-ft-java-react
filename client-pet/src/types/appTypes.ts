@@ -32,6 +32,7 @@ export interface ButtonProps {
   type?: "submit" | "button" | "reset";
   isDisabled?: boolean;
   isLoading?: boolean;
+  loadingMessage?: string;
 }
 
 export interface LoginProps {
@@ -43,6 +44,7 @@ export interface RegisterProps {
   email: string;
   password: string;
   confirmPassword: string;
+  role: "ROLE_SHELTER" | "ROLE_USER";
 }
 
 export interface RegisterProfileProps {

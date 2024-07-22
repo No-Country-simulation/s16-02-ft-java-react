@@ -34,7 +34,7 @@ const About = () => {
         </p>
         <Button
           color="primary"
-          type="primary"
+          mode="primary"
           className="about__content--button"
         >
           CONTACTANOS

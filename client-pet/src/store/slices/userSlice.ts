@@ -1,26 +1,65 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface ExampleState {
-  value: number;
+interface UserStateProps {
+  user: any;
+  isAuth: boolean;
+  status: "idle" | "loading" | "succeeded" | "failed";
+  error: string | null;
+  isLoading: boolean;
+  nav: "select" | "user" | "user_shelter" | "user_profile";
 }
 
-const initialState: ExampleState = {
-  value: 3,
+const initialState: UserStateProps = {
+  user: {},
+  isAuth: false,
+  status: "idle",
+  error: null,
+  isLoading: false,
+  nav: "select",
 };
 
-const exampleSlice = createSlice({
-  name: "name example",
+const userSlice = createSlice({
+  name: "user",
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
+    createUserStart: (state) => {
+      state.isLoading = true;
+      state.error = null;
+      state.status = "loading";
     },
-    decrement: (state) => {
-      state.value -= 1;
+    createUserSuccess(state, action) {
+      state.isLoading = false;
+      state.user = action.payload;
+      state.status = "succeeded";
+    },
+    createUserFailure(state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+      state.status = "failed";
+    },
+    navDefault: (state) => {
+      state.nav = "select";
+    },
+    navUser: (state) => {
+      state.nav = "user";
+    },
+    navUserShelter: (state) => {
+      state.nav = "user_shelter";
+    },
+    navUserProfile: (state) => {
+      state.nav = "user_profile";
     },
   },
 });
 
-export const { increment, decrement } = exampleSlice.actions;
+export const {
+  createUserStart,
+  createUserFailure,
+  createUserSuccess,
+  navUser,
+  navUserShelter,
+  navDefault,
+  navUserProfile,
+} = userSlice.actions;
 
-export default exampleSlice.reducer;
+export default userSlice.reducer;
