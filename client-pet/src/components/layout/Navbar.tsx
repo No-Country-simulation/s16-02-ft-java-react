@@ -11,21 +11,26 @@ import { useRouter } from "next/navigation";
 const menu = [
   {
     id: 1,
+    name: "Inicio",
+    href: "/",
+  },
+  {
+    id: 2,
     name: "Adopta",
     href: "/adopcion",
   },
   {
-    id: 2,
+    id: 3,
     name: "Donar",
     href: "/donate",
   },
   {
-    id: 3,
+    id: 4,
     name: "Blog",
     href: "/blog",
   },
   {
-    id: 4,
+    id: 5,
     name: "Nosotros",
     href: "/about",
   },
@@ -34,8 +39,8 @@ const menu = [
 const Navbar = () => {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
-  const role = localStorage.getItem("role");
-  const { isLoading } = useSelector((state: RootState) => state.auth);
+  const { isLoading, user } = useSelector((state: RootState) => state.auth);
+  const { role } = user;
 
   return (
     <nav className="main-navbar">
@@ -58,7 +63,7 @@ const Navbar = () => {
             color="secondary"
             onClick={() => {
               dispatch(navDefault());
-              dispatch(logout());
+              dispatch(logout(router));
               router.push("/");
             }}
             isLoading={isLoading}
@@ -80,8 +85,7 @@ const Navbar = () => {
             color="secondary"
             onClick={() => {
               dispatch(navDefault());
-              dispatch(logout());
-              router.push("/");
+              dispatch(logout(router));
             }}
             isLoading={isLoading}
           >

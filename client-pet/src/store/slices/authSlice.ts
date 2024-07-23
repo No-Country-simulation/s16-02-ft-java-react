@@ -14,8 +14,8 @@ const initialState: AuthStateProps = {
   error: null,
   isLoading: false,
   user: {
-    // role: "",
-    // username: "",
+    role: "",
+    username: "",
   },
 };
 
@@ -54,7 +54,8 @@ const authSlice = createSlice({
       state.error = action.payload;
     },
     checkAuth: (state, action) => {
-      state.user = action.payload;
+      console.log(action.payload);
+      state.user = action.payload || { username: "", role: "" };
       // state.isAuth = localStorage.getItem("access_token") !== null;
       // state.user = JSON.parse(localStorage.getItem("user")) || null;
     },

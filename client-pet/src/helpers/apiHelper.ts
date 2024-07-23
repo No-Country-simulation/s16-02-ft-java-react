@@ -1,5 +1,6 @@
 import { getCookie } from "cookies-next";
 import { FetchOptionsProps } from "@types";
+import { toast } from "sonner";
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const createOptions = (
@@ -36,25 +37,37 @@ export const fetchAPI = async (
   if (token === "NO") {
     const options = createOptions(method, data);
     try {
-      console.log(url);
       const response = await fetch(url, options);
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
+
       const contentType = response.headers.get("content-type");
       if (!contentType || !contentType.includes("application/json")) {
         return null;
       }
+
       const data = await response.json();
       if (!data) return null;
-      return data;
+
+      if (!response.ok) {
+        if (response.status === 401 && data.message) {
+          toast.error(data.message);
+          return data;
+        }
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      } else if (response.status === 200 && data.message) {
+        toast.success(data.message);
+        return data;
+      } else if (data.message) {
+        toast(data.message);
+        return data;
+      } else {
+        return data;
+      }
     } catch (error) {
       console.error("Fetch error:", error);
       throw error;
     }
   }
   if (token === "YES") {
-    // const token = sessionStorage.getItem("token") || "";
     const token = getCookie("token");
     const options = createOptions(method, data, token);
 
