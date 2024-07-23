@@ -18,7 +18,6 @@ const AuthLayout = ({ children }: LayoutProps) => {
           </span>
           Volver a Inicio
         </Link>
-
         {children}
       </div>
     </div>

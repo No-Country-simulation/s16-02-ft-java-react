@@ -41,15 +41,38 @@ export const login =
     }
   };
 
-export const logout = () => async (dispatch: any) => {
+export const logout = (router: any) => async (dispatch: any) => {
   dispatch(logoutStart());
-  localStorage.clear();
-  deleteCookie("token");
+  try {
+    deleteCookie("token");
+    deleteCookie("role");
+    localStorage.clear();
+    router.push("/");
+    dispatch(checkAuth({ username: "", role: "" }));
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const checkAuthentication = () => async (dispatch: any) => {
-  const user = localStorage.getItem("user");
-  const role = localStorage.getItem("role");
-  dispatch(checkAuth({ user, role }));
-  console.log("check auth");
+  if (
+    localStorage.getItem("user") !== null &&
+    localStorage.getItem("role") !== null
+  ) {
+    dispatch(
+      checkAuth({
+        user: localStorage.getItem("user"),
+        role: localStorage.getItem("role"),
+      })
+    );
+    console.log("check auth with localStorage");
+  }
+
+  if (
+    localStorage.getItem("user") === null &&
+    localStorage.getItem("role") === null
+  ) {
+    dispatch(checkAuth({ user: "", role: "" }));
+    console.log("check auth with'out localstorage");
+  }
 };

@@ -1,4 +1,3 @@
-import { setCookie } from "cookies-next";
 import { fetchAPI } from "@helpers";
 import {
   createUserSuccess,
@@ -7,7 +6,6 @@ import {
   navUserProfile,
   navDefault,
 } from "../slices/userSlice";
-import { LoginProps } from "@types";
 
 export const registerUser =
   (userData: any, router?: any) => async (dispatch: any) => {
@@ -20,6 +18,7 @@ export const registerUser =
         roleName: userData.role,
         active: true,
       });
+      console.log("user", response);
 
       localStorage.setItem("id", response?.userId);
       dispatch(createUserSuccess(userData));
@@ -38,6 +37,8 @@ export const registerProfileUser =
   (userData: any, router?: any) => async (dispatch: any) => {
     dispatch(createUserStart());
     try {
+      const userId = localStorage.getItem("id");
+      console.log(userData, userId);
       const response = await fetchAPI("api/profiles", "POST", {
         profileName: userData.name,
         profileLastName: userData.lastname,
@@ -46,7 +47,7 @@ export const registerProfileUser =
         profileDocumentNumber: userData.documentNumber,
         profileAddress: userData.address,
         user: {
-          userId: localStorage.getItem("id"),
+          userId: userId,
         },
         profileImgDocument:
           "https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png",

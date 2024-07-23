@@ -48,8 +48,7 @@ const ShelterNav = () => {
           <li>
             <button
               onClick={() => {
-                dispatch(logout());
-                router.push("/");
+                dispatch(logout(router));
               }}
             >
               Cerrar Sesión
