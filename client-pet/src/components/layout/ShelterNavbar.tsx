@@ -15,13 +15,13 @@ const menu = [
   },
   {
     id: 2,
-    name: "Refugio",
-    href: "/shelter",
+    name: "Perfil",
+    href: "/shelter/profile",
   },
   {
     id: 3,
-    name: "Perfil",
-    href: "/shelter/profile",
+    name: "Refugio",
+    href: "/shelter",
   },
   {
     id: 4,

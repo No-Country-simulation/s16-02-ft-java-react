@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import logo from "../../assets/logo-horizontal.png";
 import Image from "next/image";

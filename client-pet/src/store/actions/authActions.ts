@@ -2,6 +2,9 @@ import { deleteCookie, setCookie } from "cookies-next";
 import { fetchAPI } from "@helpers";
 import {
   checkAuth,
+  getUserFailure,
+  getUserStart,
+  getUserSuccess,
   loginFailure,
   loginStart,
   loginSuccess,
@@ -32,7 +35,7 @@ export const login =
       if (user.role === "ROLE_USER") {
         router.push("/");
       } else if (user.role === "ROLE_SHELTER") {
-        router.push("/shelter");
+        router.push("/shelter/profile");
       } else {
         router.push("/none");
       }
@@ -76,3 +79,20 @@ export const checkAuthentication = () => async (dispatch: any) => {
     console.log("check auth with'out localstorage");
   }
 };
+
+export const checkShelterAuth =
+  (userEmail: string) => async (dispatch: any) => {
+    dispatch(getUserStart());
+    try {
+      const response = await fetchAPI(
+        `api/auth/user/${userEmail}`,
+        "GET",
+        null,
+        "YES"
+      );
+      dispatch(getUserSuccess(response.userId));
+      console.log("check userId", response.userId);
+    } catch (error) {
+      dispatch(getUserFailure(error.message));
+    }
+  };

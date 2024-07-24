@@ -33,6 +33,7 @@ export const fetchAPI = async (
   token: "YES" | "NO" = "NO"
 ): Promise<any> => {
   const url = `${baseUrl}/${endpoint}`;
+  console.log(url);
 
   if (token === "NO") {
     const options = createOptions(method, data);

@@ -5,6 +5,9 @@ import {
   createUserStart,
   navUserProfile,
   navDefault,
+  getUserProfileStart,
+  getUserProfileSuccess,
+  getUserProfileFailure,
 } from "../slices/userSlice";
 
 export const registerUser =
@@ -67,3 +70,19 @@ export const registerProfileUser =
       dispatch(createUserFailure(error.message));
     }
   };
+
+export const getUserProfile = (userId: string) => async (dispatch: any) => {
+  dispatch(getUserProfileStart());
+  try {
+    const response = await fetchAPI(
+      `api/profiles/byUserId/${userId}`,
+      "GET",
+      null,
+      "YES"
+    );
+    dispatch(getUserProfileSuccess(response));
+    console.log("get shelter profile", response);
+  } catch (error) {
+    dispatch(getUserProfileFailure(error.message));
+  }
+};
