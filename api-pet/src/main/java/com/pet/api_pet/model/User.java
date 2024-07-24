@@ -1,6 +1,7 @@
 package com.pet.api_pet.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.pet.api_pet.model.enums.AuthProvider;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,7 +30,12 @@ public class User extends Auditable{
 
     private String username;
 
+    private String firstName;
+
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    private AuthProvider authProvider;
 
     @ManyToOne
     @JoinColumn(name = "role_id",nullable = false,foreignKey = @ForeignKey(name="FK_USERS_ROLE"))
