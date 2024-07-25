@@ -32,9 +32,6 @@ public class ApplicationController {
         try {
 
             List<ApplicationDTO> list = service.findAll().stream().map(p -> mapper.map(p, ApplicationDTO.class)).collect(Collectors.toList());
-            if (list.isEmpty()) {
-                throw new ModelNotFoundException("No se encontraron solicitudes");
-            }
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e) {
             throw new RuntimeException("Error al obtener solicitudes", e);
@@ -79,9 +76,6 @@ public class ApplicationController {
         try {
 
             List<ApplicationDTO> list = service.findAllByUserid(id).stream().map(p -> mapper.map(p, ApplicationDTO.class)).collect(Collectors.toList());
-            if (list.isEmpty()) {
-                throw new ModelNotFoundException("No se encontraron solicitudes");
-            }
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e) {
             throw new RuntimeException("Error al obtener solicitudes", e);

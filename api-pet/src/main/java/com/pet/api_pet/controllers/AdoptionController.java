@@ -31,9 +31,6 @@ public class AdoptionController {
         try {
 
             List<AdoptionDTO> list = service.findAll().stream().map(p -> mapper.map(p, AdoptionDTO.class)).collect(Collectors.toList());
-            if (list.isEmpty()) {
-                throw new ModelNotFoundException("No se encontraron adopciones");
-            }
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e) {
             throw new RuntimeException("Error al obtener adopciones", e);
@@ -78,9 +75,6 @@ public class AdoptionController {
         try {
 
             List<AdoptionViewDTO> list = service.findAllAdoptionByUserId(id).stream().map(p -> mapper.map(p, AdoptionViewDTO.class)).collect(Collectors.toList());
-            if (list.isEmpty()) {
-                throw new ModelNotFoundException("No se encontraron adopciones");
-            }
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e) {
             throw new RuntimeException("Error al obtener adopciones", e);

@@ -76,9 +76,6 @@ public class ShelterController {
             List<ShelterDTO> shelters = service.findAll().stream()
                     .map(shelter -> mapper.map(shelter, ShelterDTO.class))
                     .collect(Collectors.toList());
-            if (shelters.isEmpty()) {
-                throw new ModelNotFoundException("No se encontraron refugios");
-            }
             return new ResponseEntity<>(shelters, HttpStatus.OK);
         } catch (Exception e) {
             throw new RuntimeException("Error al obtener el listado de refugios", e);

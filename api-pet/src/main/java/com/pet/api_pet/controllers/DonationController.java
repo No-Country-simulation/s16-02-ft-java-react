@@ -31,9 +31,6 @@ public class DonationController {
         try {
 
             List<DonationDTO> list = service.findAll().stream().map(p -> mapper.map(p, DonationDTO.class)).collect(Collectors.toList());
-            if (list.isEmpty()) {
-                throw new ModelNotFoundException("No se encontraron donaciones");
-            }
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e) {
             throw new RuntimeException("Error al obtener donaciones", e);

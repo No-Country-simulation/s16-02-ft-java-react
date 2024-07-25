@@ -30,9 +30,6 @@ public class VisitController {
     public ResponseEntity<List<VisitDTO>> findAll(){
         try {
             List<VisitDTO> list = service.findAll().stream().map(p -> mapper.map(p, VisitDTO.class)).collect(Collectors.toList());
-            if (list.isEmpty()) {
-                throw new ModelNotFoundException("No se encontraron visitas");
-            }
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e) {
             throw new RuntimeException("Error al obtener visita", e);
