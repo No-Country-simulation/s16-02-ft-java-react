@@ -23,7 +23,7 @@ public class SubCategory {
     private String subCategoryName;
     
     @ManyToOne
-    @JoinColumn(name = "category_id",nullable = false,foreignKey = @ForeignKey(name = "FK_CATEGORY"))
+    @JoinColumn(name = "category_id",nullable = false,foreignKey = @ForeignKey(name = "FK_CATEGORY_SUBCATEGORIES"))
     private Category category;
     
 }

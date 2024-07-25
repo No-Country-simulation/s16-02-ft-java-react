@@ -6,8 +6,9 @@ import com.pet.api_pet.repository.ISubCategoryRepo;
 import com.pet.api_pet.service.ISubCategoryService;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public class SubCategoryServiceImpl extends CRUDServiceImpl<SubCategory, UUID> 
         implements ISubCategoryService {
 
