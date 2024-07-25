@@ -75,10 +75,7 @@ const Navbar = () => {
 
       {role === "ROLE_SHELTER" && (
         <div className="main-navbar__auth">
-          <Link
-            href={"/shelter/profile"}
-            className="button button__secondary border"
-          >
+          <Link href={"/shelter"} className="button button__secondary border">
             Perfil de Refugio
           </Link>
           <Button

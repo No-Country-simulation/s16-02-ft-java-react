@@ -48,6 +48,11 @@ const shelterSlice = createSlice({
       state.status = "failed";
       state.error = action.payload;
     },
+    defaultShelter: (state) => {
+      state.status = "idle";
+      state.error = null;
+      state.shelter = null;
+    },
   },
 });
 
@@ -58,6 +63,7 @@ export const {
   getShelterStart,
   getShelterSuccess,
   getShelterFailure,
+  defaultShelter,
 } = shelterSlice.actions;
 
 export default shelterSlice.reducer;

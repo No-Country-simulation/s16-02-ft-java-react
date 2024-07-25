@@ -11,6 +11,7 @@ import {
   logoutStart,
 } from "../slices/authSlice";
 import { LoginProps } from "@types";
+import { defaultShelter } from "store/slices/shelterSlice";
 
 export const login =
   (credentials: LoginProps, router: any) => async (dispatch: any) => {
@@ -35,7 +36,7 @@ export const login =
       if (user.role === "ROLE_USER") {
         router.push("/");
       } else if (user.role === "ROLE_SHELTER") {
-        router.push("/shelter/profile");
+        router.push("/shelter");
       } else {
         router.push("/none");
       }
@@ -52,6 +53,7 @@ export const logout = (router: any) => async (dispatch: any) => {
     localStorage.clear();
     router.push("/");
     dispatch(checkAuth({ username: "", role: "" }));
+    dispatch(defaultShelter());
   } catch (error) {
     console.log(error);
   }

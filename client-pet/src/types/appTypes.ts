@@ -65,3 +65,8 @@ export interface FetchOptionsProps {
   };
   body?: string;
 }
+
+export interface ShelterProps {
+  name: string;
+  address: string;
+}
