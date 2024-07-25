@@ -1,6 +1,6 @@
 package com.pet.api_pet.service.impl;
 
-import com.pet.api_pet.model.MultimediaBlog;
+import com.pet.api_pet.model.blog.MultimediaBlog;
 import com.pet.api_pet.repository.IGenericRepo;
 import com.pet.api_pet.repository.IMultimediaBlogRepo;
 import com.pet.api_pet.service.IMultimediaBlogService;

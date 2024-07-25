@@ -1,6 +1,6 @@
 package com.pet.api_pet.service.impl;
 
-import com.pet.api_pet.model.OrderDetail;
+import com.pet.api_pet.model.eccomerce.OrderDetail;
 import com.pet.api_pet.repository.IGenericRepo;
 import com.pet.api_pet.repository.IOrderDetailRepo;
 import com.pet.api_pet.service.IOrderDetailService;

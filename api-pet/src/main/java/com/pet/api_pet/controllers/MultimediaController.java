@@ -2,7 +2,7 @@ package com.pet.api_pet.controllers;
 
 import com.pet.api_pet.dto.MultimediaDTO;
 import com.pet.api_pet.exception.ModelNotFoundException;
-import com.pet.api_pet.model.Multimedia;
+import com.pet.api_pet.model.adoption.Multimedia;
 import com.pet.api_pet.service.IMultimediaService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,6 @@
 package com.pet.api_pet.service;
 
-import com.pet.api_pet.model.Application;
-import org.springframework.web.bind.annotation.PathVariable;
+import com.pet.api_pet.model.adoption.Application;
 
 import java.util.List;
 import java.util.UUID;

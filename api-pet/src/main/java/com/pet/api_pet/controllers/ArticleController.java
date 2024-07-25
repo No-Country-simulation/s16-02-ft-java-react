@@ -2,7 +2,7 @@ package com.pet.api_pet.controllers;
 
 import com.pet.api_pet.dto.ArticleDTO;
 import com.pet.api_pet.exception.ModelNotFoundException;
-import com.pet.api_pet.model.Article;
+import com.pet.api_pet.model.blog.Article;
 import com.pet.api_pet.service.IArticleService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

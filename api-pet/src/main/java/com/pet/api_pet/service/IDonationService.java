@@ -1,8 +1,7 @@
 package com.pet.api_pet.service;
 
-import com.pet.api_pet.model.Donation;
+import com.pet.api_pet.model.adoption.Donation;
 
-import java.util.List;
 import java.util.UUID;
 
 public interface IDonationService extends ICRUDService<Donation,UUID>{

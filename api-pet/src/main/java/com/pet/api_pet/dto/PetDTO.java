@@ -1,6 +1,11 @@
 package com.pet.api_pet.dto;
 
 import com.pet.api_pet.model.*;
+import com.pet.api_pet.model.adoption.PetSize;
+import com.pet.api_pet.model.adoption.PetState;
+import com.pet.api_pet.model.adoption.PetType;
+import com.pet.api_pet.model.adoption.Shelter;
+import com.pet.api_pet.model.adoption.enums.PetSex;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,7 +1,7 @@
 package com.pet.api_pet.service.impl;
 
-import com.pet.api_pet.model.Adoption;
-import com.pet.api_pet.model.AdoptionView;
+import com.pet.api_pet.model.adoption.Adoption;
+import com.pet.api_pet.model.adoption.AdoptionView;
 import com.pet.api_pet.repository.IAdoptionRepo;
 import com.pet.api_pet.repository.IAdoptionViewRepo;
 import com.pet.api_pet.repository.IGenericRepo;

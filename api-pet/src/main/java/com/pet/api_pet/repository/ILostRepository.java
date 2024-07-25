@@ -1,6 +1,6 @@
 package com.pet.api_pet.repository;
 
-import com.pet.api_pet.model.Lost;
+import com.pet.api_pet.model.adoption.Lost;
 
 import java.util.UUID;
 

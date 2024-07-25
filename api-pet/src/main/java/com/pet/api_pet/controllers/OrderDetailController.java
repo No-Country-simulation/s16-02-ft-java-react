@@ -2,7 +2,7 @@ package com.pet.api_pet.controllers;
 
 import com.pet.api_pet.dto.OrderDetailDTO;
 import com.pet.api_pet.exception.ModelNotFoundException;
-import com.pet.api_pet.model.OrderDetail;
+import com.pet.api_pet.model.eccomerce.OrderDetail;
 import com.pet.api_pet.service.IOrderDetailService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

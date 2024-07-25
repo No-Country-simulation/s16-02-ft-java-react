@@ -1,6 +1,6 @@
 package com.pet.api_pet.repository;
 
-import com.pet.api_pet.model.Application;
+import com.pet.api_pet.model.adoption.Application;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.PathVariable;
 

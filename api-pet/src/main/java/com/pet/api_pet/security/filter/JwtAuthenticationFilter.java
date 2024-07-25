@@ -1,6 +1,6 @@
 package com.pet.api_pet.security.filter;
 
-import com.pet.api_pet.model.User;
+import com.pet.api_pet.model.auth.User;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

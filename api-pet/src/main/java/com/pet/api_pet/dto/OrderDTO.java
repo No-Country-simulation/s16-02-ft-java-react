@@ -1,7 +1,7 @@
 package com.pet.api_pet.dto;
 
 import com.pet.api_pet.model.Auditable;
-import com.pet.api_pet.model.enums.OrderState;
+import com.pet.api_pet.model.eccomerce.enums.OrderState;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

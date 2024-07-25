@@ -1,6 +1,6 @@
 package com.pet.api_pet.service.impl;
 
-import com.pet.api_pet.model.Article;
+import com.pet.api_pet.model.blog.Article;
 import com.pet.api_pet.repository.IArticleRepo;
 import com.pet.api_pet.repository.IGenericRepo;
 import com.pet.api_pet.service.IArticleService;

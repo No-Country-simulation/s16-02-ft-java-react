@@ -2,7 +2,7 @@ package com.pet.api_pet.controllers;
 
 import com.pet.api_pet.dto.CommentaryDTO;
 import com.pet.api_pet.exception.ModelNotFoundException;
-import com.pet.api_pet.model.Commentary;
+import com.pet.api_pet.model.blog.Commentary;
 import com.pet.api_pet.service.ICommentaryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.pet.api_pet.service;
 
-import com.pet.api_pet.model.Shelter;
+import com.pet.api_pet.model.adoption.Shelter;
 
 import java.util.UUID;
 

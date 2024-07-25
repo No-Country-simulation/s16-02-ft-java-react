@@ -3,7 +3,7 @@ package com.pet.api_pet.controllers;
 import com.pet.api_pet.dto.ShelterDTO;
 import com.pet.api_pet.exception.ModelNotFoundException;
 
-import com.pet.api_pet.model.Shelter;
+import com.pet.api_pet.model.adoption.Shelter;
 import com.pet.api_pet.service.IShelterService;
 import java.net.URI;
 import java.util.List;

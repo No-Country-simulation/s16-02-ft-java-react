@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import com.pet.api_pet.dto.RegisterDTO;
-import com.pet.api_pet.model.Role;
-import com.pet.api_pet.model.User;
+import com.pet.api_pet.model.auth.Role;
+import com.pet.api_pet.model.auth.User;
 import com.pet.api_pet.repository.IRoleRepo;
 import com.pet.api_pet.repository.IUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;

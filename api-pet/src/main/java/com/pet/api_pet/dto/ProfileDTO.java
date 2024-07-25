@@ -1,7 +1,7 @@
 package com.pet.api_pet.dto;
 
 import com.pet.api_pet.model.Auditable;
-import com.pet.api_pet.model.DocumentType;
+import com.pet.api_pet.model.auth.DocumentType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;

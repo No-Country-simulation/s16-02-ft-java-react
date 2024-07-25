@@ -1,6 +1,6 @@
 package com.pet.api_pet.repository;
 
-import com.pet.api_pet.model.User;
+import com.pet.api_pet.model.auth.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 

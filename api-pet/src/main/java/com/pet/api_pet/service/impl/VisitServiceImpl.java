@@ -1,6 +1,6 @@
 package com.pet.api_pet.service.impl;
 
-import com.pet.api_pet.model.Visit;
+import com.pet.api_pet.model.adoption.Visit;
 import com.pet.api_pet.repository.IGenericRepo;
 import com.pet.api_pet.repository.IVisitRepo;
 import com.pet.api_pet.service.IVisitService;

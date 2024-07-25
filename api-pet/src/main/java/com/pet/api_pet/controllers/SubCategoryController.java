@@ -2,7 +2,7 @@ package com.pet.api_pet.controllers;
 
 import com.pet.api_pet.dto.SubCategoryDTO;
 import com.pet.api_pet.exception.ModelNotFoundException;
-import com.pet.api_pet.model.SubCategory;
+import com.pet.api_pet.model.eccomerce.SubCategory;
 import com.pet.api_pet.service.ISubCategoryService;
 import java.net.URI;
 import java.util.List;

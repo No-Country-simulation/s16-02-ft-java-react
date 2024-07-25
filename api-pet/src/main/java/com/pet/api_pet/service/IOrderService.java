@@ -1,7 +1,6 @@
 package com.pet.api_pet.service;
 
-import com.pet.api_pet.model.Order;
-import org.springframework.data.domain.Page;
+import com.pet.api_pet.model.eccomerce.Order;
 
 import java.util.List;
 import java.util.UUID;

@@ -1,6 +1,6 @@
 package com.pet.api_pet.dto;
 
-import com.pet.api_pet.model.Order;
+import com.pet.api_pet.model.eccomerce.Order;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

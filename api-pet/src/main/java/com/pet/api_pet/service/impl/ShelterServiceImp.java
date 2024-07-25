@@ -1,6 +1,6 @@
 package com.pet.api_pet.service.impl;
 
-import com.pet.api_pet.model.Shelter;
+import com.pet.api_pet.model.adoption.Shelter;
 import com.pet.api_pet.repository.IGenericRepo;
 import com.pet.api_pet.repository.IShelterRepo;
 import com.pet.api_pet.service.IShelterService;

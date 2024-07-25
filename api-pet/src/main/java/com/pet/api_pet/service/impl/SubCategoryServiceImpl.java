@@ -1,6 +1,6 @@
 package com.pet.api_pet.service.impl;
 
-import com.pet.api_pet.model.SubCategory;
+import com.pet.api_pet.model.eccomerce.SubCategory;
 import com.pet.api_pet.repository.IGenericRepo;
 import com.pet.api_pet.repository.ISubCategoryRepo;
 import com.pet.api_pet.service.ISubCategoryService;

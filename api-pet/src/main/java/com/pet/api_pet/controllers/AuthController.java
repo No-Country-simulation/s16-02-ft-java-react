@@ -2,7 +2,7 @@ package com.pet.api_pet.controllers;
 
 
 import com.pet.api_pet.dto.RegisterDTO;
-import com.pet.api_pet.model.User;
+import com.pet.api_pet.model.auth.User;
 import com.pet.api_pet.service.impl.JpaUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

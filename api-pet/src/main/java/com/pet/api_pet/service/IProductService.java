@@ -1,6 +1,6 @@
 package com.pet.api_pet.service;
 
-import com.pet.api_pet.model.Product;
+import com.pet.api_pet.model.eccomerce.Product;
 import java.util.UUID;
 
 

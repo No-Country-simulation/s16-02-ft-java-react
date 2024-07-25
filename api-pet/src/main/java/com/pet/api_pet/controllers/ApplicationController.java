@@ -3,7 +3,7 @@ package com.pet.api_pet.controllers;
 
 import com.pet.api_pet.dto.ApplicationDTO;
 import com.pet.api_pet.exception.ModelNotFoundException;
-import com.pet.api_pet.model.Application;
+import com.pet.api_pet.model.adoption.Application;
 import com.pet.api_pet.service.IApplicationService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.pet.api_pet.service.impl;
 
-import com.pet.api_pet.model.Commentary;
+import com.pet.api_pet.model.blog.Commentary;
 import com.pet.api_pet.repository.ICommentaryRepo;
 import com.pet.api_pet.repository.IGenericRepo;
 import com.pet.api_pet.service.ICommentaryService;

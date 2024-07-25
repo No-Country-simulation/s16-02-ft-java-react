@@ -1,6 +1,6 @@
 package com.pet.api_pet.service;
 
-import com.pet.api_pet.model.Visit;
+import com.pet.api_pet.model.adoption.Visit;
 
 import java.util.UUID;
 

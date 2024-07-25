@@ -1,6 +1,6 @@
 package com.pet.api_pet.repository;
 
-import com.pet.api_pet.model.Role;
+import com.pet.api_pet.model.auth.Role;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.UUID;

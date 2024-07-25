@@ -1,6 +1,6 @@
 package com.pet.api_pet.service.impl;
 
-import com.pet.api_pet.model.Multimedia;
+import com.pet.api_pet.model.adoption.Multimedia;
 import com.pet.api_pet.repository.IGenericRepo;
 import com.pet.api_pet.repository.IMultimediaRepo;
 import com.pet.api_pet.service.IMultimediaService;

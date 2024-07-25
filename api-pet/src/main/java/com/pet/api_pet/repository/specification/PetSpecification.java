@@ -1,6 +1,6 @@
 package com.pet.api_pet.repository.specification;
 
-import com.pet.api_pet.model.Pet;
+import com.pet.api_pet.model.adoption.Pet;
 import org.springframework.data.jpa.domain.Specification;
 
 public class PetSpecification {

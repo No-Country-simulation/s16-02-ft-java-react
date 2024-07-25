@@ -2,7 +2,7 @@ package com.pet.api_pet.controllers;
 
 import com.pet.api_pet.dto.ProductDTO;
 import com.pet.api_pet.exception.ModelNotFoundException;
-import com.pet.api_pet.model.Product;
+import com.pet.api_pet.model.eccomerce.Product;
 import com.pet.api_pet.service.IProductService;
 import java.net.URI;
 import java.util.List;
