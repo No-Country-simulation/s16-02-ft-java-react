@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface UserStateProps {
-  shelter: any;
+interface PetStateProps {
+  pet: any;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
   isLoading: boolean;
 }
 
-const initialState: UserStateProps = {
-  shelter: null,
+const initialState: PetStateProps = {
+  pet: null,
   status: "idle",
   error: null,
   isLoading: false,
@@ -25,7 +25,7 @@ const petSlice = createSlice({
     },
     createPetSuccess(state, action) {
       state.isLoading = false;
-      state.shelter = action.payload;
+      state.pet = action.payload;
       state.status = "succeeded";
     },
     createPetFailure(state, action) {
@@ -40,7 +40,7 @@ const petSlice = createSlice({
     },
     getPetSuccess: (state, action) => {
       state.isLoading = false;
-      state.shelter = action.payload;
+      state.pet = action.payload;
       state.status = "succeeded";
     },
     getPetFailure: (state, action) => {
@@ -51,7 +51,7 @@ const petSlice = createSlice({
     defaultPet: (state) => {
       state.status = "idle";
       state.error = null;
-      state.shelter = null;
+      state.pet = null;
     },
   },
 });

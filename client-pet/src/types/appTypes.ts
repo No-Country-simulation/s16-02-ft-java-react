@@ -71,3 +71,18 @@ export interface ShelterProps {
   name: string;
   address: string;
 }
+
+export interface PetProps {
+  name: string;
+  age: number;
+  type: string;
+  breed: string;
+  size: string;
+  sex: string;
+  weight: number;
+  state: string;
+  temperament: string;
+  foundPlace: string;
+  shelterId?: string;
+  districtId?: string;
+}

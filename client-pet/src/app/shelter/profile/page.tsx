@@ -13,33 +13,26 @@ const ShelterProfilePage = () => {
   }, []);
   console.log(status);
   return (
-    <div className="shelterPanel">
-      <div className="shelterPanel__header">
-        <header>
-          <h1>Perfil de usuario.</h1>
-        </header>
+    <section className="shelterPanel__body">
+      <div className="shelterPanel__body--main">
+        {!user && <div>cargando datos de usuario...</div>}
+        {user && (
+          <div>
+            <div>Nombre: {user.profileName}</div>
+            <div>Apellidos: {user.profileLastName}</div>
+            <div>Direccion: {user.profileAddress}</div>
+            <div>Tipo de documento: {user.profileDocumentType}</div>
+            <div>Nro de documento: {user.profileDocumentNumber}</div>
+            {/* <span>Distrito</span> */}
+            {/* <div>Distrito Id: {user.districtId}</div> */}
+            {/* <div>Nombre de distrito: {user.district.districtName}</div> */}
+            {/* <span>Ciudad</span> */}
+            {/* <div>ciuidad Id: {user.district.city.cityId}</div> */}
+            {/* <div>nombre de ciudad: {user.district.city.cityName}</div> */}
+          </div>
+        )}
       </div>
-      <section className="shelterPanel__body">
-        <div className="shelterPanel__body--main">
-          {!user && <div>cargando datos de usuario...</div>}
-          {user && (
-            <div>
-              <div>Nombre: {user.profileName}</div>
-              <div>Apellidos: {user.profileLastName}</div>
-              <div>Direccion: {user.profileAddress}</div>
-              <div>Tipo de documento: {user.profileDocumentType}</div>
-              <div>Nro de documento: {user.profileDocumentNumber}</div>
-              {/* <span>Distrito</span> */}
-              {/* <div>Distrito Id: {user.districtId}</div> */}
-              {/* <div>Nombre de distrito: {user.district.districtName}</div> */}
-              {/* <span>Ciudad</span> */}
-              {/* <div>ciuidad Id: {user.district.city.cityId}</div> */}
-              {/* <div>nombre de ciudad: {user.district.city.cityName}</div> */}
-            </div>
-          )}
-        </div>
-      </section>
-    </div>
+    </section>
   );
 };
 
