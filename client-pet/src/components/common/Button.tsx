@@ -12,10 +12,11 @@ const Button = ({
   isDisabled = false,
   isLoading = false,
   loadingMessage,
+  isRounded,
 }: ButtonProps) => {
   return (
     <button
-      className={`button button__${color} ${mode} ${isBordered ? "border" : ""} ${className}`}
+      className={`button button__${color} ${mode} ${isBordered ? "border" : ""} ${isRounded ? "rounded" : ""} ${className}`}
       onClick={onClick}
       type={type}
       disabled={isLoading ? true : isDisabled}

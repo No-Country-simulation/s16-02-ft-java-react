@@ -66,6 +66,12 @@
   border-radius: var(--br-sm);
 }
 
+.rounded {
+  border-radius: 1000px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .primary {
   padding: 10px 32px;
   font-size: var(--fs-md);

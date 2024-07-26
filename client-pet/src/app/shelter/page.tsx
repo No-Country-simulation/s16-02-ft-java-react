@@ -10,24 +10,26 @@ const RefugioPage = () => {
         </header>
       </div>
       <section className="shelterHome__body shelterPanel__body">
-        <div className="shelterHome__body--row shelterPanel__body--row">
-          <h2>Primeros pasos</h2>
-          <div className="row-table">
-            <span>Action 1</span>
-            <span>Action 2</span>
-            <span>Action 3</span>
-            <span>Action 4</span>
-            <span>Action 5</span>
-            <span>Action 6</span>
+        <div className="shelterPanel__body--main">
+          <div className="row-main">
+            <h2>Primeros pasos</h2>
+            <div className="row-table">
+              <span>Action 1</span>
+              <span>Action 2</span>
+              <span>Action 3</span>
+              <span>Action 4</span>
+              <span>Action 5</span>
+              <span>Action 6</span>
+            </div>
           </div>
-        </div>
-        <div className="shelterPanel__body--row">
-          <h2>Actividades recientes</h2>
-          <div>sin actividades recientes</div>
-        </div>
-        <div className="shelterPanel__body--row">
-          <h2>Nuevas solicitudes de adopción</h2>
-          <div>aun no tienes solicitudes</div>
+          <div className="row-main">
+            <h2>Actividades recientes</h2>
+            <div>sin actividades recientes</div>
+          </div>
+          <div className="row-main">
+            <h2>Nuevas solicitudes de adopción</h2>
+            <div>aun no tienes solicitudes</div>
+          </div>
         </div>
       </section>
     </div>

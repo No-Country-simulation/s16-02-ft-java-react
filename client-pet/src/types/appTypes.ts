@@ -33,6 +33,7 @@ export interface ButtonProps {
   isDisabled?: boolean;
   isLoading?: boolean;
   loadingMessage?: string;
+  isRounded?: boolean;
 }
 
 export interface LoginProps {

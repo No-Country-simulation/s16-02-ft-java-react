@@ -5,11 +5,13 @@ const RequestPage = () => {
     <div className="shelterPanel">
       <div className="shelterPanel__header">
         <header>
-          <h2>Solicitudes de Adopción.</h2>
+          <h1>Solicitudes de Adopción.</h1>
         </header>
       </div>
       <section className="shelterPanel__body">
-        Solicitudes de adopcion de mascotas
+        <div className="shelterPanel__body--main">
+          Solicitudes de adopcion de mascotas
+        </div>
       </section>
     </div>
   );

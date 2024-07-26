@@ -20,49 +20,70 @@
   }
 
   &__body {
-    padding: 4rem;
-    display: flex;
-    flex-direction: column;
-    gap: 3em;
-    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    min-height: calc(100% - 150px);
+    // padding: 4rem;
+    // max-width: 1200px;
 
-    &--row {
-      h2 {
-        font-size: var(--fs-xl);
-        font-weight: 400;
-        margin-bottom: 1rem;
-      }
+    &--main {
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
 
-      .row-table {
-        border: var(--b-primary);
-        border-radius: var(--br-sm);
-        width: 100%;
+      .row-main {
+        h2 {
+          font-size: var(--fs-xl);
+          font-weight: 400;
+          margin-bottom: 1rem;
+        }
 
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
+        .row-table {
+          border: var(--b-primary);
+          border-radius: var(--br-sm);
+          width: 100%;
 
-        span {
-          border-bottom: var(--b-primary);
-          border-right: var(--b-primary);
-          height: 50px;
-          display: flex;
-          align-items: center;
-          padding: 0 1rem;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: auto;
 
-          &:nth-last-child(1) {
-            border-bottom: none;
-          }
+          span {
+            border-bottom: var(--b-primary);
+            border-right: var(--b-primary);
+            height: 50px;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
 
-          &:nth-last-child(2) {
-            border-bottom: none;
-          }
+            &:nth-last-child(1) {
+              border-bottom: none;
+            }
 
-          &:nth-child(2n) {
-            border-right: none;
+            &:nth-last-child(2) {
+              border-bottom: none;
+            }
+
+            &:nth-child(2n) {
+              border-right: none;
+            }
           }
         }
       }
+
+      border: 1px solid blue;
     }
+
+    &--aside {
+      height: 100%;
+      border: 1px solid red;
+    }
+
+    &--nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+
   }
 }

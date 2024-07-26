@@ -39,20 +39,37 @@ const ShelterManagePage = () => {
   };
 
   useEffect(() => {
-    // if (!shelter) dispatch(getShelter(id));
+    if (id && !shelter && status !== "loading") dispatch(getShelter(id));
     console.log("status shelter", status);
   }, []);
   return (
     <div className="shelterPanel">
       <div className="shelterPanel__header">
         <header>
-          <h2>Perfil de refugio.</h2>
+          <h1>Perfil de refugio.</h1>
         </header>
       </div>
       <section className="shelterPanel__body">
-        {!shelter && status === "loading" && <div>cargando datos...</div>}
-        {!shelter && status === "failed" && <div>crear refugio</div>}
-        {shelter && status === "succeeded" && <div>{shelter.shelterName}</div>}
+        <div className="shelterPanel__body--main">
+          {!shelter && status === "loading" && <div>cargando datos...</div>}
+          {!shelter && status === "failed" && (
+            <div>
+              Nececitas crear un perfil de refugio
+              {/* <div className="shelterPanel__body--nav"> */}
+              {/*   <Button color="secondary" isRounded> */}
+              {/*     Perfil */}
+              {/*   </Button> */}
+              {/*   <Button color="secondary" isRounded> */}
+              {/*     Crear Perfil */}
+              {/*   </Button> */}
+              {/* </div> */}
+            </div>
+          )}
+          {shelter && status === "succeeded" && <div>datos de refugio</div>}
+        </div>
+        {!shelter && status === "failed" && (
+          <div className="shelterPanel__body--aside">crear refugio</div>
+        )}
       </section>
       {/* {!shelter && status === "loading" ? ( */}
       {/*   <div>cargando datos refugio...</div> */}

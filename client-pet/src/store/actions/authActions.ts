@@ -24,7 +24,7 @@ export const login =
 
       const user = {
         username: response.username,
-        role: response.role[0].authority,
+        role: response.rol[0].authority,
         token: response.token,
       };
       setCookie("token", response.token);

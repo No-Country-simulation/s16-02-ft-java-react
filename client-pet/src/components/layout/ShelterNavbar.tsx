@@ -18,13 +18,19 @@ const menu = [
     name: "Refugio",
     href: "/shelter/manage",
   },
+
   {
-    id: 3,
+    id: 4,
+    name: "Mascotas",
+    href: "/shelter/pets",
+  },
+  {
+    id: 5,
     name: "Perfil",
     href: "/shelter/profile",
   },
   {
-    id: 4,
+    id: 6,
     name: "Solicitudes de adopción",
     href: "/shelter/request",
   },
