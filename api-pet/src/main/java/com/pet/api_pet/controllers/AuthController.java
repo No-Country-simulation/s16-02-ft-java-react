@@ -5,6 +5,7 @@ import com.pet.api_pet.dto.RegisterDTO;
 import com.pet.api_pet.dto.UserDTO;
 import com.pet.api_pet.model.auth.User;
 import com.pet.api_pet.service.impl.JpaUserDetailsService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,12 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+
+    @Autowired
+    private IUserService service;
+
+    @Autowired
+    private ModelMapper mapper;
 
     @Autowired
     private JpaUserDetailsService userService;
