@@ -4,6 +4,7 @@ package com.pet.api_pet.controllers;
 import com.pet.api_pet.dto.RegisterDTO;
 import com.pet.api_pet.dto.UserDTO;
 import com.pet.api_pet.model.auth.User;
+import com.pet.api_pet.service.IUserService;
 import com.pet.api_pet.service.impl.JpaUserDetailsService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
