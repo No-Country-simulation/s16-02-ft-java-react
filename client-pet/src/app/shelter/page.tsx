@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { CircleCheck } from "@icons";
 
 const RefugioPage = () => {
   return (
@@ -14,21 +15,39 @@ const RefugioPage = () => {
           <div className="row-main">
             <h2>Primeros pasos</h2>
             <div className="row-table">
-              <span>Action 1</span>
-              <span>Action 2</span>
-              <span>Action 3</span>
-              <span>Action 4</span>
-              <span>Action 5</span>
-              <span>Action 6</span>
+              <div className="table-item">
+                <CircleCheck active />
+                <span>Empieza creando tu refugio</span>
+              </div>
+              <div className="table-item">
+                <CircleCheck />
+                <span>Agrega mascotas a tu refugio</span>
+              </div>
+              <div className="table-item">
+                <CircleCheck />
+                <span>Verifica la lista de mascotas</span>
+              </div>
+              <div className="table-item">
+                <CircleCheck />
+                <span>Revisa los datos de perfil</span>
+              </div>
+              <div className="table-item">
+                <CircleCheck />
+                <span>Rivisa tus solicitudes</span>
+              </div>
+              <div className="table-item">
+                <CircleCheck />
+                <span>Acepta tu primera solicitud</span>
+              </div>
             </div>
           </div>
           <div className="row-main">
             <h2>Actividades recientes</h2>
-            <div>sin actividades recientes</div>
+            <div className="main-activity">sin actividades recientes</div>
           </div>
           <div className="row-main">
             <h2>Nuevas solicitudes de adopción</h2>
-            <div>aun no tienes solicitudes</div>
+            <div className="main-activity">aun no tienes solicitudes</div>
           </div>
         </div>
       </section>

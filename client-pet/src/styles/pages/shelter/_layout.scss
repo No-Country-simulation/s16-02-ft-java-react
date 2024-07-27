@@ -32,6 +32,16 @@
       flex-direction: column;
       gap: 3rem;
 
+      .main-activity {
+        border: 1px dashed gray;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100px;
+        border-radius: var(--br-sm);
+        background: pink;
+      }
+
       .row-main {
         h2 {
           font-size: var(--fs-xl);
@@ -40,6 +50,8 @@
         }
 
         .row-table {
+
+          background: pink;
           border: var(--b-primary);
           border-radius: var(--br-sm);
           width: 100%;
@@ -48,13 +60,18 @@
           grid-template-columns: 1fr 1fr;
           grid-template-rows: auto;
 
-          span {
+          .table-item {
             border-bottom: var(--b-primary);
             border-right: var(--b-primary);
             height: 50px;
             display: flex;
             align-items: center;
             padding: 0 1rem;
+            gap: .7rem;
+
+            span {
+              margin-top: -4px;
+            }
 
             &:nth-last-child(1) {
               border-bottom: none;
