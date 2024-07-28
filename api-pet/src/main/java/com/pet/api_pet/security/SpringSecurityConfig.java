@@ -25,11 +25,11 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-@Configuration
-@EnableWebSecurity
-@EnableMethodSecurity( prePostEnabled = true)
+//@Configuration
+//@EnableWebSecurity
+//@EnableMethodSecurity( prePostEnabled = true)
 public class SpringSecurityConfig {
-
+/*
     @Autowired
     private AuthenticationConfiguration authenticationConfiguration;
 
@@ -97,5 +97,5 @@ public class SpringSecurityConfig {
         JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter(authenticationManager());
         jwtAuthenticationFilter.setFilterProcessesUrl("/api/login");
         return jwtAuthenticationFilter;
-    }
+    }*/
 }
