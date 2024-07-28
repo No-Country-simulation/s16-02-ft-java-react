@@ -17,7 +17,7 @@ const menu = [
   {
     id: 2,
     name: "Adopta",
-    href: "/adopcion",
+    href: "/adopt",
   },
   {
     id: 3,
@@ -93,7 +93,10 @@ const Navbar = () => {
 
       {!role && (
         <div className="main-navbar__auth">
-          <Link href={"/auth/login"} className="button button__primary border">
+          <Link
+            href={"/auth/login"}
+            className="button button__secondary border pink"
+          >
             Iniciar Sesión
           </Link>
           <Link
@@ -101,7 +104,7 @@ const Navbar = () => {
             onClick={() => {
               dispatch(navDefault());
             }}
-            className="button button__primary border"
+            className="button button__secondary border pink"
           >
             Crear Cuenta
           </Link>

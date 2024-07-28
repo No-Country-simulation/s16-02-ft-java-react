@@ -1,11 +1,9 @@
 .shelterNav {
   min-width: 250px;
   min-height: 100vh;
-  // background: #D7A6B3;
-  // background: #F3C6D2;
   background: pink;
 
-  // border-right: var(--b-primary);
+  // border-right: var(--b-secondary);
   // border: 1px solid blue;
   // max-width: 1600px;
   // width: 100%;
@@ -15,7 +13,7 @@
 
   &__logo {
     height: 150px;
-    border-bottom: var(--b-primary);
+    border-bottom: var(--b-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,7 +38,7 @@
       // font-weight: medium;
 
       li {
-        border-bottom: var(--b-primary);
+        border-bottom: var(--b-secondary);
         height: 55px;
         display: flex;
         align-items: center;
@@ -48,7 +46,7 @@
 
         a,
         button {
-          border-bottom: var(--b-primary);
+          border-bottom: var(--b-secondary);
         }
       }
     }

@@ -3,9 +3,11 @@
   --ff-playfair: "Playfair Display", serif;
 
   --c-dark: #232323;
+  --c-dark-variant: rgba(0, 0, 0, 0.4);
   --c-light: #f0f0f0;
   // --c-primary: #007bff;
-  --c-primary: linear-gradient(to left, #f6d5f7, #fbe9d7);
+  // --c-primary: linear-gradient(to left, #f6d5f7, #fbe9d7);
+  --c-primary: pink;
   --c-primary-hover: linear-gradient(to left, #f6d5f7, #fbe9d7);
   --c-secondary: #6c757d;
   --c-success: #28a745;
@@ -16,7 +18,7 @@
   --c-text: #343a40;
 
   --b-primary: 1px solid var(--c-dark);
-  --b-secondary: 1px solid var(--c-dark);
+  --b-secondary: 1px solid var(--c-dark-variant);
 
   --fs-base: clamp(12px, 1.5vw, 16px);
   --fs-large: clamp(1.rem, 2vw, 1.25rem);

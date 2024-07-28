@@ -1,12 +1,15 @@
 .shelterLayout {
   display: grid;
   grid-template-columns: auto 1fr;
+  grid-template-rows: auto;
+
 }
 
 .shelterPanel {
+
   &__header {
     height: 150px;
-    border-bottom: var(--b-primary);
+    border-bottom: var(--b-secondary);
     display: flex;
     align-items: center;
     padding: 0 4rem;
@@ -20,7 +23,9 @@
   &__body {
     display: grid;
     grid-template-columns: 2fr 1fr;
+    // height: 100%;
     min-height: calc(100% - 150px);
+    position: relative;
 
     &--main {
       padding: 4rem;
@@ -28,8 +33,10 @@
       flex-direction: column;
       gap: 3rem;
 
+      height: 3000px;
+
       .main-activity {
-        border: 1px dashed gray;
+        border: var(--b-secondary);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -41,7 +48,7 @@
       .row-variant {
         display: grid;
         grid-template-columns: 1fr 2fr;
-        border-bottom: 1px solid gray;
+        border-bottom: var(--b-secondary);
         padding-bottom: 3rem;
 
         .row-variant-left {
@@ -111,8 +118,19 @@
     }
 
     &--aside {
+      border-left: var(--b-secondary);
+      position: relative;
+      display: flex;
       height: 100%;
-      border-left: 1px solid black;
+
+      .sticky-wrapper {
+        position: sticky;
+        top: 10rem;
+
+        .sticky {
+          padding: 1.5rem;
+        }
+      }
     }
 
     &--nav {

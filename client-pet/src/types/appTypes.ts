@@ -84,12 +84,12 @@ export interface ShelterProps {
 
 export interface PetProps {
   name: string;
-  age: number;
+  age: number | string;
   type: string;
   breed: string;
   size: string;
   sex: "Macho" | "Hembra" | string;
-  weight: number;
+  weight: number | string;
   state: string;
   temperament: string;
   foundPlace: string;

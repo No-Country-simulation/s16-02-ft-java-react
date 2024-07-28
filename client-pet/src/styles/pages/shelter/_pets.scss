@@ -1,10 +1,11 @@
 .petsShelter {
   // background: pink;
+  // min-height: 2000px;
 
   &__main {
 
     &--header {
-      border-bottom: 1px solid black;
+      border-bottom: var(--b-secondary);
       padding-bottom: 2rem;
 
       header {
@@ -20,7 +21,7 @@
 
       &__card {
         width: 100%;
-        border: 1px solid black;
+        border: var(--b-secondary);
         border-radius: var(--br-sm);
         background: pink;
 
@@ -30,7 +31,7 @@
             aspect-ratio: 1 / 1;
             width: 100%;
             border-radius: var(--br-sm);
-            outline: 1px solid black;
+            outline: var(--b-secondary);
           }
         }
 
@@ -42,10 +43,11 @@
   }
 
   &__aside {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    // padding: 1.5rem;
+    // display: flex;
+    // flex-direction: column;
+    // gap: 2rem;
+    // position: relative;
 
     &--form {
       display: flex;
@@ -75,11 +77,12 @@
         flex: 1 0 40%;
       }
 
-      border-bottom: 1px solid black;
+      border-bottom: var(--b-secondary);
       padding-bottom: 2rem;
     }
 
     &--options {
+      margin-top: 1.5rem;
       display: flex;
       gap: 1rem;
 

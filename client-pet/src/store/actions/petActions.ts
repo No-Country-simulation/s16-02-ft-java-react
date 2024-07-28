@@ -57,3 +57,15 @@ export const getPet = (shelterId: string) => async (dispatch: any) => {
     dispatch(getPetFailure(error.message));
   }
 };
+
+export const getPetsHome = () => async (dispatch: any) => {
+  dispatch(getPetStart());
+  try {
+    const response = await fetchAPI(`api/pets/pageable`, "GET", null);
+
+    console.log("get pet home", response);
+    dispatch(getPetSuccess(response));
+  } catch (error) {
+    dispatch(getPetFailure(error.message));
+  }
+};

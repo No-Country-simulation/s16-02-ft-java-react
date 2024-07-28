@@ -7,6 +7,7 @@
     cursor: pointer;
   }
 
+
   &__primary {
     background: var(--c-primary);
     transition: 200ms ease;
@@ -75,6 +76,14 @@
 .primary {
   padding: 10px 32px;
   font-size: var(--fs-md);
+}
+
+
+.pink {
+  background: none;
+  color: #FF66C4;
+  border: 1px solid #FF66C4;
+  box-shadow: 4px 4px 0px 0px #FF66C4;
 }
 
 .loader {

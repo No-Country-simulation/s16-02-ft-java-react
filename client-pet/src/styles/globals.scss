@@ -16,6 +16,7 @@
 @import "./components/common/dropdown.scss";
 @import "./components/layout/shelterNav.scss";
 @import "./pages/shelter/layout.scss";
+@import "./pages/adopt/adopt.scss";
 
 @import "./pages/shelter/pets.scss";
 
@@ -54,6 +55,7 @@ h3,
 h4,
 h5 {
   text-wrap: balance;
+  color: #844078;
 }
 
 input,

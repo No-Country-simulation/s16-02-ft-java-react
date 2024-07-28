@@ -64,6 +64,9 @@ const userSlice = createSlice({
       state.status = "failed";
       state.error = action.payload;
     },
+    defaultUser: (state) => {
+      state.user = null;
+    },
   },
 });
 
@@ -78,6 +81,7 @@ export const {
   getUserProfileFailure,
   getUserProfileSuccess,
   getUserProfileStart,
+  defaultUser,
 } = userSlice.actions;
 
 export default userSlice.reducer;

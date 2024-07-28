@@ -40,9 +40,9 @@
     display: flex;
     gap: var(--spacing-md);
 
-    a {
-      border-bottom: var(--b-primary);
-    }
+    // a {
+    //   border-bottom: var(--b-primary);
+    // }
   }
 
   @media screen and (max-width: 768px) {

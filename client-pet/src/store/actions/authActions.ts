@@ -12,6 +12,8 @@ import {
 } from "../slices/authSlice";
 import { LoginProps } from "@types";
 import { defaultShelter } from "store/slices/shelterSlice";
+import { defaultPet } from "store/slices/petSlice";
+import { defaultUser } from "store/slices/userSlice";
 
 export const login =
   (credentials: LoginProps, router: any) => async (dispatch: any) => {
@@ -54,6 +56,8 @@ export const logout = (router: any) => async (dispatch: any) => {
     router.push("/");
     dispatch(checkAuth({ username: "", role: "" }));
     dispatch(defaultShelter());
+    dispatch(defaultPet());
+    dispatch(defaultUser());
   } catch (error) {
     console.log(error);
   }

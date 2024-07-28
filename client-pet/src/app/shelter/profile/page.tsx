@@ -42,6 +42,13 @@ const ShelterProfilePage = () => {
                   value={user.profileLastName}
                 />
                 <Input
+                  label="Telefono"
+                  name="phone"
+                  placeholder=""
+                  type="text"
+                  value={user.profilePhone}
+                />
+                <Input
                   label="Dirección"
                   name="address"
                   placeholder="Dirección"
