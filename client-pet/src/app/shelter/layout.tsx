@@ -11,13 +11,13 @@ const ShelterLayout = ({ children }: LayoutProps) => {
   const { id } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
-    // if (!id || !user) dispatch(checkShelterAuth(user));
+    if (!id || !user) dispatch(checkShelterAuth(user));
     console.log("id", id);
   }, []);
   return (
     <div className="shelterLayout">
       <ShelterNav />
-      {!id ? <> {children} </> : <span>validando permisos...</span>}
+      {id ? <> {children} </> : <span>validando permisos...</span>}
       {/* {id ? <section>{children}</section> : <span>validando id...</span>} */}
       {/* <Footer /> */}
     </div>

@@ -2,12 +2,12 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState, createShelter, getShelter } from "@store";
-import { Button, Input } from "@components";
+import { Button, Dropdown, Input } from "@components";
 import { ShelterProps } from "@types";
-
 const initialShelterState: ShelterProps = {
   name: "",
   address: "",
+  district: "",
 };
 
 const ShelterManagePage = () => {
@@ -27,6 +27,18 @@ const ShelterManagePage = () => {
     }));
   };
 
+  const handleDropdownChange = (e: any, name: string) => {
+    const value = e.target.textContent;
+    setShelterForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleClear = () => {
+    setShelterForm(initialShelterState);
+  };
+
   const handleSubmit = async () => {
     console.log(shelterForm);
     dispatch(
@@ -39,7 +51,10 @@ const ShelterManagePage = () => {
   };
 
   useEffect(() => {
-    if (id && !shelter && status !== "loading") dispatch(getShelter(id));
+    if (id && !shelter && status !== "loading") {
+      console.log("get shelter");
+      dispatch(getShelter(id));
+    }
     console.log("shelter", shelter);
   }, []);
   return (
@@ -59,10 +74,77 @@ const ShelterManagePage = () => {
             {/* </div> */}
           </div>
         )}
-        {shelter && status === "succeeded" && <div>datos de refugio</div>}
+        {shelter && status === "succeeded" && (
+          <>
+            <div className="row-variant">
+              <div className="row-variant-left">
+                <h2>Detalles de refugio</h2>
+                <p>Lorem ipsun </p>
+              </div>
+              <div className="row-variant-right">
+                <Input
+                  label="Nombre de refugio"
+                  name="name"
+                  placeholder="Nombre"
+                  type="text"
+                  value={shelter.shelterName}
+                />
+                <Input
+                  label="Dirección"
+                  name="address"
+                  placeholder="dirección"
+                  type="text"
+                  value={shelter.shelterAddress}
+                />
+              </div>
+            </div>
+            <div className="row-variant">
+              <div className="row-variant-left">
+                <h2>Mapa</h2>
+                {/* <p>Lorem ipsun </p> */}
+              </div>
+              <div className="row-variant-right">Distrito</div>
+            </div>
+          </>
+        )}
       </div>
       {!shelter && status === "failed" && (
-        <div className="shelterPanel__body--aside">crear refugio</div>
+        <div className="shelterPanel__body--aside">
+          <div className="petsShelter__aside--form">
+            <Input
+              label="Nombre"
+              name="name"
+              type="text"
+              placeholder="Nombre"
+              value={shelterForm.name}
+              onChange={handleChange}
+            />
+            <Input
+              label="Dirección"
+              name="address"
+              type="text"
+              placeholder="Dirección"
+              value={shelterForm.address}
+              onChange={handleChange}
+            />
+            <Dropdown
+              label="Distrito"
+              name="district"
+              options={["1", "2", "4"]}
+              placeholder="Distrito"
+              value={shelterForm.district}
+              onSelect={handleDropdownChange}
+            />
+          </div>
+          <div className="petsShelter__aside--options">
+            <Button color="primary" onClick={() => handleSubmit()}>
+              Agregar
+            </Button>
+            <Button color="secondary" onClick={() => handleClear()}>
+              Borrar
+            </Button>
+          </div>
+        </div>
       )}
 
       {/* {!shelter && status === "loading" ? ( */}

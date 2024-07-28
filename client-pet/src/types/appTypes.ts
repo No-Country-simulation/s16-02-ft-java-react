@@ -79,6 +79,7 @@ export interface FetchOptionsProps {
 export interface ShelterProps {
   name: string;
   address: string;
+  district: string;
 }
 
 export interface PetProps {

@@ -1,6 +1,4 @@
 .shelterLayout {
-
-  // width: 100%;
   display: grid;
   grid-template-columns: auto 1fr;
 }
@@ -23,8 +21,6 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     min-height: calc(100% - 150px);
-    // padding: 4rem;
-    // max-width: 1200px;
 
     &--main {
       padding: 4rem;
@@ -40,6 +36,31 @@
         min-height: 100px;
         border-radius: var(--br-sm);
         background: pink;
+      }
+
+      .row-variant {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        border-bottom: 1px solid gray;
+        padding-bottom: 3rem;
+
+        .row-variant-left {
+          h2 {
+            font-size: var(--fs-lg);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+          }
+        }
+
+        .row-variant-right {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
       }
 
       .row-main {
@@ -87,21 +108,16 @@
           }
         }
       }
-
-      // border: 1px solid blue;
-      border-right: 1px solid black;
     }
 
     &--aside {
       height: 100%;
-      // border: 1px solid red;
+      border-left: 1px solid black;
     }
 
     &--nav {
       display: flex;
       gap: 1rem;
     }
-
-
   }
 }

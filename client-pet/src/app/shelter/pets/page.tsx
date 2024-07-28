@@ -48,6 +48,10 @@ const PetsShelterPage = () => {
       createPet({ ...petForm, shelterId: shelter.shelterId, districtId: "4" })
     );
   };
+
+  const handleClear = () => {
+    setPetForm(initialPetState);
+  };
   return (
     <section className="shelterPanel__body petsShelter">
       <div className="shelterPanel__body--main petsShelter__main">
@@ -177,7 +181,9 @@ const PetsShelterPage = () => {
           <Button color="primary" onClick={() => handleSubmit()}>
             Agregar
           </Button>
-          <Button color="secondary">Borrar</Button>
+          <Button color="secondary" onClick={() => handleClear()}>
+            Borrar
+          </Button>
         </div>
       </div>
     </section>
