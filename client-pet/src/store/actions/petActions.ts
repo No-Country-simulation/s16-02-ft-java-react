@@ -12,30 +12,26 @@ import { PetProps } from "@types";
 export const createPet = (petData: PetProps) => async (dispatch: any) => {
   dispatch(createPetStart());
   try {
-    console.log(petData);
-    const response = await fetchAPI(
-      "api/pets",
-      "POST",
-      {
-        petName: petData.name,
-        petAge: petData.age,
-        petType: petData.type,
-        petBreed: petData.breed,
-        petSize: petData.size,
-        petSex: petData.sex,
-        petWeight: petData.weight,
-        petState: petData.state,
-        petTemperament: petData.temperament,
-        petFoundPlace: petData.foundPlace,
-        district: {
-          districtId: petData.districtId,
-        },
-        shelter: {
-          shelterId: petData.shelterId,
-        },
+    const data = {
+      petName: petData.name,
+      petAge: petData.age,
+      petType: petData.type,
+      petBreed: petData.breed,
+      petSize: petData.size,
+      petSex: petData.sex,
+      petWeight: petData.weight,
+      petState: petData.state,
+      petTemperament: petData.temperament,
+      petFoundPlace: petData.foundPlace,
+      district: {
+        districtId: petData.districtId,
       },
-      "YES"
-    );
+      shelter: {
+        shelterId: petData.shelterId,
+      },
+    };
+    console.log({ data });
+    const response = await fetchAPI("api/pets", "POST", data, "YES");
 
     console.log("pet created", response);
     dispatch(createPetSuccess(null));

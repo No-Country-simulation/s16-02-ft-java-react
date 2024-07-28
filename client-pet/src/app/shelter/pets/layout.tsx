@@ -8,12 +8,12 @@ const PetsShelterLayout = ({ children }: LayoutProps) => {
   const dispatch = useDispatch<AppDispatch>();
   const { id } = useSelector((state: RootState) => state.auth);
   const { shelter } = useSelector((state: RootState) => state.shelter);
-  const { pet, status } = useSelector((state: RootState) => state.pet);
+  const { pets, status } = useSelector((state: RootState) => state.pet);
   useEffect(() => {
     if (!shelter) dispatch(getShelter(id));
-    if (id && shelter && !pet && status !== "loading")
+    if (id && shelter && !pets && status !== "loading")
       dispatch(getPet(shelter.shelterId));
-    console.log({ pet, status });
+    console.log({ pets, status });
     console.log(shelter);
   }, [shelter]);
   return (

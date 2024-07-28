@@ -36,6 +36,15 @@ export interface ButtonProps {
   isRounded?: boolean;
 }
 
+export interface DropdowmProps {
+  name: string;
+  label: string;
+  options: any;
+  value: string;
+  placeholder: string;
+  onSelect?: any;
+}
+
 export interface LoginProps {
   email: string;
   password: string;
@@ -78,7 +87,7 @@ export interface PetProps {
   type: string;
   breed: string;
   size: string;
-  sex: string;
+  sex: "Macho" | "Hembra" | string;
   weight: number;
   state: string;
   temperament: string;

@@ -1,0 +1,94 @@
+.petsShelter {
+  // background: pink;
+
+  &__main {
+
+    &--header {
+      border-bottom: 1px solid black;
+      padding-bottom: 2rem;
+
+      header {
+        display: flex;
+        gap: 1rem;
+      }
+    }
+
+    .petsWrapper {
+      // display: flex;
+      // flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      // grid-template-rows: masonry;
+      gap: 2rem;
+
+      &__card {
+        width: 100%;
+        border: 1px solid black;
+        border-radius: var(--br-sm);
+        background: pink;
+
+        &--picture {
+          img {
+            display: flex;
+            aspect-ratio: 1 / 1;
+            width: 100%;
+            border-radius: var(--br-sm);
+            outline: 1px solid black;
+          }
+        }
+
+        &--content {
+          padding: 1rem;
+        }
+      }
+    }
+  }
+
+  &__aside {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    &--form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      .name,
+      .age,
+      .type {
+        flex: 1 0 30%;
+      }
+
+
+      .breed,
+      .sex {
+        flex: 1 0 40%;
+      }
+
+      .weight,
+      .size,
+      .state {
+        flex: 1 0 30%;
+      }
+
+      .temperament,
+      .foundPlace {
+        flex: 1 0 40%;
+      }
+
+      border-bottom: 1px solid black;
+      padding-bottom: 2rem;
+    }
+
+    &--options {
+      display: flex;
+      gap: 1rem;
+
+      .button {
+        width: 100%;
+      }
+    }
+  }
+}
