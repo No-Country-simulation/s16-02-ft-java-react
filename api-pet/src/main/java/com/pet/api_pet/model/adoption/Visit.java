@@ -1,6 +1,7 @@
 package com.pet.api_pet.model.adoption;
 
 import com.pet.api_pet.model.auth.Profile;
+import com.pet.api_pet.model.auth.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,8 +30,8 @@ public class Visit {
     private String visitReason;
 
     @ManyToOne
-    @JoinColumn(name = "profile_id", nullable = false,foreignKey = @ForeignKey(name = "FK_VISITS_PROFILE"))
-    private Profile profile;
+    @JoinColumn(name = "user_id", nullable = false,foreignKey = @ForeignKey(name = "FK_VISITS_USER"))
+    private User user;
 
 
 }

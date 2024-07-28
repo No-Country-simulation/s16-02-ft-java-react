@@ -58,7 +58,6 @@ public class ShelterController {
         return new ResponseEntity<>(shelter, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('ROLE_SHELTER')")
     @GetMapping("/{id}")
     public ResponseEntity<ShelterDTO> findById(@PathVariable("id") UUID id) {
         Shelter shelter = service.findById(id);
@@ -69,7 +68,6 @@ public class ShelterController {
         }
     }
 
-    @PreAuthorize("hasRole('ROLE_SHELTER')")
     @GetMapping("/sheltersList")
     public ResponseEntity<List<ShelterDTO>> findAll() {
         try {

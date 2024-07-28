@@ -3,6 +3,7 @@ package com.pet.api_pet.model.auth;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pet.api_pet.model.Auditable;
 import com.pet.api_pet.model.adoption.Lost;
+import com.pet.api_pet.model.adoption.Visit;
 import com.pet.api_pet.model.eccomerce.Order;
 import com.pet.api_pet.model.adoption.Shelter;
 import com.pet.api_pet.model.blog.Article;
@@ -59,4 +60,8 @@ public class User extends Auditable {
     @JsonIgnore
     @OneToMany(mappedBy = "user",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.LAZY)
     private List<Article>articles;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.LAZY)
+    List<Visit>visits;
 }

@@ -53,7 +53,6 @@ public class PetController {
         return new ResponseEntity<>(pet, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('ROLE_SHELTER')")
     @GetMapping("/{id}")
     public ResponseEntity<PetDTO> findById(@PathVariable("id") UUID id) {
         Pet pet = service.findById(id);
@@ -64,7 +63,6 @@ public class PetController {
         }
     }
 
-    @PreAuthorize("hasRole('ROLE_SHELTER')")
     @GetMapping("/petsList")
     public ResponseEntity<List<PetDTO>> findAll() {
         try {

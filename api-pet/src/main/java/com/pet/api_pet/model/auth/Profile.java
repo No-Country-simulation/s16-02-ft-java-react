@@ -64,8 +64,4 @@ public class Profile extends Auditable {
     @OneToMany(mappedBy = "profile",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Donation>donations;
-
-    @OneToMany(mappedBy = "profile",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
-    @JsonIgnore
-    List<Visit>visits;
 }

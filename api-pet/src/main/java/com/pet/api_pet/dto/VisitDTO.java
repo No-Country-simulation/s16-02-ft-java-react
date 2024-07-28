@@ -21,5 +21,5 @@ public class VisitDTO {
 
     private String visitReason;
 
-    private ProfileDTO profile;
+    private UserDTO user;
 }
