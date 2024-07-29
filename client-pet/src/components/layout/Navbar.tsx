@@ -4,7 +4,7 @@ import Link from "next/link";
 import logo from "../../assets/logo-horizontal.png";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, AppDispatch, logout, navDefault } from "@store";
+import { RootState, AppDispatch, logout, navDefault, defaultPet } from "@store";
 import { Button } from "@components";
 import { useRouter } from "next/navigation";
 
@@ -28,11 +28,6 @@ const menu = [
     id: 4,
     name: "Blog",
     href: "/blog",
-  },
-  {
-    id: 5,
-    name: "Nosotros",
-    href: "/about",
   },
 ];
 
@@ -75,7 +70,11 @@ const Navbar = () => {
 
       {role === "ROLE_SHELTER" && (
         <div className="main-navbar__auth">
-          <Link href={"/shelter"} className="button button__secondary border">
+          <Link
+            href={"/shelter"}
+            className="button button__secondary border"
+            onClick={() => dispatch(defaultPet())}
+          >
             Perfil de Refugio
           </Link>
           <Button

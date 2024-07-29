@@ -9,10 +9,12 @@ const ShelterLayout = ({ children }: LayoutProps) => {
   const [value, setValue] = useState<any>();
   const user = localStorage.getItem("user");
   const { id } = useSelector((state: RootState) => state.auth);
+  const { pets } = useSelector((state: RootState) => state.pet);
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     if (!id || !user) dispatch(checkShelterAuth(user));
     console.log("id", id);
+    console.log("pets", pets);
   }, []);
   return (
     <div className="shelterLayout">

@@ -13,6 +13,10 @@ const AdopcionPage = () => {
     if (!pets) dispatch(getPetsHome());
   }, []);
 
+  console.log("status pets", status);
+
+  // if (!pets) return <>cargando pets....</>;
+
   return (
     <div className="adoptPage">
       <header className="adoptPage__header">
@@ -20,8 +24,9 @@ const AdopcionPage = () => {
       </header>
       <div className="adoptPage__gallery">
         {!pets && status === "loading" && <div>cargando...</div>}
-        {status === "succeeded" &&
-          pets.content.map((pet: any) => {
+        {pets &&
+          status === "succeeded" &&
+          pets.content?.map((pet: any) => {
             return (
               <div key={pet.petId} className="adoptPage__gallery--card">
                 <Image src={img} alt="adoption pet gallery item" />

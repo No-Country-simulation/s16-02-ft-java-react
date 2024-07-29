@@ -3,7 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 const protectedShelterRoutes = [
   "/shelter",
   "/shelter/profile",
-  "shelter/request",
+  "/shelter/pets",
+  "/shelter/manage",
+  "/shelter/request",
 ];
 const protectedUserRoutes = ["/profile"];
 
