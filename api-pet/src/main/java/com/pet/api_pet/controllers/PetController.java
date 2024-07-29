@@ -15,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -38,8 +39,8 @@ public class PetController {
     @PreAuthorize("hasRole('ROLE_SHELTER')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deletePet(@PathVariable("id") UUID id) {
-        Pet pet = service.findById(id);
-        if (pet == null) {
+        Optional<Pet> pet = service.findById(id);
+        if (pet.isEmpty()) {
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }
         service.delete(id);
@@ -55,8 +56,8 @@ public class PetController {
 
     @GetMapping("/{id}")
     public ResponseEntity<PetDTO> findById(@PathVariable("id") UUID id) {
-        Pet pet = service.findById(id);
-        if (pet == null) {
+        Optional<Pet> pet = service.findById(id);
+        if (pet.isEmpty()) {
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         } else {
             return new ResponseEntity<>(mapper.map(pet, PetDTO.class), HttpStatus.OK);

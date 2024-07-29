@@ -6,6 +6,7 @@ import com.pet.api_pet.model.eccomerce.SubCategory;
 import com.pet.api_pet.service.ISubCategoryService;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
@@ -28,7 +29,6 @@ public class SubCategoryController {
     @GetMapping
     public ResponseEntity<List<SubCategoryDTO>> findAll(){
         try {
-
             List<SubCategoryDTO> list = service.findAll().stream().map(p -> mapper.map(p, SubCategoryDTO.class)).collect(Collectors.toList());
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e) {
@@ -38,8 +38,8 @@ public class SubCategoryController {
 
     @GetMapping("/{id}")
     public ResponseEntity<SubCategoryDTO> findById(@PathVariable("id") UUID id){
-        SubCategory obj = service.findById(id);
-        if(obj == null){
+        Optional<SubCategory> obj = service.findById(id);
+        if(obj.isEmpty()){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }else{
             return new ResponseEntity<>(mapper.map(obj, SubCategoryDTO.class), HttpStatus.OK);
@@ -61,8 +61,8 @@ public class SubCategoryController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") UUID id){
-        SubCategory obj = service.findById(id);
-        if(obj == null){
+        Optional<SubCategory> obj = service.findById(id);
+        if(obj.isEmpty()){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }
         service.delete(id);

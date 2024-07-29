@@ -13,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -40,8 +41,8 @@ public class CommentaryController {
 
     @GetMapping("/{id}")
     public ResponseEntity<CommentaryDTO> findById(@PathVariable("id") Long id){
-        Commentary obj = service.findById(id);
-        if(obj == null){
+        Optional<Commentary> obj = service.findById(id);
+        if(obj.isEmpty()){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }else{
             return new ResponseEntity<>(mapper.map(obj, CommentaryDTO.class), HttpStatus.OK);
@@ -63,8 +64,8 @@ public class CommentaryController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") Long id){
-        Commentary obj = service.findById(id);
-        if(obj == null){
+        Optional<Commentary> obj = service.findById(id);
+        if(obj.isEmpty()){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }
         service.delete(id);

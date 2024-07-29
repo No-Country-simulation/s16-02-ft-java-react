@@ -14,6 +14,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
+import java.util.Optional;
 import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/article")
@@ -40,8 +41,8 @@ public class ArticleController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ArticleDTO> findById(@PathVariable("id") Long id){
-        Article obj = service.findById(id);
-        if(obj == null){
+        Optional<Article> obj = service.findById(id);
+        if(obj.isEmpty()){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }else{
             return new ResponseEntity<>(mapper.map(obj, ArticleDTO.class), HttpStatus.OK);
@@ -63,8 +64,8 @@ public class ArticleController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") Long id){
-        Article obj = service.findById(id);
-        if(obj == null){
+        Optional<Article> obj = service.findById(id);
+        if(obj.isEmpty()){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }
         service.delete(id);

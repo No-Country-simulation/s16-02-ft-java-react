@@ -13,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -30,9 +31,6 @@ public class VisitController {
     public ResponseEntity<List<VisitDTO>> findAll(){
         try {
             List<VisitDTO> list = service.findAll().stream().map(p -> mapper.map(p, VisitDTO.class)).collect(Collectors.toList());
-            if (list.isEmpty()) {
-                throw new ModelNotFoundException("No se encontraron visitas");
-            }
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e) {
             throw new RuntimeException("Error al obtener visita", e);
@@ -41,8 +39,8 @@ public class VisitController {
 
     @GetMapping("/{id}")
     public ResponseEntity<VisitDTO> findById(@PathVariable("id") UUID id){
-        Visit obj = service.findById(id);
-        if(obj == null){
+        Optional<Visit> obj = service.findById(id);
+        if(obj.isEmpty()){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }else{
             return new ResponseEntity<>(mapper.map(obj, VisitDTO.class), HttpStatus.OK);
@@ -64,8 +62,8 @@ public class VisitController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") UUID id){
-        Visit obj = service.findById(id);
-        if(obj == null){
+        Optional<Visit> obj = service.findById(id);
+        if(obj.isEmpty()){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }
         service.delete(id);

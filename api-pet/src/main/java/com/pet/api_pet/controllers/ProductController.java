@@ -6,6 +6,7 @@ import com.pet.api_pet.model.eccomerce.Product;
 import com.pet.api_pet.service.IProductService;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
@@ -38,8 +39,8 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ProductDTO> findById(@PathVariable("id") UUID id){
-        Product obj = service.findById(id);
-        if(obj == null){
+        Optional<Product> obj = service.findById(id);
+        if(obj.isEmpty()){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }else{
             return new ResponseEntity<>(mapper.map(obj, ProductDTO.class), HttpStatus.OK);
@@ -61,8 +62,8 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") UUID id){
-        Product obj = service.findById(id);
-        if(obj == null){
+    Optional<Product> obj = service.findById(id);
+        if(obj.isEmpty()){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }
         service.delete(id);

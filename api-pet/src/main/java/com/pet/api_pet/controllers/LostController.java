@@ -13,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -41,8 +42,8 @@ public class LostController {
 
     @GetMapping("/{id}")
     public ResponseEntity<LostDTO> findById(@PathVariable("id") UUID id){
-        Lost obj = service.findById(id);
-        if(obj == null){
+        Optional<Lost> obj = service.findById(id);
+        if(obj.isEmpty()){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }else{
             return new ResponseEntity<>(mapper.map(obj, LostDTO.class), HttpStatus.OK);
@@ -64,8 +65,8 @@ public class LostController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") UUID id){
-        Lost obj = service.findById(id);
-        if(obj == null){
+        Optional<Lost> obj = service.findById(id);
+        if(obj.isEmpty()){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }
         service.delete(id);

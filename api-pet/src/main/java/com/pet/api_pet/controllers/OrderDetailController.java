@@ -13,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -42,8 +43,8 @@ public class OrderDetailController {
 
     @GetMapping("/{id}")
     public ResponseEntity<OrderDetailDTO> findById(@PathVariable("id") UUID id){
-        OrderDetail obj = service.findById(id);
-        if(obj == null){
+        Optional<OrderDetail> obj = service.findById(id);
+        if(obj.isEmpty()){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }else{
             return new ResponseEntity<>(mapper.map(obj, OrderDetailDTO.class), HttpStatus.OK);
@@ -65,8 +66,8 @@ public class OrderDetailController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") UUID id){
-        OrderDetail obj = service.findById(id);
-        if(obj == null){
+        Optional<OrderDetail> obj = service.findById(id);
+        if(obj.isEmpty()){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }
         service.delete(id);

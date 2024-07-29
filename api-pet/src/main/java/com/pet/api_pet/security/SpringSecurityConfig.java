@@ -63,7 +63,7 @@ public class SpringSecurityConfig {
                         .requestMatchers(HttpMethod.GET,"/api/products/**").permitAll()
                         .requestMatchers(HttpMethod.GET,"/api/articles/**").permitAll()
                         .requestMatchers(HttpMethod.GET,"/api/commentaries/**").permitAll()
-                        .requestMatchers(HttpMethod.GET,"/api//**").permitAll()
+                        //.requestMatchers(HttpMethod.GET,"/api/visit/**").permitAll()
                         .requestMatchers(HttpMethod.POST,"/api/login").permitAll()
 
 
