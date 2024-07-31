@@ -1,0 +1,41 @@
+.authLayout {
+  width: 100%;
+  height: 100vh;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+  &__picture {
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__sideform {
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+
+    .nav-link {
+      display: flex;
+      gap: var(--spacing-sm);
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__picture {
+      display: none;
+    }
+
+    &__sideform {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,137 @@
+.registerPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 800px;
+  height: 100%;
+  width: 100%;
+  min-width: 540px;
+  min-width: 800px;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+
+  &__picture {
+    display: grid;
+    place-content: center;
+
+    img {
+      max-width: 200px;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+
+    h3 {
+      text-align: center;
+      margin: 1rem 0;
+    }
+
+    &--form {
+      display: flex;
+      gap: var(--spacing-md);
+      flex-wrap: wrap;
+      margin-bottom: var(--spacing-lg);
+      width: 100%;
+
+      .name,
+      .lastname,
+      .email,
+      .password,
+      .confirmPassword {
+        flex: 1 0 45%;
+      }
+
+      .phone,
+      .documentType,
+      .documentNumber,
+      .address,
+      .district {
+        flex: 1 0 30%;
+      }
+
+      .email {
+        flex: 1 0 100%;
+      }
+
+      .form {
+        display: flex;
+        gap: 2rem;
+
+        .card {
+          border: var(--b-primary);
+          // aspect-ratio: 1;
+          width: 100%;
+          border-radius: var(--br-md);
+          overflow: hidden;
+
+
+          img {
+            aspect-ratio: 3 / 2;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+          }
+
+          .card-content {
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            gap: 1rem;
+
+            .title {
+              font-size: var(--fs-lg);
+              font-weight: bold;
+              font-family: var(--ff-inter);
+            }
+
+            p {
+              font-family: var(--ff-inter);
+            }
+          }
+        }
+      }
+    }
+
+    &--options {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-md);
+
+      button {
+        max-width: 360px;
+        width: 100%;
+      }
+
+      .options-link,
+      .options-terms {
+        display: flex;
+        gap: var(--spacing-sm);
+
+        // a {
+        //   border-bottom: var(--b-primary);
+        // }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    min-width: 300px;
+    padding: 0;
+  }
+
+  @media screen and (max-width: 600px) {
+
+    &__wrapper {
+      &--form {
+        .input {
+          flex: 1 0 100%;
+        }
+      }
+    }
+  }
+}
