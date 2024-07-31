@@ -1,10 +1,13 @@
 package com.pet.api_pet.service.impl;
 
+import com.pet.api_pet.model.adoption.Multimedia;
 import com.pet.api_pet.model.adoption.Pet;
 import com.pet.api_pet.repository.IGenericRepo;
+import com.pet.api_pet.repository.IMultimediaRepo;
 import com.pet.api_pet.repository.IPetRepo;
 import com.pet.api_pet.repository.specification.PetSpecification;
 import com.pet.api_pet.service.IPetService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,6 +23,9 @@ public class PetServiceImpl extends CRUDServiceImpl<Pet, UUID> implements IPetSe
 
     @Autowired
     private IPetRepo repo;
+
+    @Autowired
+    private IMultimediaRepo multimediaRepo;
 
     @Override
     protected IGenericRepo<Pet, UUID> getRepo() {
@@ -41,5 +47,24 @@ public class PetServiceImpl extends CRUDServiceImpl<Pet, UUID> implements IPetSe
     @Override
     public List<Pet> findAllPetsByShelterId(UUID shelterId) {
         return repo.findAllPetsByShelterId(shelterId);
+    }
+
+    @Transactional
+    @Override
+    public Pet saveTransactional(Pet pet, List<Multimedia> listMultimedia) {
+        Pet savedPet = repo.save(pet);
+        listMultimedia.forEach(multimedia -> {
+            multimedia.setPet(savedPet);
+        });
+
+        multimediaRepo.saveAll(listMultimedia);
+        savedPet.setMultimedia(listMultimedia);
+        return savedPet;
+    }
+
+    @Override
+    public List<Pet> getAllPets() {
+
+        return null;
     }
 }

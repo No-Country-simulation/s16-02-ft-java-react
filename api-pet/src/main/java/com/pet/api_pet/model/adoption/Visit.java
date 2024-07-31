@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.UUID;
 
 @Getter
@@ -23,15 +25,19 @@ public class Visit {
     @Column(name = "visit_id")
     private UUID visitId=UUID.randomUUID();
 
-    private String visitDate;
+    private LocalDate visitDate;
 
-    private String visitHour;
+    private LocalTime visitHour;
 
     private String visitReason;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false,foreignKey = @ForeignKey(name = "FK_VISITS_USER"))
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "shelter_id",nullable = false,foreignKey = @ForeignKey(name="FK_VISITS_SHELTER"))
+    private Shelter shelter;
 
 
 }

@@ -21,7 +21,9 @@ public class ApplicationDTO{
     @Enumerated(EnumType.STRING)
     private ApplicationState applicationState;
 
-    private ProfileDTO profile;
+    private Boolean approved;
+
+    private UserDTO user;
 
     private PetDTO pet;
 }

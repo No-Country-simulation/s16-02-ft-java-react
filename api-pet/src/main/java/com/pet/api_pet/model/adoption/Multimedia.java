@@ -22,6 +22,7 @@ public class Multimedia {
 
     private String urlMultimedia;
 
+    private Boolean principal = false;
     @ManyToOne
     @JoinColumn(name = "pet_id",nullable = false,foreignKey = @ForeignKey(name = "FK_MULTIMEDIA_PET"))
     private Pet pet;

@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.UUID;
 
 @Getter
@@ -15,11 +17,13 @@ public class VisitDTO {
 
     private UUID visitId;
 
-    private String visitDate;
+    private LocalDate visitDate;
 
-    private String visitHour;
+    private LocalTime visitHour;
 
     private String visitReason;
 
     private UserDTO user;
+
+    private ShelterDTO shelter;
 }

@@ -1,5 +1,6 @@
 package com.pet.api_pet.service;
 
+import com.pet.api_pet.model.adoption.Multimedia;
 import com.pet.api_pet.model.adoption.Pet;
 import org.springframework.data.domain.Page;
 
@@ -12,5 +13,6 @@ public interface IPetService extends ICRUDService<Pet,UUID>{
 
     Page<Pet> getFilteredPets(String petName, String petSex,String petBreed,String petSize,String petType ,Integer minAge, Integer maxAge, int page, int size);
     List<Pet> findAllPetsByShelterId(UUID shelterId);
-
+    Pet saveTransactional(Pet pet, List<Multimedia>listMultimedia);
+    List<Pet>getAllPets();
 }

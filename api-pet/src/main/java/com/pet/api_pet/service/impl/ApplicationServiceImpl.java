@@ -25,4 +25,9 @@ public class ApplicationServiceImpl extends CRUDServiceImpl<Application, UUID> i
     public List<Application> findAllByUserid(UUID id) {
         return repo.findAllByUserid(id);
     }
+
+    @Override
+    public List<Application> findAllByShelterId(UUID id) {
+        return repo.findAllByShelterId(id);
+    }
 }

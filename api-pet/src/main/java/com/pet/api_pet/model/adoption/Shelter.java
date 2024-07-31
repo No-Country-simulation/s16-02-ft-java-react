@@ -48,4 +48,8 @@ public class Shelter extends Auditable {
     @OneToMany(mappedBy = "shelter",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Donation>donations;
+
+    @OneToMany(mappedBy = "shelter",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<Visit>visits;
 }

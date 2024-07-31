@@ -12,6 +12,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -46,7 +47,9 @@ public class PetDTO {
 
     private String petFoundPlace;
 
-    private District district;
+    private DistrictDTO district;
 
-    private Shelter shelter;
+    private ShelterDTO shelter;
+
+    private List<MultimediaDTO>multimedia;
 }

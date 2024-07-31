@@ -2,7 +2,7 @@ package com.pet.api_pet.model.adoption;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pet.api_pet.model.Auditable;
-import com.pet.api_pet.model.auth.Profile;
+import com.pet.api_pet.model.auth.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,9 +30,11 @@ public class Application extends Auditable {
     @Enumerated(EnumType.STRING)
     private ApplicationState applicationState;
 
+    @Column(name = "approved")
+    private Boolean approved=false;
     @ManyToOne
-    @JoinColumn(name = "profile_id",nullable = false,foreignKey = @ForeignKey(name = "FK_APPLICATIONS_PROFILE"))
-    private Profile profile;
+    @JoinColumn(name = "user_id",nullable = false,foreignKey = @ForeignKey(name = "FK_APPLICATIONS_USER"))
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "pet_id",nullable = false,foreignKey = @ForeignKey(name = "FK_APPLICATIONS_PET"))

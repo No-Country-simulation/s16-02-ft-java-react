@@ -5,18 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.UUID;
+import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MultimediaDTO {
+public class PetListMultimediaDTO {
+    private PetDTO pet;
 
-    private UUID multimediaId;
-
-    private String urlMultimedia;
-
-    private Boolean principal;
-    //private PetDTO pet;
+    private List<MultimediaDTO>listMultimedia;
 }
