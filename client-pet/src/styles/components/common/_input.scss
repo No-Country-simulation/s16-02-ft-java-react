@@ -1,8 +1,23 @@
 .input {
-  // border: 1px solid red;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
+  position: relative;
+
+  .border {
+    border-radius: var(--br-sm);
+    border: 1px solid gray;
+  }
+
+  .error {
+    border: 1px solid red;
+
+    input {
+      &::placeholder {
+        color: red;
+      }
+    }
+  }
 
   &__label {
     text-align: start;
@@ -10,9 +25,9 @@
 
   &__content {
     display: flex;
-    border: 1px solid gray;
     padding: 8px 8px;
     gap: var(--spacing-xs);
+    cursor: text;
 
     input {
       width: 100%;
@@ -39,6 +54,24 @@
 
     &:hover {
       background: rgba(100, 100, 100, .1);
+    }
+  }
+
+  &__isInvalidMessage {
+    position: absolute;
+    right: 0;
+    top: 1px;
+    color: red;
+    font-family: var(--ff-inter);
+    font-size: var(--fs-xs);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--c-bg);
+
+    svg {
+      width: 20px;
+      height: 20px;
     }
   }
 }

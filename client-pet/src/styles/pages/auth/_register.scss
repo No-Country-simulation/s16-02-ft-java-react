@@ -6,7 +6,8 @@
   max-width: 800px;
   height: 100%;
   width: 100%;
-  min-width: 660px;
+  min-width: 540px;
+  min-width: 800px;
   gap: var(--spacing-md);
   padding: var(--spacing-lg);
 
@@ -24,6 +25,11 @@
     flex-direction: column;
     gap: var(--spacing-md);
 
+    h3 {
+      text-align: center;
+      margin: 1rem 0;
+    }
+
     &--form {
       display: flex;
       gap: var(--spacing-md);
@@ -34,15 +40,61 @@
       .name,
       .lastname,
       .email,
-      .phone,
       .password,
       .confirmPassword {
         flex: 1 0 45%;
       }
 
+      .phone,
+      .documentType,
+      .documentNumber,
+      .address,
+      .district {
+        flex: 1 0 30%;
+      }
 
+      .email {
+        flex: 1 0 100%;
+      }
+
+      .form {
+        display: flex;
+        gap: 2rem;
+
+        .card {
+          border: var(--b-primary);
+          // aspect-ratio: 1;
+          width: 100%;
+          border-radius: var(--br-md);
+          overflow: hidden;
+
+
+          img {
+            aspect-ratio: 3 / 2;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+          }
+
+          .card-content {
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            gap: 1rem;
+
+            .title {
+              font-size: var(--fs-lg);
+              font-weight: bold;
+              font-family: var(--ff-inter);
+            }
+
+            p {
+              font-family: var(--ff-inter);
+            }
+          }
+        }
+      }
     }
-
 
     &--options {
       display: flex;
@@ -60,12 +112,11 @@
         display: flex;
         gap: var(--spacing-sm);
 
-        a {
-          border-bottom: var(--b-primary);
-        }
+        // a {
+        //   border-bottom: var(--b-primary);
+        // }
       }
     }
-
   }
 
   @media screen and (max-width: 768px) {
@@ -83,6 +134,4 @@
       }
     }
   }
-
-
 }

@@ -1,12 +1,107 @@
 .button {
+  position: relative;
   border: var(--b-primary);
   padding: 8px 8px;
 
+  label {
+    cursor: pointer;
+  }
+
+
   &__primary {
     background: var(--c-primary);
+    transition: 200ms ease;
+    box-shadow: var(--shadow-md);
+
+    &:hover {
+      opacity: 1;
+      box-shadow: var(--shadow-hover);
+    }
+
+    &:active {
+      background: pink;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      box-shadow: inherit;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &:active {
+        background: var(--c-primary);
+      }
+    }
   }
 
   &__secondary {
-    background: var(--c-secondary);
+    // border: none;
+    transition: 200ms ease;
+    box-shadow: var(--shadow-sm);
+
+    span {
+      border-bottom: var(--b-primary);
+    }
+
+    &:hover {
+      opacity: 1;
+      box-shadow: var(--shadow-hover);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      box-shadow: inherit;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+
+}
+
+.border {
+  border-radius: var(--br-sm);
+}
+
+.rounded {
+  border-radius: 1000px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.primary {
+  padding: 10px 32px;
+  font-size: var(--fs-md);
+}
+
+
+.pink {
+  background: none;
+  color: #FF66C4;
+  border: 1px solid #FF66C4;
+  box-shadow: 4px 4px 0px 0px #FF66C4;
+}
+
+.loader {
+  position: absolute;
+  top: 22%;
+  right: 3%;
+  width: 20px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(farthest-side, #ffa516 94%, #0000) top/4px 4px no-repeat,
+    conic-gradient(#0000 30%, #ffa516);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 4px), #000 0);
+  animation: l13 1s infinite linear;
+}
+
+@keyframes l13 {
+  100% {
+    transform: rotate(1turn)
   }
 }

@@ -1,16 +1,18 @@
-import { Navbar, Footer } from "@components";
+import { Footer, Hero, About, Navbar } from "@components";
+import AdoptionPets from "components/sections/AdoptionPets";
+import Blog from "components/sections/Blog";
+import Testimonials from "components/sections/Testimonials";
 
 export default function Home() {
   return (
     <>
       <Navbar />
       <main id="main-content">
-        <section className="main-content__hero">Hero Section</section>
-        <section className="main-content__features">Features Section</section>
-        <section className="main-content__services">Services Section</section>
-        <section className="main-content__info">Info Section</section>
-        <section className="main-content__reviews">Reviews Section</section>
-        <section className="main-content__faq">FAQs Section</section>
+        <Hero />
+        <About />
+        <AdoptionPets />
+        <Blog />
+        <Testimonials />
       </main>
       <Footer />
     </>

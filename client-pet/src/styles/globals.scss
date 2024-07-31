@@ -7,6 +7,18 @@
 @import "./components/layout/footer.scss";
 @import "./components/common/input.scss";
 @import "./components/common/button.scss";
+@import "./components/sections/hero.scss";
+@import "./components/sections/about.scss";
+@import "./components/sections/adoptionPets.scss";
+@import "./components/sections/blog.scss";
+@import "./components/sections/testimonials.scss";
+@import "./components/common/testimonialCard.scss";
+@import "./components/common/dropdown.scss";
+@import "./components/layout/shelterNav.scss";
+@import "./pages/shelter/layout.scss";
+@import "./pages/adopt/adopt.scss";
+
+@import "./pages/shelter/pets.scss";
 
 *,
 *::after,
@@ -25,11 +37,12 @@ body {
 body {
   font-family: var(--ff-playfair);
   color: var(--c-text);
-  background: var(--c-light);
+  background: var(--c-bg);
 }
 
 p {
   text-wrap: pretty;
+  line-height: var(--lh-base);
 }
 
 ul {
@@ -42,6 +55,7 @@ h3,
 h4,
 h5 {
   text-wrap: balance;
+  color: #844078;
 }
 
 input,
@@ -49,6 +63,12 @@ button,
 textarea,
 select {
   font: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 a {

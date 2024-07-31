@@ -1,12 +1,34 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
+import { ButtonProps } from "@types";
 
-interface ButtonProps {
-  children: React.ReactNode;
-  color: "primary" | "secondary";
-}
-
-const Button = ({ children, color }: ButtonProps) => {
-  return <button className={`button button__${color}`}>{children}</button>;
+const Button = ({
+  children,
+  color,
+  mode,
+  className,
+  isBordered = true,
+  onClick,
+  type,
+  isDisabled = false,
+  isLoading = false,
+  loadingMessage,
+  isRounded,
+}: ButtonProps) => {
+  return (
+    <button
+      className={`button button__${color} ${mode} ${isBordered ? "border" : ""} ${isRounded ? "rounded" : ""} ${className}`}
+      onClick={onClick}
+      type={type}
+      disabled={isLoading ? true : isDisabled}
+    >
+      {isLoading ? <div className="loader"></div> : null}{" "}
+      {isLoading ? (
+        <span>{loadingMessage ? loadingMessage : "Espere por favor..."}</span>
+      ) : (
+        <span> {children}</span>
+      )}
+    </button>
+  );
 };
 
 export default Button;

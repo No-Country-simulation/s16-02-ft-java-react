@@ -1,8 +1,8 @@
 import React from "react";
-import { LayoutProps } from "types";
+import { LayoutProps } from "@types";
 import { Navbar, Footer } from "@components";
 
-const CuidadoLayout = ({ children }: LayoutProps) => {
+const ProfileLayout = ({ children }: LayoutProps) => {
   return (
     <div>
       <Navbar />
@@ -12,4 +12,4 @@ const CuidadoLayout = ({ children }: LayoutProps) => {
   );
 };
 
-export default CuidadoLayout;
+export default ProfileLayout;

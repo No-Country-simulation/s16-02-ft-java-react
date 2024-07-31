@@ -1,0 +1,94 @@
+.petsShelter {
+  // background: pink;
+  // min-height: 2000px;
+
+  &__main {
+
+    &--header {
+      border-bottom: var(--b-secondary);
+      padding-bottom: 2rem;
+
+      header {
+        display: flex;
+        gap: 1rem;
+      }
+    }
+
+    .petsWrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+
+      &__card {
+        width: 100%;
+        border: var(--b-secondary);
+        border-radius: var(--br-sm);
+        background: pink;
+
+        &--picture {
+          img {
+            display: flex;
+            aspect-ratio: 1 / 1;
+            width: 100%;
+            border-radius: var(--br-sm);
+            outline: var(--b-secondary);
+          }
+        }
+
+        &--content {
+          padding: 1rem;
+        }
+      }
+    }
+  }
+
+  &__aside {
+    // padding: 1.5rem;
+    // display: flex;
+    // flex-direction: column;
+    // gap: 2rem;
+    // position: relative;
+
+    &--form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      .name,
+      .age,
+      .type {
+        flex: 1 0 30%;
+      }
+
+
+      .breed,
+      .sex {
+        flex: 1 0 40%;
+      }
+
+      .weight,
+      .size,
+      .state {
+        flex: 1 0 30%;
+      }
+
+      .temperament,
+      .foundPlace {
+        flex: 1 0 40%;
+      }
+
+      border-bottom: var(--b-secondary);
+      padding-bottom: 2rem;
+    }
+
+    &--options {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+
+      .button {
+        width: 100%;
+      }
+    }
+  }
+}

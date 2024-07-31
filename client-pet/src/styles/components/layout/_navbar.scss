@@ -1,10 +1,20 @@
 .main-navbar {
-  padding: 1rem;
+  padding: .5rem 2rem;
   display: flex;
   justify-content: space-between;
+  border-bottom: var(--b-primary);
+  color: #FF66C4;
+
+  &__logo {
+    img {
+      max-width: 150px;
+    }
+  }
 
   &__menu {
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: var(--spacing-lg);
 
     li {
@@ -14,10 +24,12 @@
 
   &__auth {
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: var(--spacing-lg);
 
     a {
-      border-bottom: var(--b-primary);
+      // border-bottom: var(--b-primary);
     }
   }
 }
