@@ -1,12 +1,26 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import { LayoutProps } from "types";
 import { ShelterNav } from "@components";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, checkShelterAuth, RootState } from "@store";
 
 const ShelterLayout = ({ children }: LayoutProps) => {
+  const user = localStorage.getItem("user");
+  const { id } = useSelector((state: RootState) => state.auth);
+  const { pets } = useSelector((state: RootState) => state.pet);
+  const dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    if (!id || !user) dispatch(checkShelterAuth(user));
+    console.log("id", id);
+    console.log("pets", pets);
+    // eslint-disable-next-line
+  }, []);
   return (
-    <div>
+    <div className="shelterLayout">
       <ShelterNav />
-      {children}
+      {id ? <> {children} </> : <span>validando permisos...</span>}
+      {/* {id ? <section>{children}</section> : <span>validando id...</span>} */}
       {/* <Footer /> */}
     </div>
   );

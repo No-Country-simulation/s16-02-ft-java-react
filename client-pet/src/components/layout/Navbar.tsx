@@ -1,10 +1,10 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import logo from "../../assets/logo-horizontal.png";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, AppDispatch, logout, navDefault } from "@store";
+import { RootState, AppDispatch, logout, navDefault, defaultPet } from "@store";
 import { Button } from "@components";
 import { useRouter } from "next/navigation";
 
@@ -17,7 +17,7 @@ const menu = [
   {
     id: 2,
     name: "Adopta",
-    href: "/adopcion",
+    href: "/adopt",
   },
   {
     id: 3,
@@ -28,11 +28,6 @@ const menu = [
     id: 4,
     name: "Blog",
     href: "/blog",
-  },
-  {
-    id: 5,
-    name: "Nosotros",
-    href: "/about",
   },
 ];
 
@@ -75,10 +70,7 @@ const Navbar = () => {
 
       {role === "ROLE_SHELTER" && (
         <div className="main-navbar__auth">
-          <Link
-            href={"/shelter/profile"}
-            className="button button__secondary border"
-          >
+          <Link href={"/shelter"} className="button button__secondary border">
             Perfil de Refugio
           </Link>
           <Button
@@ -96,7 +88,10 @@ const Navbar = () => {
 
       {!role && (
         <div className="main-navbar__auth">
-          <Link href={"/auth/login"} className="button button__primary border">
+          <Link
+            href={"/auth/login"}
+            className="button button__secondary border pink"
+          >
             Iniciar Sesión
           </Link>
           <Link
@@ -104,7 +99,7 @@ const Navbar = () => {
             onClick={() => {
               dispatch(navDefault());
             }}
-            className="button button__primary border"
+            className="button button__secondary border pink"
           >
             Crear Cuenta
           </Link>

@@ -2,12 +2,18 @@ import { deleteCookie, setCookie } from "cookies-next";
 import { fetchAPI } from "@helpers";
 import {
   checkAuth,
+  getUserFailure,
+  getUserStart,
+  getUserSuccess,
   loginFailure,
   loginStart,
   loginSuccess,
   logoutStart,
 } from "../slices/authSlice";
 import { LoginProps } from "@types";
+import { defaultShelter } from "store/slices/shelterSlice";
+import { defaultPet } from "store/slices/petSlice";
+import { defaultUser } from "store/slices/userSlice";
 
 export const login =
   (credentials: LoginProps, router: any) => async (dispatch: any) => {
@@ -20,7 +26,7 @@ export const login =
 
       const user = {
         username: response.username,
-        role: response.role[0].authority,
+        role: response.rol[0].authority,
         token: response.token,
       };
       setCookie("token", response.token);
@@ -49,6 +55,9 @@ export const logout = (router: any) => async (dispatch: any) => {
     localStorage.clear();
     router.push("/");
     dispatch(checkAuth({ username: "", role: "" }));
+    dispatch(defaultShelter());
+    dispatch(defaultPet());
+    dispatch(defaultUser());
   } catch (error) {
     console.log(error);
   }
@@ -76,3 +85,20 @@ export const checkAuthentication = () => async (dispatch: any) => {
     console.log("check auth with'out localstorage");
   }
 };
+
+export const checkShelterAuth =
+  (userEmail: string) => async (dispatch: any) => {
+    dispatch(getUserStart());
+    try {
+      const response = await fetchAPI(
+        `api/auth/user/${userEmail}`,
+        "GET",
+        null,
+        "YES"
+      );
+      dispatch(getUserSuccess(response.userId));
+      console.log("check userId", response.userId);
+    } catch (error) {
+      dispatch(getUserFailure(error.message));
+    }
+  };

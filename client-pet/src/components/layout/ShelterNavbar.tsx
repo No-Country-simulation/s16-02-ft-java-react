@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import img from "../../assets/logosphere.png";
+import img from "../../assets/logo-horizontal.png";
 import Image from "next/image";
-import { AppDispatch, logout } from "store";
+import { AppDispatch, logout } from "@store";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 
@@ -11,20 +11,26 @@ const menu = [
   {
     id: 1,
     name: "Home",
-    href: "/",
+    href: "/shelter",
   },
   {
     id: 2,
     name: "Refugio",
-    href: "/shelter",
+    href: "/shelter/manage",
+  },
+
+  {
+    id: 4,
+    name: "Mascotas",
+    href: "/shelter/pets",
   },
   {
-    id: 3,
+    id: 5,
     name: "Perfil",
     href: "/shelter/profile",
   },
   {
-    id: 4,
+    id: 6,
     name: "Solicitudes de adopción",
     href: "/shelter/request",
   },
@@ -36,7 +42,9 @@ const ShelterNav = () => {
   return (
     <div className="shelterNav">
       <div className="shelterNav__logo">
-        <Image src={img} alt="header shelter image" />
+        <Link href={"/"}>
+          <Image src={img} alt="header shelter image" />
+        </Link>
       </div>
       <div className="shelterNav__menu">
         <ul>

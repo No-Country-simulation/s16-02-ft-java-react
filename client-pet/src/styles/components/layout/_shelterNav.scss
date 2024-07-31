@@ -1,38 +1,52 @@
 .shelterNav {
-  max-width: 1600px;
-  width: 100%;
-  margin-inline: auto;
-  padding: 2rem 5%;
-  gap: 4rem;
+  min-width: 250px;
+  min-height: 100vh;
+  background: pink;
+
+  // border-right: var(--b-secondary);
+  // border: 1px solid blue;
+  // max-width: 1600px;
+  // width: 100%;
+  // margin-inline: auto;
+  // padding: 2rem 5%;
+  // gap: 4rem;
 
   &__logo {
+    height: 150px;
+    border-bottom: var(--b-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1rem;
+    // margin-bottom: 1rem;
 
     img {
-      max-width: 200px;
+      max-width: 180px;
+      margin-left: -1rem;
     }
   }
 
   &__menu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
 
     ul {
-      display: flex;
-      gap: var(--spacing-md);
-      font-family: var(--ff-inter);
-      font-size: var(--fs-md);
-      font-weight: medium;
+      // display: flex;
+      // gap: var(--spacing-md);
+      // font-family: var(--ff-inter);
+      // font-size: var(--fs-md);
+      // font-weight: medium;
 
       li {
+        border-bottom: var(--b-secondary);
+        height: 55px;
+        display: flex;
+        align-items: center;
+        padding: 0 1.5rem;
 
         a,
         button {
-          border-bottom: var(--b-primary);
+          border-bottom: var(--b-secondary);
         }
       }
     }

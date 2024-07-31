@@ -6,6 +6,7 @@ interface AuthStateProps {
   error: string | null;
   isLoading: boolean;
   user: any;
+  id: string;
 }
 
 const initialState: AuthStateProps = {
@@ -17,6 +18,7 @@ const initialState: AuthStateProps = {
     role: "",
     username: "",
   },
+  id: null,
 };
 
 const authSlice = createSlice({
@@ -42,11 +44,13 @@ const authSlice = createSlice({
     logoutStart: (state) => {
       state.status = "loading";
       state.error = null;
+      state.id = null;
     },
     logoutSuccess: (state) => {
       state.status = "succeeded";
       state.isLoading = false;
       state.isAuth = false;
+      state.id = null;
     },
     logoutFailure: (state, action) => {
       state.status = "failed";
@@ -59,28 +63,21 @@ const authSlice = createSlice({
       // state.isAuth = localStorage.getItem("access_token") !== null;
       // state.user = JSON.parse(localStorage.getItem("user")) || null;
     },
-    // openLogin: (state) => {
-    //   state.isOpen = true;
-    // },
-    // closeLogin: (state) => {
-    //   state.isOpen = false;
-    // },
-    // loginStart: (state) => {
-    //   state.isLoading = true;
-    //   state.error = null;
-    // },
-    // loginSuccess: (state, action) => {
-    //   state.isLoading = false;
-    //   state.user = action.payload;
-    // },
-    // loginFailure: (state, action) => {
-    //   state.isLoading = false;
-    //   state.error = action.payload;
-    // },
-    // logout: (state) => {
-    //   state.user = null;
-    //   state.error = null;
-    // },
+    getUserStart: (state) => {
+      state.status = "loading";
+      state.isLoading = true;
+      state.error = null;
+    },
+    getUserSuccess: (state, action) => {
+      state.status = "succeeded";
+      state.isLoading = false;
+      state.id = action.payload;
+    },
+    getUserFailure: (state, action) => {
+      state.status = "failed";
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });
 
@@ -90,6 +87,9 @@ export const {
   loginFailure,
   logoutStart,
   checkAuth,
+  getUserFailure,
+  getUserSuccess,
+  getUserStart,
 } = authSlice.actions;
 
 export default authSlice.reducer;

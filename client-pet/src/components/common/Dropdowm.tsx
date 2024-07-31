@@ -1,16 +1,24 @@
 "use client";
 import { Arrow } from "@icons";
 import React, { useState } from "react";
+import { DropdowmProps } from "@types";
 
-const Drowpdown = ({ options, value, onSelect }: any) => {
+const Drowpdown = ({
+  options,
+  value,
+  onSelect,
+  placeholder,
+  label,
+  name,
+}: DropdowmProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <div className={`dropdown documentType ${isOpen ? "open" : ""}`}>
-      <div className="dropdown__label">Tipo de documento</div>
+    <div className={`dropdown documentType ${isOpen ? "open" : ""}  ${name}`}>
+      {label ? <div className="dropdown__label">{label}</div> : null}
       <button className="dropdown__content" onClick={() => setIsOpen(!isOpen)}>
         <span className="dropdown__content--text">
-          {value ? value : "Ingrese su documento"}
+          {value ? value : placeholder}
         </span>
         <Arrow />
       </button>
@@ -20,7 +28,7 @@ const Drowpdown = ({ options, value, onSelect }: any) => {
             key={i}
             className="dropdown__list--option"
             onClick={(e) => {
-              onSelect(e);
+              onSelect(e, name);
               setIsOpen(!isOpen);
             }}
           >

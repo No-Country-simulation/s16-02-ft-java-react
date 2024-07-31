@@ -1,0 +1,140 @@
+.shelterLayout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto;
+
+}
+
+.shelterPanel {
+
+  &__header {
+    height: 150px;
+    border-bottom: var(--b-secondary);
+    display: flex;
+    align-items: center;
+    padding: 0 4rem;
+
+    h1 {
+      font-size: var(--fs-subtitle);
+      font-weight: 400;
+    }
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    // height: 100%;
+    min-height: calc(100% - 150px);
+    position: relative;
+
+    &--main {
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+
+
+      .main-activity {
+        border: var(--b-secondary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100px;
+        border-radius: var(--br-sm);
+        background: pink;
+      }
+
+      .row-variant {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        border-bottom: var(--b-secondary);
+        padding-bottom: 3rem;
+
+        .row-variant-left {
+          h2 {
+            font-size: var(--fs-lg);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+          }
+        }
+
+        .row-variant-right {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+
+      .row-main {
+        h2 {
+          font-size: var(--fs-xl);
+          font-weight: 400;
+          margin-bottom: 1rem;
+        }
+
+        .row-table {
+
+          background: pink;
+          border: var(--b-primary);
+          border-radius: var(--br-sm);
+          width: 100%;
+
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: auto;
+
+          .table-item {
+            border-bottom: var(--b-primary);
+            border-right: var(--b-primary);
+            height: 50px;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            gap: .7rem;
+
+            span {
+              margin-top: -4px;
+            }
+
+            &:nth-last-child(1) {
+              border-bottom: none;
+            }
+
+            &:nth-last-child(2) {
+              border-bottom: none;
+            }
+
+            &:nth-child(2n) {
+              border-right: none;
+            }
+          }
+        }
+      }
+    }
+
+    &--aside {
+      border-left: var(--b-secondary);
+      position: relative;
+      display: flex;
+      height: 100%;
+
+      .sticky-wrapper {
+        position: sticky;
+        top: 10rem;
+
+        .sticky {
+          padding: 1.5rem;
+        }
+      }
+    }
+
+    &--nav {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+}

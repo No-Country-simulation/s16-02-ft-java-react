@@ -63,11 +63,11 @@ const RegisterPage = () => {
     }));
   };
 
-  const handleDocumentTypeChange = (e: any) => {
+  const handleDocumentTypeChange = (e: any, name: string) => {
     const value = e.target.textContent;
     setRegisterProfile((prev) => ({
       ...prev,
-      documentType: value,
+      [name]: value,
     }));
   };
 
@@ -83,21 +83,6 @@ const RegisterPage = () => {
     ) {
       return;
     }
-
-    // switch (nav) {
-    //   case "user":
-    //     dispatch(registerUser(registerForm, router));
-    //     break;
-    //   case "user_shelter":
-    //     dispatch(registerUser(registerForm, "next"));
-    //     break;
-    //   case "user_profile":
-    //     dispatch(registerProfileUser(registerProfile, router));
-    //     break;
-    //   default:
-    //     dispatch(navDefault());
-    //     break;
-    // }
 
     if (nav === "user") dispatch(registerUser(registerForm, router));
     if (nav === "user_shelter") dispatch(registerUser(registerForm, "next"));
@@ -310,6 +295,9 @@ const RegisterPage = () => {
             />
             <br />
             <Dropdown
+              name="documentType"
+              label="Tipo de documento"
+              placeholder="Ingrese documento"
               options={["DNI", "CarnetExtranjeria", "Pasaporte"]}
               value={registerProfile.documentType}
               onSelect={handleDocumentTypeChange}
@@ -338,13 +326,21 @@ const RegisterPage = () => {
               value={registerProfile.address}
               onChange={handleChangeProfile}
             />
-            <Input
+            {/* <Input */}
+            {/*   name="district" */}
+            {/*   label="Distrito" */}
+            {/*   placeholder="Ingrese su dirección" */}
+            {/*   type="text" */}
+            {/*   value={registerProfile.district} */}
+            {/*   onChange={handleChangeProfile} */}
+            {/* /> */}
+            <Dropdown
               name="district"
               label="Distrito"
-              placeholder="Ingrese su dirección"
-              type="text"
+              placeholder="Ingrese distrito"
+              options={["1", "2", "4"]}
               value={registerProfile.district}
-              onChange={handleChangeProfile}
+              onSelect={handleDocumentTypeChange}
             />
           </div>
           <div className="registerPage__wrapper--options">

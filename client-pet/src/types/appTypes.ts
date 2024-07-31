@@ -33,6 +33,16 @@ export interface ButtonProps {
   isDisabled?: boolean;
   isLoading?: boolean;
   loadingMessage?: string;
+  isRounded?: boolean;
+}
+
+export interface DropdowmProps {
+  name: string;
+  label: string;
+  options: any;
+  value: string;
+  placeholder: string;
+  onSelect?: any;
 }
 
 export interface LoginProps {
@@ -64,4 +74,26 @@ export interface FetchOptionsProps {
     Authorization?: string;
   };
   body?: string;
+}
+
+export interface ShelterProps {
+  name: string;
+  address: string;
+  district: string;
+}
+
+export interface PetProps {
+  name: string;
+  age: number | string;
+  type: string;
+  breed: string;
+  size: string;
+  sex: "Macho" | "Hembra" | string;
+  weight: number | string;
+  state: string;
+  temperament: string;
+  foundPlace: string;
+  shelterId?: string;
+  districtId?: string;
+  imgUrl: string;
 }

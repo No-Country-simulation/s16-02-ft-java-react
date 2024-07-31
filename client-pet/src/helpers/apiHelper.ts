@@ -33,9 +33,11 @@ export const fetchAPI = async (
   token: "YES" | "NO" = "NO"
 ): Promise<any> => {
   const url = `${baseUrl}/${endpoint}`;
+  console.log(url);
 
   if (token === "NO") {
     const options = createOptions(method, data);
+
     try {
       const response = await fetch(url, options);
 
@@ -73,10 +75,20 @@ export const fetchAPI = async (
 
     try {
       const response = await fetch(url, options);
+
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        return null;
+      }
+
+      const data = await response.json();
+      if (!data) return null;
+
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-      return await response.json();
+
+      return data;
     } catch (error) {
       console.error("Fetch error:", error);
       throw error;

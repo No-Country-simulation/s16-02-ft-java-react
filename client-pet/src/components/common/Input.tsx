@@ -43,6 +43,7 @@ const Input = ({
           onChange={onChange}
           required={isRequired ? true : false}
           autoComplete="nope"
+          readOnly={onChange ? false : true}
         />
         {type === "password" ? (
           <button className="input__content--icon" onClick={toggleVisibility}>

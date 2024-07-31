@@ -7,6 +7,7 @@
     cursor: pointer;
   }
 
+
   &__primary {
     background: var(--c-primary);
     transition: 200ms ease;
@@ -66,9 +67,23 @@
   border-radius: var(--br-sm);
 }
 
+.rounded {
+  border-radius: 1000px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .primary {
   padding: 10px 32px;
   font-size: var(--fs-md);
+}
+
+
+.pink {
+  background: none;
+  color: #FF66C4;
+  border: 1px solid #FF66C4;
+  box-shadow: 4px 4px 0px 0px #FF66C4;
 }
 
 .loader {
