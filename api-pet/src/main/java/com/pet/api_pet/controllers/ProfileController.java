@@ -33,9 +33,6 @@ public class ProfileController {
         try {
 
             List<ProfileDTO> list = service.findAll().stream().map(p -> mapper.map(p, ProfileDTO.class)).collect(Collectors.toList());
-            if (list.isEmpty()) {
-                throw new ModelNotFoundException("No se encontraron perfiles");
-            }
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e) {
                 throw new RuntimeException("Error al obtener perfiles", e);

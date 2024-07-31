@@ -30,9 +30,6 @@ public class CommentaryController {
         try {
 
             List<CommentaryDTO> list = service.findAll().stream().map(p -> mapper.map(p, CommentaryDTO.class)).collect(Collectors.toList());
-            if (list.isEmpty()) {
-                throw new ModelNotFoundException("No se encontraron comentarios");
-            }
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e) {
             throw new RuntimeException("Error al obtener comentarios", e);
@@ -77,9 +74,6 @@ public class CommentaryController {
         try {
 
             List<CommentaryDTO> list = service.findAllByArticleId(id).stream().map(p -> mapper.map(p, CommentaryDTO.class)).collect(Collectors.toList());
-            if (list.isEmpty()) {
-                throw new ModelNotFoundException("No se encontraron comentarios");
-            }
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e) {
             throw new RuntimeException("Error al obtener comentarios", e);

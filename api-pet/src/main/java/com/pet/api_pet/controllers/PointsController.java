@@ -32,9 +32,6 @@ public class PointsController {
         try {
 
             List<PointsDTO> list = service.findAll().stream().map(p -> mapper.map(p, PointsDTO.class)).collect(Collectors.toList());
-            if (list.isEmpty()) {
-                throw new ModelNotFoundException("No se encontraron puntos");
-            }
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e) {
             throw new RuntimeException("Error al obtener puntos", e);

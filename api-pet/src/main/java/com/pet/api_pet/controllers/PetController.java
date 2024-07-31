@@ -85,9 +85,6 @@ public class PetController {
             List<PetDTO> pets = service.findAll().stream()
                     .map(pet -> mapper.map(pet, PetDTO.class))
                     .collect(Collectors.toList());
-            if (pets.isEmpty()) {
-                throw new ModelNotFoundException("No se encontraron pets");
-            }
             return new ResponseEntity<>(pets, HttpStatus.OK);
         } catch (Exception e) {
             throw new RuntimeException("Error al obtener el listado de pets", e);
@@ -114,9 +111,6 @@ public class PetController {
             List<PetDTO> pets = service.findAllPetsByShelterId(id).stream()
                     .map(pet -> mapper.map(pet, PetDTO.class))
                     .collect(Collectors.toList());
-            if (pets.isEmpty()) {
-                throw new ModelNotFoundException("No se encontraron mascotas");
-            }
             return new ResponseEntity<>(pets, HttpStatus.OK);
         } catch (Exception e) {
             throw new RuntimeException("Error al obtener el listado de mascotas", e);

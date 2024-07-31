@@ -31,9 +31,6 @@ public class LostController {
         try {
 
             List<LostDTO> list = service.findAll().stream().map(p -> mapper.map(p, LostDTO.class)).collect(Collectors.toList());
-            if (list.isEmpty()) {
-                throw new ModelNotFoundException("No se encontraron extraviados");
-            }
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e) {
             throw new RuntimeException("Error al obtener extraviados", e);

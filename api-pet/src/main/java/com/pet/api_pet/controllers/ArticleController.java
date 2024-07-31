@@ -30,9 +30,6 @@ public class ArticleController {
         try {
 
             List<ArticleDTO> list = service.findAll().stream().map(p -> mapper.map(p, ArticleDTO.class)).collect(Collectors.toList());
-            if (list.isEmpty()) {
-                throw new ModelNotFoundException("No se encontraron articulos");
-            }
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e) {
             throw new RuntimeException("Error al obtener articulos", e);

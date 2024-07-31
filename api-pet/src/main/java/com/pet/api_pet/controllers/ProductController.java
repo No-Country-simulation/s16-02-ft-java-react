@@ -29,7 +29,6 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<List<ProductDTO>> findAll(){
         try {
-
             List<ProductDTO> list = service.findAll().stream().map(p -> mapper.map(p, ProductDTO.class)).collect(Collectors.toList());
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e) {

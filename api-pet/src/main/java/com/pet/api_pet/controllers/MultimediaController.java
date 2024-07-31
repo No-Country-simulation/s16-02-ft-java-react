@@ -32,9 +32,6 @@ public class MultimediaController {
         try {
 
             List<MultimediaDTO> list = service.findAll().stream().map(p -> mapper.map(p, MultimediaDTO.class)).collect(Collectors.toList());
-            if (list.isEmpty()) {
-                throw new ModelNotFoundException("No se encontraron multimedia");
-            }
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e) {
             throw new RuntimeException("Error al obtener multimedia", e);
