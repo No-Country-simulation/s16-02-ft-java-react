@@ -11,7 +11,8 @@ Web application created using Reactjs, Spring Boot. The application allows users
 | <img src="https://media.licdn.com/dms/image/D4D03AQHCFFS7sd-7JQ/profile-displayphoto-shrink_200_200/0/1722347129166?e=1727913600&v=beta&t=ApuPVobxdHR5w-Lg9eIibUr02l6l2hRjNl6bJDBaNzY" width=50>| 
 |:-:
 | **Belén Irustia**
-| <a href="https://www.behance.net/rosariobelen1"><img src="https://img.shields.io/badge/behance-%23121011.svg?&style=for-the-badge&logo=behance&logoColor=white"/></a> <a href="https://www.linkedin.com/in/rosariobelen"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> 
+| <a href="https://www.behance.net/rosariobelen1"><img src="https://img.shields.io/badge/behance-%23121011.svg?&style=for-the-badge&logo=behance&logoColor=white"/></a> <a href="https://www.linkedin.com/in/rosariobelen"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>
+
 ### Front End:
 
 #### Tech Stack
@@ -33,8 +34,11 @@ Web application created using Reactjs, Spring Boot. The application allows users
 
 #### Tech Stack
 
+<div>
 <img src="https://www.vectorlogo.zone/logos/java/java-icon.svg" width="40" height="40"/>
 <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" width="40" height="40"/>
+</div>
+
 
 #### 🧑‍💻 Developers:
 
