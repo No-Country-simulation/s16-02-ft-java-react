@@ -1,6 +1,6 @@
 package com.pet.api_pet.repository;
 
-import com.pet.api_pet.model.Points;
+import com.pet.api_pet.model.adoption.Points;
 
 import java.util.UUID;
 

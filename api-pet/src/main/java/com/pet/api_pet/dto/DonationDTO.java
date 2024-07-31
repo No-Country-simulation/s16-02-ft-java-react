@@ -1,6 +1,6 @@
 package com.pet.api_pet.dto;
 
-import com.pet.api_pet.model.MoneyType;
+import com.pet.api_pet.model.adoption.MoneyType;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

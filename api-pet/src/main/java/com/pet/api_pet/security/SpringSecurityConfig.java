@@ -57,6 +57,13 @@ public class SpringSecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/swagger-ui/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/users").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/auth/register").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/api/pets/**").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/api/shelter/**").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/api/lost/**").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/api/products/**").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/api/articles/**").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/api/commentaries/**").permitAll()
+                        //.requestMatchers(HttpMethod.GET,"/api/visit/**").permitAll()
                         .requestMatchers(HttpMethod.POST,"/api/login").permitAll()
 
 
@@ -65,9 +72,9 @@ public class SpringSecurityConfig {
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))
                 .addFilter(new JwtValidationFilter(authenticationManager()))
                 .userDetailsService(userDetailsService)
-                .httpBasic(Customizer.withDefaults())
+                //.httpBasic(Customizer.withDefaults())
                 .csrf(config -> config.disable())
-                .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
                 .build();
     }
 

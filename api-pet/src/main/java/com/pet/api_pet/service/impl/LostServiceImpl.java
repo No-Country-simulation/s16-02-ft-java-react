@@ -1,6 +1,6 @@
 package com.pet.api_pet.service.impl;
 
-import com.pet.api_pet.model.Lost;
+import com.pet.api_pet.model.adoption.Lost;
 import com.pet.api_pet.repository.IGenericRepo;
 import com.pet.api_pet.repository.ILostRepository;
 import com.pet.api_pet.service.ILostService;

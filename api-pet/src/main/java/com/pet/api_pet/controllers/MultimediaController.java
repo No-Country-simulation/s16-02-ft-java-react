@@ -2,7 +2,7 @@ package com.pet.api_pet.controllers;
 
 import com.pet.api_pet.dto.MultimediaDTO;
 import com.pet.api_pet.exception.ModelNotFoundException;
-import com.pet.api_pet.model.Multimedia;
+import com.pet.api_pet.model.adoption.Multimedia;
 import com.pet.api_pet.service.IMultimediaService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -42,8 +43,8 @@ public class MultimediaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<MultimediaDTO> findById(@PathVariable("id") UUID id){
-        Multimedia obj = service.findById(id);
-        if(obj == null){
+        Optional<Multimedia> obj = service.findById(id);
+        if(obj.isEmpty()){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }else{
             return new ResponseEntity<>(mapper.map(obj, MultimediaDTO.class), HttpStatus.OK);
@@ -65,8 +66,8 @@ public class MultimediaController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") UUID id){
-        Multimedia obj = service.findById(id);
-        if(obj == null){
+        Optional<Multimedia> obj = service.findById(id);
+        if(obj.isEmpty()){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }
         service.delete(id);

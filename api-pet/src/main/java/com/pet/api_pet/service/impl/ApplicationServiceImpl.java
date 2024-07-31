@@ -1,6 +1,6 @@
 package com.pet.api_pet.service.impl;
 
-import com.pet.api_pet.model.Application;
+import com.pet.api_pet.model.adoption.Application;
 import com.pet.api_pet.repository.IApplicationRepo;
 import com.pet.api_pet.repository.IGenericRepo;
 import com.pet.api_pet.service.IApplicationService;
@@ -24,5 +24,10 @@ public class ApplicationServiceImpl extends CRUDServiceImpl<Application, UUID> i
     @Override
     public List<Application> findAllByUserid(UUID id) {
         return repo.findAllByUserid(id);
+    }
+
+    @Override
+    public List<Application> findAllByShelterId(UUID id) {
+        return repo.findAllByShelterId(id);
     }
 }

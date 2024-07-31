@@ -1,8 +1,7 @@
 package com.pet.api_pet.repository;
 
-import com.pet.api_pet.model.Donation;
+import com.pet.api_pet.model.adoption.Donation;
 
-import java.util.List;
 import java.util.UUID;
 
 public interface IDonationRepo extends IGenericRepo<Donation, UUID>{

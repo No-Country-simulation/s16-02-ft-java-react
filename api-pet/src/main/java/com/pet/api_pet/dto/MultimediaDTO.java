@@ -17,5 +17,6 @@ public class MultimediaDTO {
 
     private String urlMultimedia;
 
-    private PetDTO pet;
+    private Boolean principal;
+    //private PetDTO pet;
 }

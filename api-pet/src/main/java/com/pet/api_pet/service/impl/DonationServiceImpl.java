@@ -1,6 +1,6 @@
 package com.pet.api_pet.service.impl;
 
-import com.pet.api_pet.model.Donation;
+import com.pet.api_pet.model.adoption.Donation;
 import com.pet.api_pet.repository.IDonationRepo;
 import com.pet.api_pet.repository.IGenericRepo;
 import com.pet.api_pet.service.IDonationService;

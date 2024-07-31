@@ -1,6 +1,6 @@
 package com.pet.api_pet.service;
 
-import com.pet.api_pet.model.Multimedia;
+import com.pet.api_pet.model.adoption.Multimedia;
 
 import java.util.UUID;
 

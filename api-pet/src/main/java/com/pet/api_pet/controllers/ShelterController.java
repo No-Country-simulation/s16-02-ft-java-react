@@ -3,10 +3,11 @@ package com.pet.api_pet.controllers;
 import com.pet.api_pet.dto.ShelterDTO;
 import com.pet.api_pet.exception.ModelNotFoundException;
 
-import com.pet.api_pet.model.Shelter;
+import com.pet.api_pet.model.adoption.Shelter;
 import com.pet.api_pet.service.IShelterService;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
@@ -43,8 +44,8 @@ public class ShelterController {
     @PreAuthorize("hasRole('ROLE_SHELTER')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteShelter(@PathVariable("id") UUID id) {
-        Shelter shelter = service.findById(id);
-        if (shelter == null) {
+        Optional<Shelter> shelter = service.findById(id);
+        if (shelter.isEmpty()) {
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }
         service.delete(id);
@@ -58,18 +59,16 @@ public class ShelterController {
         return new ResponseEntity<>(shelter, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('ROLE_SHELTER')")
     @GetMapping("/{id}")
     public ResponseEntity<ShelterDTO> findById(@PathVariable("id") UUID id) {
-        Shelter shelter = service.findById(id);
-        if (shelter == null) {
+        Optional<Shelter> shelter = service.findById(id);
+        if (shelter.isEmpty()) {
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         } else {
             return new ResponseEntity<>(mapper.map(shelter, ShelterDTO.class), HttpStatus.OK);
         }
     }
 
-    @PreAuthorize("hasRole('ROLE_SHELTER')")
     @GetMapping("/sheltersList")
     public ResponseEntity<List<ShelterDTO>> findAll() {
         try {
@@ -87,11 +86,11 @@ public class ShelterController {
 
     @GetMapping("/byUserId/{id}")
     public ResponseEntity<ShelterDTO> findByUserId(@PathVariable("id") UUID id) {
-        Shelter usuario = service.findByUserId(id);
-        if (usuario == null) {
+        Shelter shelter = service.findByUserId(id);
+        if (shelter == null) {
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         } else {
-            return new ResponseEntity<>(mapper.map(usuario, ShelterDTO.class), HttpStatus.OK);
+            return new ResponseEntity<>(mapper.map(shelter, ShelterDTO.class), HttpStatus.OK);
         }
     }
 

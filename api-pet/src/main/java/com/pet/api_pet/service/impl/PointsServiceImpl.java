@@ -1,6 +1,6 @@
 package com.pet.api_pet.service.impl;
 
-import com.pet.api_pet.model.Points;
+import com.pet.api_pet.model.adoption.Points;
 import com.pet.api_pet.repository.IGenericRepo;
 import com.pet.api_pet.repository.IPointsRepo;
 import com.pet.api_pet.service.IPointsService;

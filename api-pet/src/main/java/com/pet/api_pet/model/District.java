@@ -1,6 +1,8 @@
 package com.pet.api_pet.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.pet.api_pet.model.adoption.Shelter;
+import com.pet.api_pet.model.auth.Profile;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -3,7 +3,7 @@ package com.pet.api_pet.controllers;
 
 import com.pet.api_pet.dto.ApplicationDTO;
 import com.pet.api_pet.exception.ModelNotFoundException;
-import com.pet.api_pet.model.Application;
+import com.pet.api_pet.model.adoption.Application;
 import com.pet.api_pet.service.IApplicationService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +14,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -43,8 +44,8 @@ public class ApplicationController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ApplicationDTO> findById(@PathVariable("id") UUID id){
-        Application obj = service.findById(id);
-        if(obj == null){
+        Optional<Application> obj = service.findById(id);
+        if(obj.isEmpty()){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }else{
             return new ResponseEntity<>(mapper.map(obj, ApplicationDTO.class), HttpStatus.OK);
@@ -66,22 +67,29 @@ public class ApplicationController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") UUID id){
-        Application obj = service.findById(id);
-        if(obj == null){
+        Optional<Application> obj = service.findById(id);
+        if(obj.isEmpty()){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }
         service.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
     @GetMapping("/by-user/{id}")
     public ResponseEntity<List<ApplicationDTO>> findAllByUserId(@PathVariable("id")UUID id){
         try {
 
             List<ApplicationDTO> list = service.findAllByUserid(id).stream().map(p -> mapper.map(p, ApplicationDTO.class)).collect(Collectors.toList());
-            if (list.isEmpty()) {
-                throw new ModelNotFoundException("No se encontraron solicitudes");
-            }
+            return new ResponseEntity<>(list, HttpStatus.OK);
+        }catch (Exception e) {
+            throw new RuntimeException("Error al obtener solicitudes", e);
+        }
+    }
+
+    @GetMapping("/by-shelter/{id}")
+    public ResponseEntity<List<ApplicationDTO>> findAllByShelterId(@PathVariable("id")UUID id){
+        try {
+
+            List<ApplicationDTO> list = service.findAllByShelterId(id).stream().map(p -> mapper.map(p, ApplicationDTO.class)).collect(Collectors.toList());
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e) {
             throw new RuntimeException("Error al obtener solicitudes", e);

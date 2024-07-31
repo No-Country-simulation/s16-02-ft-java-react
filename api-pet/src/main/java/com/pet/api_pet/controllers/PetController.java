@@ -1,10 +1,13 @@
 package com.pet.api_pet.controllers;
 
 import com.pet.api_pet.dto.PetDTO;
+import com.pet.api_pet.dto.PetListMultimediaDTO;
 import com.pet.api_pet.exception.ModelNotFoundException;
-import com.pet.api_pet.model.Pet;
+import com.pet.api_pet.model.adoption.Multimedia;
+import com.pet.api_pet.model.adoption.Pet;
 import com.pet.api_pet.service.IPetService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -15,6 +18,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -28,18 +32,30 @@ public class PetController {
     private ModelMapper mapper;
     
 
-    @PostMapping
+   /* @PostMapping
     public ResponseEntity<Void> save(@RequestBody PetDTO petDTO) {
         Pet pet = service.save(mapper.map(petDTO, Pet.class));
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(pet.getPetId()).toUri();
         return ResponseEntity.created(location).build();
-    }
+    }*/
+   @PostMapping
+   public ResponseEntity<Void> save(@RequestBody PetListMultimediaDTO dto) {
+       Pet pet = mapper.map(dto.getPet(), Pet.class);
+       List<Multimedia> multimedia = mapper.map(dto.getListMultimedia(), new TypeToken<List<Multimedia>>() {
+       }.getType());
+
+       Pet obj = service.saveTransactional(pet, multimedia);
+       //localhost:8080/consults/5
+       URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getPetId()).toUri();
+       return ResponseEntity.created(location).build();
+   }
+
 
     @PreAuthorize("hasRole('ROLE_SHELTER')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deletePet(@PathVariable("id") UUID id) {
-        Pet pet = service.findById(id);
-        if (pet == null) {
+        Optional<Pet> pet = service.findById(id);
+        if (pet.isEmpty()) {
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }
         service.delete(id);
@@ -53,18 +69,16 @@ public class PetController {
         return new ResponseEntity<>(pet, HttpStatus.OK);
     }
 
-    @PreAuthorize("hasRole('ROLE_SHELTER')")
     @GetMapping("/{id}")
     public ResponseEntity<PetDTO> findById(@PathVariable("id") UUID id) {
-        Pet pet = service.findById(id);
-        if (pet == null) {
+        Optional<Pet> pet = service.findById(id);
+        if (pet.isEmpty()) {
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         } else {
             return new ResponseEntity<>(mapper.map(pet, PetDTO.class), HttpStatus.OK);
         }
     }
 
-    @PreAuthorize("hasRole('ROLE_SHELTER')")
     @GetMapping("/petsList")
     public ResponseEntity<List<PetDTO>> findAll() {
         try {

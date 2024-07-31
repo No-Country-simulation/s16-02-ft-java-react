@@ -1,6 +1,6 @@
 package com.pet.api_pet.dto;
 
-import com.pet.api_pet.model.ApplicationState;
+import com.pet.api_pet.model.adoption.ApplicationState;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,7 +21,9 @@ public class ApplicationDTO{
     @Enumerated(EnumType.STRING)
     private ApplicationState applicationState;
 
-    private ProfileDTO profile;
+    private Boolean approved;
+
+    private UserDTO user;
 
     private PetDTO pet;
 }

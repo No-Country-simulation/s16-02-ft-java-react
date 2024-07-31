@@ -5,6 +5,7 @@ import com.pet.api_pet.service.ICRUDService;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 public abstract class CRUDServiceImpl<T, ID> implements ICRUDService<T, ID> {
 
@@ -23,8 +24,8 @@ public abstract class CRUDServiceImpl<T, ID> implements ICRUDService<T, ID> {
     }
 
     @Override
-    public T findById(ID id) {
-        return null;
+    public Optional<T> findById(ID id) {
+        return getRepo().findById(id);
     }
 
     @Override

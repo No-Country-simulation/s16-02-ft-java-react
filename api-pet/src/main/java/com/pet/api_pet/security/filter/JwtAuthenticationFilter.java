@@ -1,6 +1,6 @@
 package com.pet.api_pet.security.filter;
 
-import com.pet.api_pet.model.User;
+import com.pet.api_pet.model.auth.User;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -86,9 +86,10 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         response.addHeader(HEADER_AUTHORIZATION, PREFIX_TOKEN + token);
 
-        Map<String, String> body = new HashMap<>();
+        Map<String, Object> body = new HashMap<>();
         body.put("token", token);
         body.put("username", username);
+        body.put("rol",roles);
         body.put("message", String.format("Hola %s has iniciado sesion con exito!", username));
 
         response.getWriter().write(new ObjectMapper().writeValueAsString(body));

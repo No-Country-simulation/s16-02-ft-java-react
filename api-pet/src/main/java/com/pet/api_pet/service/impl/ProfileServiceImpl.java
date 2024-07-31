@@ -1,8 +1,6 @@
 package com.pet.api_pet.service.impl;
 
-import com.pet.api_pet.dto.ProfileDTO;
-import com.pet.api_pet.model.District;
-import com.pet.api_pet.model.Profile;
+import com.pet.api_pet.model.auth.Profile;
 import com.pet.api_pet.repository.IGenericRepo;
 import com.pet.api_pet.repository.IProfileRepo;
 import com.pet.api_pet.service.IProfileService;

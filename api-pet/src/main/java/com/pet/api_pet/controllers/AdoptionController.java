@@ -3,7 +3,7 @@ package com.pet.api_pet.controllers;
 import com.pet.api_pet.dto.AdoptionDTO;
 import com.pet.api_pet.dto.AdoptionViewDTO;
 import com.pet.api_pet.exception.ModelNotFoundException;
-import com.pet.api_pet.model.Adoption;
+import com.pet.api_pet.model.adoption.Adoption;
 import com.pet.api_pet.service.IAdoptionService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +14,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -42,8 +43,8 @@ public class AdoptionController {
 
     @GetMapping("/{id}")
     public ResponseEntity<AdoptionDTO> findById(@PathVariable("id") UUID id){
-        Adoption obj = service.findById(id);
-        if(obj == null){
+        Optional<Adoption> obj = service.findById(id);
+        if(obj.isEmpty()){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }else{
             return new ResponseEntity<>(mapper.map(obj, AdoptionDTO.class), HttpStatus.OK);
@@ -65,8 +66,8 @@ public class AdoptionController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") UUID id){
-        Adoption obj = service.findById(id);
-        if(obj == null){
+        Optional<Adoption> obj = service.findById(id);
+        if(obj.isEmpty()){
             throw new ModelNotFoundException("ID NOT FOUND: " + id);
         }
         service.delete(id);
