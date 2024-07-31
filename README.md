@@ -1,3 +1,5 @@
+# PET CONNECT
+Web application created using Reactjs, Spring Boot. The application allows users to adopt pets. Where several shelters can register and give rescued pets up for adoption.
 ## Team
 
 ### UX/UI
