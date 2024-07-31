@@ -7,10 +7,10 @@ import { AppDispatch, getPetsHome, RootState } from "store";
 
 const AdopcionPage = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { pets, status } = useSelector((state: RootState) => state.pet);
+  const { petsHome, status } = useSelector((state: RootState) => state.pet);
 
   useEffect(() => {
-    if (!pets) dispatch(getPetsHome());
+    if (!petsHome) dispatch(getPetsHome());
   }, []);
 
   console.log("status pets", status);
@@ -23,10 +23,11 @@ const AdopcionPage = () => {
         <h2>Algunos de nuestros amigos que buscan un hogar</h2>
       </header>
       <div className="adoptPage__gallery">
-        {!pets && status === "loading" && <div>cargando...</div>}
-        {pets &&
+        {!petsHome && status === "loading" && <div>cargando...</div>}
+        {petsHome &&
+          petsHome.content &&
           status === "succeeded" &&
-          pets.content?.map((pet: any) => {
+          petsHome.content?.map((pet: any) => {
             return (
               <div key={pet.petId} className="adoptPage__gallery--card">
                 <Image src={img} alt="adoption pet gallery item" />

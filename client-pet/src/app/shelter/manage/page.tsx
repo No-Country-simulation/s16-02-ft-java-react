@@ -56,6 +56,7 @@ const ShelterManagePage = () => {
       dispatch(getShelter(id));
     }
     console.log("shelter", shelter);
+    // eslint-disable-next-line
   }, []);
   return (
     <section className="shelterPanel__body">

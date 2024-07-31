@@ -6,6 +6,7 @@
     "prettier"
   ],
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "warn",
+    "react-hooks/exhausive-deps": "off"
   }
 }

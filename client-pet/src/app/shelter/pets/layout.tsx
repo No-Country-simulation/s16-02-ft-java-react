@@ -15,6 +15,8 @@ const PetsShelterLayout = ({ children }: LayoutProps) => {
     if (id && shelter && !pets && status !== "loading")
       dispatch(getPet(shelter.shelterId));
     console.log({ pets, status });
+
+    // eslint-disable-next-line
   }, [shelter, pets]);
   console.log(status);
   return (

@@ -11,6 +11,7 @@ const ShelterProfilePage = () => {
   useEffect(() => {
     if (id && !user && status !== "loading") dispatch(getUserProfile(id));
     console.log("recharge", id, user);
+    // eslint-disable-next-line
   }, []);
   console.log(status);
   return (

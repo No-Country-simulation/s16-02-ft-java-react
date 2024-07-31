@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import img from "../../assets/logo-horizontal.png";
 import Image from "next/image";
-import { AppDispatch, defaultPet, logout } from "@store";
+import { AppDispatch, logout } from "@store";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 
@@ -42,7 +42,7 @@ const ShelterNav = () => {
   return (
     <div className="shelterNav">
       <div className="shelterNav__logo">
-        <Link href={"/"} onClick={() => dispatch(defaultPet())}>
+        <Link href={"/"}>
           <Image src={img} alt="header shelter image" />
         </Link>
       </div>

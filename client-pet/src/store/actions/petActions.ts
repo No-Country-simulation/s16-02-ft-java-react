@@ -6,6 +6,9 @@ import {
   getPetStart,
   getPetSuccess,
   getPetFailure,
+  getPetsHomeStart,
+  getPetsHomeSuccess,
+  getPetsHomeFailure,
 } from "@store";
 import { PetProps } from "@types";
 
@@ -59,13 +62,13 @@ export const getPet = (shelterId: string) => async (dispatch: any) => {
 };
 
 export const getPetsHome = () => async (dispatch: any) => {
-  dispatch(getPetStart());
+  dispatch(getPetsHomeStart());
   try {
     const response = await fetchAPI(`api/pets/pageable`, "GET", null);
 
     console.log("get pet home", response);
-    dispatch(getPetSuccess(response));
+    dispatch(getPetsHomeSuccess(response));
   } catch (error) {
-    dispatch(getPetFailure(error.message));
+    dispatch(getPetsHomeFailure(error.message));
   }
 };

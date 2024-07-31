@@ -95,4 +95,5 @@ export interface PetProps {
   foundPlace: string;
   shelterId?: string;
   districtId?: string;
+  imgUrl: string;
 }

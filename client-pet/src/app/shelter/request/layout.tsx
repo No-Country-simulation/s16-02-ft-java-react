@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { LayoutProps } from "@types";
 
@@ -15,4 +16,3 @@ const RequestsShelterLayout = ({ children }: LayoutProps) => {
 };
 
 export default RequestsShelterLayout;
-

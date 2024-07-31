@@ -7,6 +7,13 @@ import Image from "next/image";
 import { Button, Dropdown, Input } from "@components";
 import { PetProps } from "@types";
 import { isValidForm } from "@utils";
+import {
+  getDownloadURL,
+  ref,
+  uploadBytes,
+  uploadBytesResumable,
+} from "firebase/storage";
+import { storeDB } from "../../../firebase/firebase";
 
 const initialPetState: PetProps = {
   name: "",
@@ -19,10 +26,12 @@ const initialPetState: PetProps = {
   foundPlace: "",
   weight: "",
   sex: "",
+  imgUrl: "",
 };
 
 const PetsShelterPage = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const [imgUpload, setImgUpload] = useState<any>();
   const [petForm, setPetForm] = useState<PetProps>(initialPetState);
   const { shelter } = useSelector((state: RootState) => state.shelter);
   const { pets, status, isLoading } = useSelector(
@@ -46,15 +55,46 @@ const PetsShelterPage = () => {
 
   const handleSubmit = async () => {
     console.log(petForm);
-    dispatch(
-      createPet({ ...petForm, shelterId: shelter.shelterId, districtId: "4" })
+    // dispatch(
+    //   createPet({ ...petForm, shelterId: shelter.shelterId, districtId: "4" })
+    // );
+  };
+
+  const handleUpload = async () => {
+    const imgRef = ref(storeDB, `files/${imgUpload.name}`);
+    const uploadTask = uploadBytesResumable(imgRef, imgUpload);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+        switch (snapshot.state) {
+          case "paused":
+            console.log("Upload is paused");
+            break;
+          case "running":
+            console.log("Upload is running");
+            break;
+        }
+      },
+      (error) => {},
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          console.log("File available at", downloadURL);
+          setPetForm((prev) => ({
+            ...prev,
+            imgUrl: downloadURL,
+          }));
+        });
+      }
     );
   };
 
   const handleClear = () => {
     setPetForm(initialPetState);
   };
-  console.log(pets);
+
   return (
     <section className="shelterPanel__body petsShelter">
       <div className="shelterPanel__body--main petsShelter__main">
@@ -74,7 +114,12 @@ const PetsShelterPage = () => {
                 return (
                   <div key={i} className="petsWrapper__card">
                     <div className="petsWrapper__card--picture">
-                      <Image src={img} alt={pet.petName + i} />
+                      <Image
+                        src={pet.multimedia[0].urlMultimedia}
+                        width={500}
+                        height={500}
+                        alt={pet.petName + i}
+                      />
                     </div>
                     <div className="petsWrapper__card--content">
                       {pet.petName}
@@ -91,6 +136,14 @@ const PetsShelterPage = () => {
         <div className="sticky-wrapper">
           <div className="sticky">
             <div className="petsShelter__aside--form">
+              <div className="imgDB">
+                hola
+                <input
+                  type="file"
+                  onChange={(e) => setImgUpload(e.target.files[0])}
+                />
+                <button onClick={handleUpload}>Upload</button>
+              </div>
               <Input
                 label="Nombre"
                 name="name"
