@@ -31,7 +31,6 @@ public class ProfileController {
     @GetMapping
     public ResponseEntity<List<ProfileDTO>> findAll(){
         try {
-
             List<ProfileDTO> list = service.findAll().stream().map(p -> mapper.map(p, ProfileDTO.class)).collect(Collectors.toList());
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e) {

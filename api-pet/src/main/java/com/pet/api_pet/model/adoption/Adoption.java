@@ -25,8 +25,8 @@ public class Adoption extends Auditable {
 
 
 
-    @Column(name = "adoption_date",nullable = false)
-    private Instant adoptionDate;
+    @Column(name = "adoption_date")
+    private Instant adoptionDate=Instant.now();
 
 
     @OneToOne

@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.View;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -28,7 +29,7 @@ import java.util.UUID;
         "\tON pe.pet_id=ap.pet_id\n" +
         "\tINNER JOIN shelters s\n" +
         "\tON s.shelter_id=pe.shelter_id")*/
-@Table(name = "adoption_View")
+@View(query = "Select * from adoption_View")
 public class AdoptionView {
 
     @Id

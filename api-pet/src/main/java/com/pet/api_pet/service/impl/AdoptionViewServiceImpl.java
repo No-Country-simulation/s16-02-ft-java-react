@@ -1,28 +1,28 @@
 package com.pet.api_pet.service.impl;
 
-import com.pet.api_pet.model.adoption.Adoption;
 import com.pet.api_pet.model.adoption.AdoptionView;
-import com.pet.api_pet.repository.IAdoptionRepo;
 import com.pet.api_pet.repository.IAdoptionViewRepo;
 import com.pet.api_pet.repository.IGenericRepo;
-import com.pet.api_pet.service.IAdoptionService;
+import com.pet.api_pet.service.IAdoptionViewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 import java.util.List;
 import java.util.UUID;
 
 @Service
-public class AdoptionServiceImpl extends CRUDServiceImpl<Adoption, UUID> implements IAdoptionService {
+public class AdoptionViewServiceImpl extends CRUDServiceImpl<AdoptionView, UUID> implements IAdoptionViewService {
 
     @Autowired
-    private IAdoptionRepo repo;
+    private IAdoptionViewRepo repo;
 
     @Override
-    protected IGenericRepo<Adoption, UUID> getRepo() {
+    public List<AdoptionView> findAllAdoptionByUserId(UUID id) {
+
+        return repo.findAllAdoptionByUserId(id);
+    }
+    @Override
+    protected IGenericRepo<AdoptionView, UUID> getRepo() {
         return repo;
     }
-
-
 }

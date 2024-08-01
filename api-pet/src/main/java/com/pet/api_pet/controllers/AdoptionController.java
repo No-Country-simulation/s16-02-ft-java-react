@@ -5,7 +5,10 @@ import com.pet.api_pet.dto.AdoptionViewDTO;
 import com.pet.api_pet.exception.ModelNotFoundException;
 import com.pet.api_pet.model.adoption.Adoption;
 import com.pet.api_pet.service.IAdoptionService;
+import com.pet.api_pet.service.IAdoptionViewService;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +24,12 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/adoptions")
 public class AdoptionController {
+    private static final Logger log = LoggerFactory.getLogger(AdoptionController.class);
     @Autowired
     private IAdoptionService service;
+
+    @Autowired
+    private IAdoptionViewService viewService;
 
     @Autowired
     private ModelMapper mapper;
@@ -74,8 +81,7 @@ public class AdoptionController {
     @GetMapping("/by-user/{id}")
     public ResponseEntity<List<AdoptionViewDTO>> findAllByUserId(@PathVariable("id") UUID id){
         try {
-
-            List<AdoptionViewDTO> list = service.findAllAdoptionByUserId(id).stream().map(p -> mapper.map(p, AdoptionViewDTO.class)).collect(Collectors.toList());
+            List<AdoptionViewDTO> list = viewService.findAllAdoptionByUserId(id).stream().map(p -> mapper.map(p, AdoptionViewDTO.class)).collect(Collectors.toList());
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception e) {
             throw new RuntimeException("Error al obtener adopciones", e);
