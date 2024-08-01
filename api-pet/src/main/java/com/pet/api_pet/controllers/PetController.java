@@ -92,7 +92,7 @@ public class PetController {
     }
 
     @GetMapping("/pageable")
-    public Page<Pet> getPet(
+    public ResponseEntity<Page<PetDTO>> getPet(
             @RequestParam(required = false) String petName,
             @RequestParam(required = false) String petSex,
             @RequestParam(required = false) String petBreed,
@@ -102,7 +102,9 @@ public class PetController {
             @RequestParam(required = false) Integer maxAge,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
-        return service.getFilteredPets(petName, petSex, petBreed,petSize, petType, minAge, maxAge, page, size);
+        Page<Pet> petsPage = service.getFilteredPets(petName, petSex, petBreed,petSize, petType, minAge, maxAge, page, size);
+        Page<PetDTO> petDTOsPage = petsPage.map(pet -> mapper.map(pet, PetDTO.class));
+        return new ResponseEntity<>(petDTOsPage, HttpStatus.OK);
     }
 
     @GetMapping("/by-shelter/{id}")
