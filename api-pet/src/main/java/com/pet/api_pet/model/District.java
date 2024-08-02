@@ -30,7 +30,7 @@ public class District {
     @JsonIgnore
     private City city;
 
-    @OneToMany(mappedBy = "district",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "district",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Profile>profiles;
 

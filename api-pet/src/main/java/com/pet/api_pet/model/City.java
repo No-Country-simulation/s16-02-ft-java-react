@@ -28,6 +28,6 @@ public class City {
     @JsonIgnore
     private Department department;
 
-    @OneToMany(mappedBy = "city",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "city",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.LAZY)
     private List<District>districts;
 }

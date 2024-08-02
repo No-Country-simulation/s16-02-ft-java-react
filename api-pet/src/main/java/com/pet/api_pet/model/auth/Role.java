@@ -28,7 +28,7 @@ public class Role extends Auditable {
 
     private String roleDescription;
 
-    @OneToMany(mappedBy = "role",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "role",cascade = {CascadeType.ALL},orphanRemoval = true,fetch = FetchType.LAZY)
     @JsonIgnore
     private List<User>users;
 }

@@ -20,18 +20,33 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Collection;
+import java.util.*;
 import java.io.IOException;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static com.pet.api_pet.security.TokenJwtConfig.*;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private final AuthenticationManager authenticationManager;
+    private final int cacheSize = 100; // Tamaño máximo de la caché
+    private final Map<String, Authentication> cache = new LinkedHashMap<>(cacheSize, 0.75f, true) {
+        @Override
+        protected boolean removeEldestEntry(Map.Entry<String, Authentication> eldest) {
+            return size() > cacheSize;
+        }
+    };
+    private final DatabaseChangeListener listener = new DatabaseChangeListener() {
+        @Override
+        public void onUserUpdated(User user) {
+            invalidateCache(user.getUsername());
+        }
 
+        @Override
+        public void onUserDeleted(User user) {
+            invalidateCache(user.getUsername());
+        }
+    };
     public JwtAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
     }
@@ -56,12 +71,24 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             e.printStackTrace();
         }
 
+        // Uso de caché
+        String cacheKey = "user_" + username;
+        Authentication authentication = cache.get(cacheKey);
+        if (authentication != null) {
+            return authentication;
+        }
+
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username,
                 password);
 
-        return authenticationManager.authenticate(authenticationToken);
+        authentication = authenticationManager.authenticate(authenticationToken);
+        cache.put(cacheKey, authentication);
+        return authentication;
     }
 
+    private void invalidateCache(String username) {
+        cache.remove("user_" + username);
+    }
     @Override
     public void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
                                          Authentication authResult) throws IOException, ServletException {
@@ -91,6 +118,10 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         body.put("username", username);
         body.put("rol",roles);
         body.put("message", String.format("Hola %s has iniciado sesion con exito!", username));
+
+        // Utilizar Jackson para serializar el objeto Map a JSON
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(body);
 
         response.getWriter().write(new ObjectMapper().writeValueAsString(body));
         response.setContentType(CONTENT_TYPE);

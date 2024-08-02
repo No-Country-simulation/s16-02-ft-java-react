@@ -23,6 +23,6 @@ public class Country {
 
     private String countryName;
 
-    @OneToMany(mappedBy = "country",cascade = {CascadeType.ALL}, orphanRemoval = true,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "country",cascade = {CascadeType.ALL}, orphanRemoval = true,fetch = FetchType.LAZY)
     private List<Department>departments;
 }
