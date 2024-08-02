@@ -8,7 +8,7 @@ Web application created using Reactjs, Spring Boot. The application allows users
 ![Figma](https://img.shields.io/badge/Figma-00000?style=for-the-badge&logo=Figma&logoColor=black)
 #### 🧑‍💻 Designers:
 
-| <img src="https://media.licdn.com/dms/image/D4D03AQHCFFS7sd-7JQ/profile-displayphoto-shrink_200_200/0/1722347129166?e=1727913600&v=beta&t=ApuPVobxdHR5w-Lg9eIibUr02l6l2hRjNl6bJDBaNzY" width=50>| 
+| <img src="https://media.licdn.com/dms/image/D5603AQEvqLLoVY3_zA/profile-displayphoto-shrink_200_200/0/1722544528488?e=1727913600&v=beta&t=3O98xA602GudQ0EfN2jgf_Gt45a0ZoUTap_45Qb74TI" width=50>| 
 |:-:
 | **Belén Irustia**
 | <a href="https://www.behance.net/rosariobelen1"><img src="https://img.shields.io/badge/behance-%23121011.svg?&style=for-the-badge&logo=behance&logoColor=white"/></a> <a href="https://www.linkedin.com/in/rosariobelen"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>
