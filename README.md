@@ -41,8 +41,7 @@ Web application created using Reactjs, Spring Boot. The application allows users
 
 
 #### 🧑‍💻 Developers:
-
-| <img src="https://media.licdn.com/dms/image/D4E35AQHfl5TjUKI6zg/profile-framedphoto-shrink_200_200/0/1678409033701?e=1723046400&v=beta&t=Uk2DgirQE0_1HtqZjAWtZgmgxw4BSp_Vy4yM7wghauE" width=50>| <img src="https://media.licdn.com/dms/image/D4D35AQEc4Wrl6cbwaw/profile-framedphoto-shrink_100_100/0/1658326977878?e=1723046400&v=beta&t=eEXU4_So14IadHSY4ah3mpACG6o459I_Y56GFGGau1g" width=50>|
+| <img src="https://media.licdn.com/dms/image/v2/D4E35AQHfl5TjUKI6zg/profile-framedphoto-shrink_200_200/profile-framedphoto-shrink_200_200/0/1678409033701?e=1725040800&v=beta&t=hGhMgqBS_otweFRC3UinmciRd33QoHhoG4_pkagzrTk" width=50>| <img src="https://media.licdn.com/dms/image/v2/D4D35AQEc4Wrl6cbwaw/profile-framedphoto-shrink_200_200/profile-framedphoto-shrink_200_200/0/1658326977878?e=1725040800&v=beta&t=7ICWqWjCuk6mzYGFyEk1OlQQAXDxxC6YlhrWAcrfz8s" width=50>|
 |:-:|:-:|
 | **Omar Bautista**| **Nicolás Castro**|
 | <a href="https://github.com/CatLanguaga"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a><a href="https://www.linkedin.com/in/omar-bautista-b3b66320b/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/NicolasCastroPino"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/nicolascastropino/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
