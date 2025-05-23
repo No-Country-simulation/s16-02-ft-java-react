@@ -1,5 +1,12 @@
 import { MouseEventHandler, ChangeEventHandler } from "react";
 
+export enum EHttpMethod {
+  GET = "GET",
+  POST = "POST",
+  PUT = "PUT",
+  DELETE = "DELETE",
+}
+
 export interface LayoutProps {
   children: React.ReactNode;
 }
@@ -38,9 +45,9 @@ export interface ButtonProps {
 
 export interface DropdowmProps {
   name: string;
-  label: string;
+  label?: string;
   options: any;
-  value: string;
+  value?: string;
   placeholder: string;
   onSelect?: any;
 }
