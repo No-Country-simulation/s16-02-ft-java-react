@@ -1,0 +1,58 @@
+.singlePet {
+  max-width: 1600px;
+  width: 100%;
+  margin-inline: auto;
+  padding: 6rem 3%;
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  // justify-content: flex-start;
+  gap: 4rem;
+  min-height: 60vh;
+
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+
+    h2 {
+      font-size: var(--fs-subtitle);
+    }
+
+    &--picture {
+      img {
+        border-radius: var(--br-md);
+        border: var(--b-primary);
+        display: flex;
+        aspect-ratio: 3 / 4;
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+      }
+    }
+
+    &--content {
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .sub {
+        margin-top: 2rem;
+        font-size: var(--fs-lg);
+      }
+
+      .button {
+        margin-top: 1rem;
+      }
+
+      .content-row {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: var(--b-secondary);
+        padding: .5rem 0;
+      }
+
+    }
+  }
+}

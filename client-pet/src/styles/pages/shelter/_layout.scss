@@ -76,8 +76,31 @@
           margin-bottom: 1rem;
         }
 
-        .row-table {
+        .table-list {
+          border: var(--b-primary);
+          border-radius: var(--br-sm);
+          width: 100%;
 
+          .table-header {
+            background: pink;
+          }
+
+          .table-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            border-bottom: var(--b-secondary);
+
+            &:last-child {
+              border-bottom: none;
+            }
+          }
+
+          .table-column {
+            padding: 1rem;
+          }
+        }
+
+        .row-table {
           background: pink;
           border: var(--b-primary);
           border-radius: var(--br-sm);
