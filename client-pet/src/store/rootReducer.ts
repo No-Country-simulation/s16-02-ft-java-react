@@ -4,12 +4,14 @@ import userSlice from "./slices/userSlice";
 import authReducer from "./slices/authSlice";
 import shelterSlice from "./slices/shelterSlice";
 import petSlice from "./slices/petSlice";
+import adoptionSlice from "./slices/adoptionSlice";
 
 const rootReducer = combineReducers({
   user: userSlice,
   auth: authReducer,
   shelter: shelterSlice,
   pet: petSlice,
+  adoption: adoptionSlice,
 });
 
 export default rootReducer;

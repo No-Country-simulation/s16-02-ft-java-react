@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 interface PetStateProps {
   pets: any;
   petsHome: any;
+  pet: any;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
   isLoading: boolean;
@@ -11,6 +12,7 @@ interface PetStateProps {
 const initialState: PetStateProps = {
   petsHome: null,
   pets: null,
+  pet: null,
   status: "idle",
   error: null,
   isLoading: false,
@@ -65,11 +67,27 @@ const petSlice = createSlice({
       state.status = "failed";
       state.error = action.payload;
     },
+    getSinglePetStart: (state) => {
+      state.isLoading = true;
+      state.error = null;
+      state.status = "loading";
+    },
+    getSinglePetSuccess: (state, action) => {
+      state.isLoading = false;
+      state.pet = action.payload;
+      state.status = "succeeded";
+    },
+    getSinglePetFailure: (state, action) => {
+      state.isLoading = false;
+      state.status = "failed";
+      state.error = action.payload;
+    },
     defaultPet: (state) => {
       state.status = "idle";
       state.error = null;
       state.pets = null;
       state.petsHome = null;
+      state.pet = null;
     },
   },
 });
@@ -85,6 +103,9 @@ export const {
   getPetsHomeStart,
   getPetsHomeFailure,
   getPetsHomeSuccess,
+  getSinglePetStart,
+  getSinglePetSuccess,
+  getSinglePetFailure,
 } = petSlice.actions;
 
 export default petSlice.reducer;

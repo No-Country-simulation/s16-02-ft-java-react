@@ -55,9 +55,9 @@ export const logout = (router: any) => async (dispatch: any) => {
     localStorage.clear();
     router.push("/");
     dispatch(checkAuth({ username: "", role: "" }));
-    dispatch(defaultShelter());
-    dispatch(defaultPet());
-    dispatch(defaultUser());
+    // dispatch(defaultShelter());
+    // dispatch(defaultPet());
+    // dispatch(defaultUser());
   } catch (error) {
     console.log(error);
   }

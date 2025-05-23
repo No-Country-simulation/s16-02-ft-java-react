@@ -15,3 +15,7 @@ export * from "./slices/shelterSlice";
 // Pet
 export * from "./actions/petActions";
 export * from "./slices/petSlice";
+
+// Adoptions
+export * from "./actions/adoptionActions";
+export * from "./slices/adoptionSlice";
