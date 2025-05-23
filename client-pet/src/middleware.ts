@@ -9,6 +9,8 @@ const protectedShelterRoutes = [
 ];
 const protectedUserRoutes = ["/profile"];
 
+// asdfasdfasdf
+
 export default function middleware(req: NextRequest) {
   const token = req.cookies.get("token")?.value;
   const role = req.cookies.get("role")?.value;

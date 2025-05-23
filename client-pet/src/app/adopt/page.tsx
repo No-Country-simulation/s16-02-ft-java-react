@@ -4,37 +4,65 @@ import img from "../../assets/adop7.jpg";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, getPetsHome, RootState } from "store";
+import Link from "next/link";
+import { Loader } from "components";
 
 const AdopcionPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { petsHome, status } = useSelector((state: RootState) => state.pet);
 
   useEffect(() => {
-    if (!petsHome) dispatch(getPetsHome());
+    if (!petsHome && status !== "loading") dispatch(getPetsHome());
   }, []);
 
   console.log("status pets", status);
-
-  // if (!pets) return <>cargando pets....</>;
 
   return (
     <div className="adoptPage">
       <header className="adoptPage__header">
         <h2>Algunos de nuestros amigos que buscan un hogar</h2>
+        <ul>
+          <li>asdfasfd</li>
+        </ul>
+        <span>asdfasdf</span>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi earum
+          molestiae enim eius, sunt ea obcaecati, praesentium animi assumenda
+          quisquam atque dicta inventore veritatis doloribus rerum non ratione
+          quaerat eos.
+        </p>
       </header>
+
+      {!petsHome && status === "loading" && <Loader />}
       <div className="adoptPage__gallery">
-        {!petsHome && status === "loading" && <div>cargando...</div>}
         {petsHome &&
-          petsHome.content &&
           status === "succeeded" &&
-          petsHome.content?.map((pet: any) => {
+          petsHome.map((pet: any) => {
+            if (
+              pet.shelter.user.username === "sheltertest@gmail.com" ||
+              pet.shelter.user.username === "shelter@gmail.com" ||
+              pet.shelter.user.username === "anders@gmail.com" ||
+              pet.shelter.user.username === "jose@gmail.com"
+            )
+              return null;
             return (
-              <div key={pet.petId} className="adoptPage__gallery--card">
-                <Image src={img} alt="adoption pet gallery item" />
-                <div className="card-content">
-                  <label>{pet.petName}</label>
+              <Link key={pet.petId} href={`/adopt/${pet.petId}`}>
+                <div className="adoptPage__gallery--card">
+                  <Image
+                    src={
+                      pet.multimedia[0].urlMultimedia !== "string"
+                        ? pet.multimedia[0].urlMultimedia
+                        : img
+                    }
+                    width={500}
+                    height={800}
+                    alt="adoption pet gallery item"
+                  />
+                  <div className="card-content">
+                    <label>{pet.petName}</label>
+                  </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
       </div>

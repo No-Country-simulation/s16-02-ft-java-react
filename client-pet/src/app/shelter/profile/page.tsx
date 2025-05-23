@@ -1,5 +1,5 @@
 "use client";
-import { Input } from "components";
+import { Input, Loader } from "components";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, getUserProfile, RootState } from "store";
@@ -17,9 +17,7 @@ const ShelterProfilePage = () => {
   return (
     <section className="shelterPanel__body">
       <div className="shelterPanel__body--main">
-        {!user && status === "loading" && (
-          <div>cargando datos de usuario...</div>
-        )}
+        {!user && status === "loading" && <Loader />}
         {!user && status === "failed" && <div>Sin datos para mostrar.</div>}
         {user && status === "succeeded" && (
           <>

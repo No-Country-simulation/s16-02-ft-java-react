@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import { LayoutProps } from "types";
-import { ShelterNav } from "@components";
+import { Loader, ShelterNav } from "@components";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, checkShelterAuth, RootState } from "@store";
 
@@ -19,7 +19,7 @@ const ShelterLayout = ({ children }: LayoutProps) => {
   return (
     <div className="shelterLayout">
       <ShelterNav />
-      {id ? <> {children} </> : <span>validando permisos...</span>}
+      {id ? <> {children} </> : <Loader />}
       {/* {id ? <section>{children}</section> : <span>validando id...</span>} */}
       {/* <Footer /> */}
     </div>

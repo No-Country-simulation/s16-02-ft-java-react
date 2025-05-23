@@ -18,7 +18,6 @@ const PetsShelterLayout = ({ children }: LayoutProps) => {
 
     // eslint-disable-next-line
   }, [shelter, pets]);
-  console.log(status);
   return (
     <div className="shelterPanel">
       <div className="shelterPanel__header">

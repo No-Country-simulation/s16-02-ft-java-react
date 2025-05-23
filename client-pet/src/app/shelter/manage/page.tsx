@@ -2,7 +2,7 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState, createShelter, getShelter } from "@store";
-import { Button, Dropdown, Input } from "@components";
+import { Button, Dropdown, Input, Loader } from "@components";
 import { ShelterProps } from "@types";
 const initialShelterState: ShelterProps = {
   name: "",
@@ -61,7 +61,7 @@ const ShelterManagePage = () => {
   return (
     <section className="shelterPanel__body">
       <div className="shelterPanel__body--main">
-        {!shelter && status === "loading" && <div>cargando datos...</div>}
+        {!shelter && status === "loading" && <Loader />}
         {!shelter && status === "failed" && (
           <div>
             Nececitas crear un perfil de refugio

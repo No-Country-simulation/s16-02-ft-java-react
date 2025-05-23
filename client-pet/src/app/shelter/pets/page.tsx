@@ -1,10 +1,10 @@
 "use client";
 import React, { ChangeEvent, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector  from "react-redux";
 import { AppDispatch, createPet, RootState } from "@store";
 import img from "../../../assets/carousel1.png";
 import Image from "next/image";
-import { Button, Dropdown, Input } from "@components";
+import { Button, Dropdown, Input, Loader } from "@components";
 import { PetProps } from "@types";
 import { isValidForm } from "@utils";
 import {
@@ -33,6 +33,7 @@ const PetsShelterPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [imgUpload, setImgUpload] = useState<any>();
   const [petForm, setPetForm] = useState<PetProps>(initialPetState);
+  const [isLoadingForm, SetIsloadingForm] = useState<boolean>(false);
   const { shelter } = useSelector((state: RootState) => state.shelter);
   const { pets, status, isLoading } = useSelector(
     (state: RootState) => state.pet
@@ -54,10 +55,44 @@ const PetsShelterPage = () => {
   };
 
   const handleSubmit = async () => {
-    console.log(petForm);
-    // dispatch(
-    //   createPet({ ...petForm, shelterId: shelter.shelterId, districtId: "4" })
-    // );
+    SetIsloadingForm(true);
+    const imgRef = ref(storeDB, `files/${imgUpload.name}`);
+    const uploadTask = uploadBytesResumable(imgRef, imgUpload);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+        switch (snapshot.state) {
+          case "paused":
+            console.log("Upload is paused");
+            break;
+          case "running":
+            console.log("Upload is running");
+            break;
+        }
+      },
+      (error) => { },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          // console.log("File available at", downloadURL);
+          // setPetForm((prev) => ({
+          //   ...prev,
+          //   imgUrl: downloadURL,
+          // }));
+          dispatch(
+            createPet({
+              ...petForm,
+              shelterId: shelter.shelterId,
+              districtId: "4",
+              imgUrl: downloadURL,
+            })
+          );
+          SetIsloadingForm(false);
+        });
+      }
+    );
   };
 
   const handleUpload = async () => {
@@ -78,7 +113,7 @@ const PetsShelterPage = () => {
             break;
         }
       },
-      (error) => {},
+      (error) => { },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           console.log("File available at", downloadURL);
@@ -98,16 +133,10 @@ const PetsShelterPage = () => {
   return (
     <section className="shelterPanel__body petsShelter">
       <div className="shelterPanel__body--main petsShelter__main">
-        <div className="shelterPanel__body--row petsShelter__main--header">
-          <div className="row-main">
-            <h2>Mascotas que necesitan adopción</h2>
-          </div>
-        </div>
         <div className="row-main">
-          {!pets && status === "loading" && (
-            <div>cargando datos de mascota...</div>
-          )}
-          {!shelter && <div>cargando datos de refugio...</div>}
+          <h2>Mascotas que necesitan adopción</h2>
+          {!pets && status === "loading" && <Loader />}
+          {!shelter && <Loader />}
           {pets !== null && status === "succeeded" && (
             <div className="petsWrapper">
               {pets.map((pet: any, i: any) => {
@@ -135,15 +164,13 @@ const PetsShelterPage = () => {
       <div className="shelterPanel__body--aside">
         <div className="sticky-wrapper">
           <div className="sticky">
+            <div className="imgDB" style={{ marginBottom: "1rem" }}>
+              <input
+                type="file"
+                onChange={(e) => setImgUpload(e.target.files[0])}
+              />
+            </div>
             <div className="petsShelter__aside--form">
-              <div className="imgDB">
-                hola
-                <input
-                  type="file"
-                  onChange={(e) => setImgUpload(e.target.files[0])}
-                />
-                <button onClick={handleUpload}>Upload</button>
-              </div>
               <Input
                 label="Nombre"
                 name="name"
@@ -236,7 +263,8 @@ const PetsShelterPage = () => {
             <div className="petsShelter__aside--options">
               <Button
                 color="primary"
-                isDisabled={isValidForm(petForm)}
+                // isDisabled={isValidForm(petForm)}
+                isLoading={isLoadingForm}
                 onClick={() => handleSubmit()}
               >
                 Agregar
