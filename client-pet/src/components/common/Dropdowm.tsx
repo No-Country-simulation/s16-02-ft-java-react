@@ -15,14 +15,17 @@ const Drowpdown = ({
 
   return (
     <div className={`dropdown documentType ${isOpen ? "open" : ""}  ${name}`}>
-      {label ? <div className="dropdown__label">{label}</div> : null}
+      {label && <div className="dropdown__label">{label}</div>}
       <button className="dropdown__content" onClick={() => setIsOpen(!isOpen)}>
         <span className="dropdown__content--text">
           {value ? value : placeholder}
         </span>
         <Arrow />
       </button>
-      <div className="dropdown__list">
+      <div
+        className="dropdown__list"
+        style={{ transform: "translateY(calc(100% + 5px))" }}
+      >
         {options.map((option: any, i: any) => (
           <div
             key={i}
